@@ -42,6 +42,7 @@ export const useLogin = () => {
                   if(res.data.role.includes("ROLE_SELLER")) {
                      localStorage.setItem('guest' , JSON.stringify(false))
                      setGlobalState('user' , res.data)
+                     localStorage.setItem('shopName', res.data?.shop.shopName)
                      navigate('/seller/dashboard')
                   }
                   else {
