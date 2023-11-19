@@ -1,0 +1,70 @@
+.um-sign {
+    &-bg {
+        background: #F0F7FF;
+        min-height: 100vh;
+    }
+
+    &-badge {
+        display: flex;
+        height: 50px;
+    }
+    &-form {
+        width: 610px;
+        border-radius: 8px;
+    }
+
+    &-field {
+        height: 48px;
+        padding-left: 1rem/* 16px */;
+        border-radius: 8px;
+        border-width: 1.5;
+        border-style: solid;
+        outline: none;
+
+        &-dropdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 0.25rem/* 4px */;
+            padding-left: 1rem/* 16px */;
+            height: 52px;
+            border: 1.5px solid #94A3B8;
+            border-radius: 8px;
+            outline: none;
+        }
+    }
+    &-field-text-area {
+        height: 200px;
+        padding-left: 1rem/* 16px */;
+        border: 1.5px solid #94A3B8;
+        border-radius: 8px;
+        outline: none;
+    }
+
+    &-icon {
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+    }
+
+    &-checkbox {
+        width: 12px;
+        height: 12px;
+        // border: 2px solid #2E486B;
+        display: inline-block;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--primary-red);
+        color: var(--color-white);
+        font-size: 12px;
+    }
+    &-agree {
+        font-weight: 500;
+        font-size: 14px;
+    }
+}

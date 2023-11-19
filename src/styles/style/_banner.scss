@@ -1,0 +1,52 @@
+.um {
+
+    &-main-pagination{
+        width: 15px;
+        height: 15px;
+        background: #94A3B8;
+        border-radius: 50%;
+
+        &-active {
+            background-color: transparent;
+            border: 4px solid var(--primary-red);
+        }
+    }
+
+    &-top {
+        &-deal {
+            background-color: var(--primary-red);
+        }
+        &-product {
+            display: flex;
+            margin-top: 1rem;
+            gap: 8px;
+            &_img {
+                width: 60px;
+                height: 60px;
+                border-radius: 2px;
+            }
+
+            &-promo {
+                width: 20px;
+                height:20px;
+                background: #FEF0F0;
+                color: var(--primary-red);
+                font-size: 8px;
+                display: flex;
+                justify-content:center;
+                align-items: center;
+                padding: 1rem;
+                border-radius: 6px;
+            }
+            &-box {
+                border: 1px solid #F0F7FF;
+                border-radius: 6px;
+                margin-top: 20px;
+                cursor: pointer;
+                display: block;
+                min-width: 130px;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,246 @@
+.rgh {
+  justify-content: flex-end;
+}
+.message-card-container {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+}
+.back-arrw {
+  font-size: 20px;
+  color: #002c66;
+  margin-left: -10px;
+  cursor: pointer;
+}
+.profile-name-message-box {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.profile-image img {
+  background: #d1d8e0;
+  border-radius: 50%;
+  width: 40px;
+  object-fit: cover;
+  object-position: center;
+}
+.name-txt {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-secondary-blue);
+}
+.msg-txt {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-tertiary-blue);
+}
+.prod-txt {
+  font-size: 18px;
+  color: var(--dark-primary-blue);
+  font-weight: 800;
+}
+.status-time-box {
+  font-size: 14px;
+}
+.status-time-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.status {
+  color: #017e4d;
+}
+.time-text {
+  color: #94a3b8;
+}
+
+/* Chat section */
+.chat-dash-container {
+  position: relative;
+}
+.customer-name {
+  font-size: 18px;
+  color: #1f3047;
+  font-weight: 700;
+}
+.act-tim {
+  font-size: 15px;
+  color: #94a3b8;
+}
+.chat-main-container {
+  margin-top: 10px;
+  height: 380px;
+  overflow-y: scroll;
+  scrollbar-width: normal;
+  padding: 0 5px;
+}
+
+.date-chat {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 600;
+  text-align: center;
+}
+.pro-customer-box {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  width: 500px;
+}
+.seller-box {
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+  margin-top: 20px;
+}
+.seller-chat-cont {
+  border-radius: 20px 0px 20px 20px;
+  background: #002c66;
+  max-width: 400px;
+  padding: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+.customer-chat-cont {
+  background: #fff;
+  max-width: 400px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.pro-info {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f3047;
+}
+.img-title-box {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 5px;
+}
+.img-title-box img {
+  width: 40px;
+}
+.tit-word {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f3047;
+}
+.min-msg {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2e486b;
+}
+.inp-msg-cont {
+  background: #fff;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  align-items: flex-end;
+  position: sticky;
+  bottom: 0;
+}
+.cam-inp-box {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  align-items: flex-end;
+  /* flex: 1; */
+}
+.chat-inp {
+  /* flex: 1; */
+  width: 85%;
+  border: none;
+  resize: none;
+  outline: none;
+  overflow-wrap: break-word;
+  height: 30px; /* Initial height of the input box */
+  min-height: 30px;
+  transition: height 0.2s;
+  font-size: 14px;
+  line-height: 1.4; /* Adjust line height as needed */
+  padding: 5px; /* Add padding for better appearance */
+  box-sizing: border-box;
+}
+.chat-btn {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.send-btn {
+  color: #ca0505;
+}
+.seller-sent-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.time-sent {
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.cus-pro {
+  margin-bottom: 15px;
+}
+@media only screen and (max-width: 800px) {
+  .profile-name-message-box {
+    gap: 5px;
+  }
+  .name-txt {
+    font-size: 14px;
+  }
+  .msg-txt {
+    font-size: 13px;
+  }
+  .prod-txt {
+    font-size: 14px;
+  }
+  .status-time-box {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .seller-chat-cont {
+    max-width: 300px;
+  }
+  .customer-chat-cont {
+    max-width: 300px;
+  }
+  .chat-main-container {
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .seller-chat-cont {
+    max-width: 200px;
+  }
+  .customer-chat-cont {
+    max-width: 200px;
+  }
+  .profile-image img {
+    width: 30px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .name-txt {
+    font-size: 12px;
+  }
+  .msg-txt {
+    font-size: 11px;
+  }
+  .prod-txt {
+    font-size: 12px;
+  }
+  .status-time-box {
+    font-size: 10px;
+  }
+}

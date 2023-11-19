@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "init": "C",
+    "head": "Payment for successful product purchase",
+    "amount": "+50,000.00",
+    "credeb": "credit"
+  },
+  {
+    "id": 2,
+    "init": "D",
+    "title": "Refund request successful",
+    "head": "Refund request successful",
+    "amount": "-20,000.00",
+    "credeb": "debit"
+  },
+  {
+    "id": 3,
+    "init": "C",
+    "head": "Payment for successful product purchase",
+    "amount": "+2,500.00",
+    "credeb": "credit"
+  },
+  {
+    "id": 4,
+    "init": "D",
+    "head": "Refund request successful",
+    "amount": "-7,000.00",
+    "credeb": "debit"
+  },
+  {
+    "id": 5,
+    "init": "D",
+    "head": "Refund request successful",
+    "amount": "-1,000.00",
+    "credeb": "debit"
+  },
+  {
+    "id": 6,
+    "init": "C",
+    "head": "Payment for successful product purchase",
+    "amount": "+1,000.00",
+    "credeb": "credit"
+  },
+  {
+    "id": 7,
+    "init": "C",
+    "head": "Payment for successful product purchase",
+    "amount": "+10,000.00",
+    "credeb": "credit"
+  },
+  {
+    "id": 8,
+    "init": "C",
+    "head": "Payment for successful product purchase",
+    "amount": "+100.00",
+    "credeb": "credit"
+  }
+]

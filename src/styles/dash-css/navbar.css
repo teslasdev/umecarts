@@ -1,0 +1,132 @@
+.dash-navbar-container {
+  background: #ffffff;
+  padding: 10px 8rem;
+  width: 100%;
+  border-bottom: 1px solid #d5d8dc;
+  position: sticky;
+  top: 0;
+  z-index: 111;
+}
+.um-grov-logo {
+  width: 60px;
+}
+.nav-down-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.grov-image-mill {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.grov-txt {
+  font-size: 20px;
+  font-weight: 900;
+}
+.product-cat-con {
+  display: flex;
+}
+.itno {
+  border-right: none !important;
+}
+.rm {
+  padding-left: 0 !important;
+}
+.cat-it {
+  border: none;
+  border-right: 2px solid #94a3b8;
+  background: #fff;
+  padding: 0 10px;
+}
+.cat-item {
+  font-size: 14px;
+  font-weight: 600;
+}
+.notif-txt {
+  font-size: 16px;
+  font-weight: 800;
+}
+.notification-box {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: #1f3047;
+}
+.not-count {
+  width: 20px;
+  height: 20px;
+  background: #002c66;
+  color: #ffffff;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+}
+.dash-ico {
+  font-size: 20px;
+  transform: rotate(-15deg);
+}
+.dash-menu {
+  font-size: 30px;
+  display: none;
+}
+@media only screen and (max-width: 800px) {
+  .dash-navbar-container {
+    padding: 10px 2rem;
+  }
+  .notif-txt {
+    display: none;
+  }
+  .dash-ico {
+    font-size: 30px;
+  }
+  .not-count {
+    margin-left: -12px;
+    margin-top: -15px;
+  }
+  .dash-menu {
+    display: initial;
+    margin-left: 10px;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .dash-navbar-container {
+    padding: 10px 20px;
+  }
+  .um-grov-logo {
+    width: 45px;
+  }
+  .grov-image-mill {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .dash-navbar-container {
+    padding: 10px 15px 10px 10px;
+  }
+  .um-grov-logo {
+    width: 45px;
+  }
+  .grov-image-mill {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .dash-ico {
+    font-size: 25px;
+  }
+  .not-count {
+    margin-left: -12px;
+    margin-top: -15px;
+  }
+  .dash-menu {
+    font-size: 25px;
+    margin-left: 6px;
+  }
+}

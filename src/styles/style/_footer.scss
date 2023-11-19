@@ -1,0 +1,81 @@
+.um-footer {
+    background: #001229;
+    
+
+    &-social {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-facebook {
+        background: #3B5998;
+    }
+
+    &-twitter {
+        background: #1DA1F2;
+    }
+    
+
+    &-instagram {
+        background: #BD32A2;
+    }
+    &-copy {
+        background: #F0F7FF;
+    }
+
+    &-youtube {
+        background: #FF0000;
+    }
+
+    &-linkedin {
+        background: #0070AC;
+    }
+    &-google {
+        background: #F2F2F2;
+    }
+
+    &-pre { 
+        background-color: #1F3047;
+        width: 100%;
+        &-search {
+            display: flex;
+            align-items: center;
+            width: 100%;
+
+            input {
+                width: 287px;
+                height: 40px;
+                background: #FFFFFF;
+                border-radius: 8px 0px 0px 8px;
+                outline: none;
+            }
+
+            span {
+                width: 106px;
+                height: 40px;
+                background: #CA0505;
+                border: 1px solid #CA0505;
+                border-radius: 0px 8px 8px 0px;
+                @layer text-md;
+                color: var(--color-white);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+           
+        }
+       
+    }
+    &-information {
+        font-size: 18px;
+    }
+    &-navigation {
+        padding: 8px 16px 12px;
+        p {
+            font-size: 12px;
+        }
+    }
+}

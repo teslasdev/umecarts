@@ -1,0 +1,441 @@
+.with {
+  margin-top: 10px;
+}
+.navig-wallet-cont {
+  display: flex;
+  gap: 10px;
+}
+
+.navig-each {
+  width: 75px;
+  border-radius: 8px;
+  border: 1px solid #d1d8e0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2e486b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  cursor: pointer;
+}
+.waal-act {
+  background: #004399;
+  color: #f0f7ff;
+}
+.trans-date {
+  color: #2e486b;
+  font-size: 14px;
+  font-weight: 800;
+}
+.transac-card-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.init-name {
+  width: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0f7ff;
+}
+.init-name-head-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.credit {
+  color: #02bd73;
+}
+.debit {
+  color: #f52424;
+}
+.headline-time {
+  color: #2e486b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.head-line {
+  font-size: 14px;
+  font-weight: 700;
+}
+.alert-time {
+  font-size: 13px;
+}
+.amt-text {
+  font-size: 16px;
+  font-weight: 900;
+  color: #1f3047;
+}
+.nonempty-wallet-container {
+  margin-top: 15px;
+}
+.wallet-main-container {
+  background: #fff;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 18, 41, 0.1);
+}
+.bord {
+  padding: 10px;
+}
+.nopad {
+  padding: 0 !important;
+}
+.card-cont-head {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #f0f7ff;
+  border-bottom: 1px solid #f0f7ff;
+  padding: 20px;
+  margin: 10px 0;
+  position: relative;
+}
+.bank-card-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+/* bank card */
+.bank-card-col {
+  color: #2e486b;
+  border-radius: 8px;
+  border: 1px solid #d1d8e0;
+  background: #fff;
+  padding: 15px;
+  width: 370px;
+  cursor: pointer;
+}
+.dep {
+  color: #2e486b;
+  font-weight: 700;
+}
+.radio-acc-no {
+  display: flex;
+  gap: 10px;
+}
+.gab {
+  margin: 10px 0;
+}
+.acc-no-bank {
+  font-size: 15px;
+  font-weight: 700;
+}
+.bank-radio {
+  /* Hide the default radio button */
+  display: none;
+}
+
+/* Custom radio button design */
+.custom-radio {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #999;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+}
+
+/* Custom radio button inner circle when selected */
+.custom-radio:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #004399;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Show inner circle when radio button is checked */
+.bank-radio:checked + .custom-radio:before {
+  opacity: 1;
+}
+.checked {
+  border: 2px solid #004399; /* Change to your desired border color */
+}
+/* Add styles for the selected container */
+
+.selected {
+  border: 1px solid #004399; /* Change to your desired border color */
+}
+.bankbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #ca0505;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ca0505;
+}
+.restwal {
+  padding: 20px;
+  border-bottom: 1px solid #f0f7ff;
+  padding-top: 0;
+}
+.amt-input-box {
+  width: 250px;
+  border: 1px solid #1f3047;
+  border-radius: 8px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-top: 10px;
+}
+.amt-input-box span {
+  font-weight: 600;
+  color: #1f3047;
+}
+.amount-inp {
+  font-size: 14px;
+  outline: none;
+  height: 90%;
+  border-radius: 8px;
+  color: #1f3047;
+  caret-color: #1f3047;
+  width: 80%;
+}
+.curr-payable {
+  font-size: 9px;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+
+  margin-top: 4px;
+}
+.cu-pay {
+  display: flex;
+  gap: 2px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+.warn-bbox {
+  position: absolute;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  padding: 10px;
+  top: 100%;
+  width: 150px;
+}
+.cu-pay span {
+  font-weight: 700;
+}
+.padd {
+  padding-left: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+.btnnn {
+  width: 400px !important;
+}
+/* save details */
+.bank-detail-cont {
+  background: #fff;
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #1f3047;
+  position: absolute;
+  top: 30%;
+  z-index: 1111;
+  border-radius: 8px;
+}
+.close-head {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1f3047;
+  display: flex;
+  justify-content: space-between;
+}
+.instruction {
+  font-size: 12px;
+  color: #ca0505;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.inp-lab-con label {
+  font-size: 14px;
+  font-weight: 700;
+
+  color: #2e486b;
+}
+.details-inp {
+  width: 100%;
+  height: 35px;
+  border-radius: 8px;
+  border: 1px solid #94a3b8;
+  font-size: 15px;
+  padding: 0 5px;
+  margin: 5px 0 10px;
+  outline: none;
+  caret-color: #2e486b;
+}
+.save-btn {
+  border-radius: 8px;
+  background: #ca0505;
+  width: 100%;
+  height: 35px;
+  color: #fff;
+  font-size: 20px;
+  margin: 20px 0 10px;
+}
+.cls {
+  cursor: pointer;
+}
+@media only screen and (max-width: 1280px) {
+  .bank-card-col {
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .bank-card-col {
+    width: 270px;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .bank-card-col {
+    width: 240px;
+    padding: 5px;
+  }
+  .bank-card-row {
+    gap: 5px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .bank-card-col {
+    width: 200px;
+  }
+  .acc-name {
+    font-size: 12px;
+  }
+  .acc-no-bank {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .card-cont-head {
+    padding: 5px;
+  }
+  .btnnn {
+    width: 100% !important;
+  }
+  .restwal {
+    padding: 5px;
+  }
+  .padd {
+    padding: 5px 5px 20px;
+  }
+  .warn-bbox {
+    right: 0;
+  }
+  .bank-detail-cont {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 585px) {
+  .bank-card-col {
+    width: 190px;
+  }
+  .acc-name {
+    font-size: 10px;
+  }
+  .acc-no-bank {
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .card-cont-head {
+    padding: 5px;
+  }
+  .custom-radio {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Custom radio button inner circle when selected */
+  .custom-radio:before {
+    width: 6px;
+    height: 6px;
+  }
+}
+@media only screen and (max-width: 445px) {
+  .bank-card-col {
+    width: 160px;
+  }
+}
+@media only screen and (max-width: 410px) {
+  .init-name {
+    width: 35px;
+    font-size: 16px;
+    height: 35px;
+  }
+  .head-line {
+    font-size: 12px;
+  }
+  .alert-time {
+    font-size: 11px;
+  }
+  .amt-text {
+    font-size: 14px;
+  }
+  .ind {
+    width: 180px;
+  }
+}
+@media only screen and (max-width: 376px) {
+  .card-cont-head {
+    padding: 20px;
+  }
+  .bank-card-col {
+    width: 100%;
+    padding: 10px;
+  }
+  .bank-card-row {
+    justify-content: center;
+  }
+  .acc-name {
+    font-size: 14px;
+  }
+  .acc-no-bank {
+    font-size: 14px;
+  }
+  .gab {
+    margin: 5px 0;
+  }
+}
+@media only screen and (max-width: 330px) {
+  .init-name {
+    width: 30px;
+    font-size: 14px;
+    height: 30px;
+  }
+  .head-line {
+    font-size: 10px;
+  }
+  .alert-time {
+    font-size: 9px;
+  }
+  .amt-text {
+    font-size: 12px;
+  }
+}

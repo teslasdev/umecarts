@@ -1,0 +1,27 @@
+.preview-shop {
+  display: flex;
+  color: #004399;
+  gap: 5px;
+  font-weight: 700;
+  align-items: center;
+}
+.cent {
+  align-items: center;
+}
+.shop-sett-navigator {
+  display: flex;
+  justify-content: space-between;
+}
+.inp-com {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #2e486b;
+}
+.shop-warnn {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  gap: 2px;
+  color: #2e486b;
+}

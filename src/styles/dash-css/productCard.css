@@ -1,0 +1,258 @@
+.pro-card-container {
+  width: 187px;
+  border-radius: 8px;
+}
+.pro-img {
+  background-position: center;
+}
+.pro-img-con {
+  position: relative;
+}
+.men-icon {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 20px;
+  color: #004399;
+  cursor: pointer;
+}
+.pro-card-body-box {
+  padding: 10px;
+}
+.pro-type {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.price-disc-box {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 5px 0;
+}
+.main-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ca0505;
+}
+.crs-price {
+  color: #94a3b8;
+  font-size: 14px;
+}
+.discount-per {
+  width: 33px;
+  height: 30px;
+  background: #fef0f0;
+  border-radius: 6px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ca0505;
+  font-weight: 600;
+}
+/* Remove the p element margin */
+.toggle-switch-container p {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Other styles remain the same */
+.toggle-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+/* Hide the checkbox input */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider (the visible part of the toggle switch) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #02bd73;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+/* Style the slider when it's in the OFF state (unchecked) */
+.toggle-switch input:not(:checked) + .slider::before {
+  background-color: #fff;
+}
+input:checked + .slider {
+  background-color: #ccc;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.pub-fea-con {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.product-name {
+  font-size: 15px;
+  color: #1f3047;
+  font-weight: 700;
+}
+.pub-fea-txt {
+  font-size: 14px;
+}
+/* productModal */
+.pro-modal-container {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 18, 41, 0.1);
+  width: 120px;
+  position: absolute;
+  right: 13%;
+  top: 10%;
+  padding: 20px 5px;
+}
+.lis-item-box {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.mod-icon {
+  padding: 3px;
+  border-radius: 50%;
+  font-size: 25px;
+}
+.edi {
+  color: #eb8918;
+  background: #fef8f0;
+}
+.dup {
+  color: #017e4d;
+  background: #f0fef9;
+}
+.sha {
+  color: #004399;
+  background: #f0f7ff;
+}
+.dele {
+  color: #ca0505;
+  background: #fef0f0;
+}
+@media only screen and (max-width: 1300px) {
+  .pro-card-container {
+    width: 160px;
+  }
+}
+@media only screen and (max-width: 1070px) {
+  .pro-card-container {
+    width: 140px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .pro-card-container {
+    width: 120px;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .pro-card-container {
+    width: 160px;
+  }
+  .toggle-switch {
+    width: 45px;
+    height: 20px;
+  }
+  .slider:before {
+    height: 15px;
+    width: 15px;
+    bottom: 2px;
+  }
+}
+@media only screen and (max-width: 630px) {
+  .pro-card-container {
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .pro-card-container {
+    width: 150px;
+  }
+  .pro-main-container {
+    padding: 10px;
+  }
+  .product-name {
+    font-size: 12px;
+  }
+  .pub-fea-txt {
+    font-size: 10px;
+  }
+  .toggle-switch-container p {
+    font-size: 10px;
+  }
+  .main-price {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .crs-price {
+    font-size: 10px;
+  }
+  .discount-per {
+    width: 30px;
+    height: 25px;
+    font-size: 8px;
+  }
+  .pro-type {
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .pro-card-container {
+    width: 100%;
+  }
+
+  .product-name {
+    font-size: 15px;
+  }
+  .pub-fea-txt {
+    font-size: 14px;
+  }
+  .toggle-switch-container p {
+    font-size: 12px;
+  }
+  .main-price {
+    font-size: 15px;
+  }
+  .crs-price {
+    font-size: 12px;
+  }
+  .discount-per {
+    width: 33px;
+    height: 30px;
+    font-size: 10px;
+  }
+  .pro-type {
+    font-size: 13px;
+  }
+}

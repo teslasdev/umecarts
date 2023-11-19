@@ -1,0 +1,72 @@
+.coupon-card-cont {
+  color: #2e486b;
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.action-btn {
+  display: flex;
+  gap: 5px;
+}
+.action-icon {
+  background: #f0f7ff;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dele-red {
+  background: #fef0f0;
+  color: #ca0505;
+}
+.lefd {
+  display: flex;
+  justify-content: flex-end;
+}
+.coupon-details-box {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.coupon-head {
+  display: flex;
+  justify-content: center;
+}
+.redl {
+  color: #ca0505;
+}
+.vidis {
+  visibility: hidden;
+}
+.cha {
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: -15px;
+  margin-left: -20px;
+  /* font-size: 12px; */
+  gap: 10px;
+}
+.gad {
+  gap: 0;
+}
+.coup-padd {
+  padding-bottom: 60px;
+  padding-top: 30px;
+}
+@media only screen and (max-width: 800px) {
+  .cha {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .action-btn {
+    flex-direction: column;
+  }
+}

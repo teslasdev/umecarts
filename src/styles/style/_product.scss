@@ -1,0 +1,129 @@
+.um-product {
+    margin-top: 1.5rem/* 24px */;
+    margin-bottom: 1.5rem/* 24px */;
+    background: #fff;
+
+    &-box {
+        border: 1px solid #F0F7FF;
+        border-radius: 6px;
+        margin-top: 20px;
+        cursor: pointer;
+        display: block;
+        min-width: 185px;
+    }
+
+    &-badge {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: var(--light-red);
+        font-size: 10px;
+        color: var(--primary-red);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+    }
+
+    &-range {
+        background-color: var(--tertiary-red);
+        height: 10px;
+        border-radius: 9999px;
+    }
+    &-caret::-webkit-scrollbar {
+        height: 0px;
+    }
+
+    &-reading {
+        width: 40px;
+        height: 40px;
+        background: #F0F7FF;
+        border-radius: 24px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.um-category {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    &-img {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 9999px;
+    }
+}
+
+
+.um-cart {
+    &-border-outline {
+        border: 2.3px solid var(--primary-blue);
+        width: 15px;
+        height: 15px;
+        border-radius: 4px;
+        position: relative;
+        display: flex;
+
+        &-clicked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: var(--primary-blue);
+            width: 95%;
+            height: 95%;
+            border-radius: 2px;  
+        }
+
+    }
+
+    &-border-rounded {
+        border: 2.3px solid var(--primary-blue);
+        width: 15px;
+        height: 15px;
+        border-radius: 50px;
+        position: relative;
+        display: flex;
+
+        &-clicked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: var(--primary-blue);
+            width: 10px;
+            height: 10px;
+            border-radius: 50px;  
+        }
+
+    }
+
+    &-img-small {
+        width: 80px;
+        height: 80px;
+    }
+
+    &-delete {
+        width: 40px;
+        height: 40px;
+        background: #F0F7FF;
+        border-radius: 24px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+}
+
+
