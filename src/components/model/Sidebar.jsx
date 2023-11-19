@@ -2,15 +2,21 @@ import { HiBars3BottomLeft } from "react-icons/hi2";
 import logo from "../../assets/logo/Vector.png";
 import { CgClose } from "react-icons/cg";
 import { PrimaryButton } from "../common/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useNavigation } from "react-router-dom";
 import { BiCloudDownload, BiDotsVertical, BiHome } from "react-icons/bi";
 import { BsChat, BsWallet } from "react-icons/bs";
 import { FaInbox } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
+import { setGlobalState } from "../common/store";
 export const AuthBar = ({
    className,
-   onClick
+   onClick,
+   navigate
 }) => {
+   const  handleClick = (item) => {
+      navigate(item)
+      setGlobalState('sideBar' , false)
+   }
    return (
       <div className={`fixed overflow-hidden z-50 w-full h-screen blur-bg`}>
          <div className={`${className} bg-white transition-transform delay-700  w-[75%] h-full relative z-50`}>
@@ -23,8 +29,8 @@ export const AuthBar = ({
 
             <div className="p-6">
                <div className="flex justify-between">
-               <PrimaryButton name="Log in" link="/auth/login" classNameButton="w-[124px] h-[48px] bg-[#004399] rounded-md text-white font-bold text-[18px]" type="false" />
-               <PrimaryButton name="Sign up" link="auth/seller" classNameButton="w-[124px] h-[48px] border border-[#004399] rounded-md font-bold text-[18px]" type="false" />
+               <PrimaryButton click={handleClick('/auth/login')} name="Log in" link="/auth/login" classNameButton="w-[124px] h-[48px] bg-[#004399] rounded-md text-white font-bold text-[18px]"  />
+               <PrimaryButton click={handleClick('/user/seller')} name="Sign up" link="/user/seller" classNameButton="w-[124px] h-[48px] border border-[#004399] rounded-md font-bold text-[18px]"  />
                </div>
 
                <div className="py-2">

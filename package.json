@@ -46,7 +46,7 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "https://umecarts.onrender.com",
   "browserslist": {
     "production": [
       ">0.2%",
