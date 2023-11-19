@@ -287,7 +287,7 @@ const UploadFileModal = ({
                        {isLoading ? 
                          'Loading...'  
                          : 
-                         data.gallery.toReversed().map((item) => {
+                         removeDuplicates(data.gallery).toReversed().map((item) => {
                            return <UploadCard item={item} onChange={onChange} setGallery={setGallery} Gallery={Gallery} setMeta={setMeta} Meta={Meta} setThumb={setThumb} Thumb={Thumb}/>
                          })
                        }
