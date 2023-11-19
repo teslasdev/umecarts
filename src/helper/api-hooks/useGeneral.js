@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "../axiosConfig";
-import { TOKEN_VALUE, useUrls } from "../useUrls";
+import {  useUrls } from "../useUrls";
 
 export const useGallery = () => {
    const { getGalleryUrl } = useUrls();

@@ -17,7 +17,7 @@ export function useUrls() {
   const UploadProductUrl = `${BASE_URL}/product/`;
   const GetProductBySlug = `${BASE_URL}/product/slug/`;
   const uploadImage = `${BASE_URL}/upload`;
-  const uploadGallery = `${BASE_URL}/gallery`;
+  const uploadGalleryImage = `${BASE_URL}/gallery`;
   return {
     loginUrl, 
     registerUrl,
@@ -29,6 +29,6 @@ export function useUrls() {
     UploadProductUrl,
     GetProductBySlug,
     uploadImage,
-    uploadGallery
+    uploadGalleryImage
   };
 }

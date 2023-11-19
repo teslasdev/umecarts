@@ -5,10 +5,9 @@ import { useUrls } from "../useUrls";
 
 const upload = (file, onUploadProgress) => {
   let formData = new FormData();
-  const  { uploadImage } =  useUrls()
   formData.append("files", file);
 
-  return http.post(uploadImage, formData, {
+  return http.post(process.env.REACT_APP_API_URL+"/upload", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -20,8 +19,7 @@ const getFiles = () => {
   return http.get("/files");
 };
 const uploadGallery = (file) => {
-  const  { uploadGallery } =  useUrls()
-  return http.post(uploadGallery, file, {
+  return http.post(process.env.REACT_APP_API_URL+"/gallery", file, {
     headers: {
       "Content-Type": "application/json",
       "x-access-token" : getAuthToken()
