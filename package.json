@@ -46,7 +46,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "https://umecarts.onrender.com",
   "browserslist": {
     "production": [
       ">0.2%",
