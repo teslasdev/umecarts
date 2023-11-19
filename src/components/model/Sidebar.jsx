@@ -2,7 +2,7 @@ import { HiBars3BottomLeft } from "react-icons/hi2";
 import logo from "../../assets/logo/Vector.png";
 import { CgClose } from "react-icons/cg";
 import { PrimaryButton } from "../common/Button";
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+import { Link, redirect, useNavigate, useNavigation } from "react-router-dom";
 import { BiCloudDownload, BiDotsVertical, BiHome } from "react-icons/bi";
 import { BsChat, BsWallet } from "react-icons/bs";
 import { FaInbox } from "react-icons/fa";
@@ -10,11 +10,10 @@ import { FiShoppingCart } from "react-icons/fi";
 import { setGlobalState } from "../common/store";
 export const AuthBar = ({
    className,
-   onClick,
-   navigate
+   onClick
 }) => {
    const  handleClick = (item) => {
-      navigate(item)
+      redirect(item)
       setGlobalState('sideBar' , false)
    }
    return (
