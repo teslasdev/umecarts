@@ -179,7 +179,7 @@ const UploadFileModal = ({
                               <>
                                  <div className='sm:w-[117px] sm:h-[117px] h-[60px] w-[60px] bg-black opacity-50 absolute sm:top-0 sm:left-0 left-[2%] top-[15%] sm:block hidden z-[40]'></div>
                                  <div>
-                                    <div className='absolute sm:top-[20%] sm:left-[20%] top-[20%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[30px] w-[30px] border-[#27272797] animate-spin sm:border-[16px] border-[2px] border-t-[2px] sm:border-t-[2px] border-r-[2px] sm:border-r-[2px] border-b-[2px] sm:border-b-[2px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
+                                    <div className='absolute sm:top-[20%] sm:left-[20%] top-[20%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[30px] w-[30px] border-[#27272797] animate-spin sm:border-[2px] border-[16px] border-t-[16px] sm:border-t-[2px] border-r-[16px] sm:border-r-[2px] border-b-[16px] sm:border-b-[2px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
 
                                     </div>
                                     <RxCross1 size={40} color='#ffffff66' className='absolute sm:top-[42%] sm:left-[42%] sm:block hidden'/>

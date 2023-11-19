@@ -16,6 +16,8 @@ export function useUrls() {
   const getTagUrl = `${BASE_URL}/product/tags`;
   const UploadProductUrl = `${BASE_URL}/product/`;
   const GetProductBySlug = `${BASE_URL}/product/slug/`;
+  const uploadImage = `${BASE_URL}/upload`;
+  const uploadGallery = `${BASE_URL}/upload/gallery`;
   return {
     loginUrl, 
     registerUrl,
@@ -25,6 +27,8 @@ export function useUrls() {
     getBrandUrl,
     getTagUrl,
     UploadProductUrl,
-    GetProductBySlug
+    GetProductBySlug,
+    uploadImage,
+    uploadGallery
   };
 }
