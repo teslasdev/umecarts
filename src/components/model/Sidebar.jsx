@@ -13,8 +13,8 @@ export const AuthBar = ({
    onClick
 }) => {
    const  handleClick = (item) => {
-      redirect(item)
       setGlobalState('sideBar' , false)
+      redirect(item)
    }
    return (
       <div className={`fixed overflow-hidden z-50 w-full h-screen blur-bg`}>
@@ -28,8 +28,8 @@ export const AuthBar = ({
 
             <div className="p-6">
                <div className="flex justify-between">
-               <PrimaryButton click={handleClick('/auth/login')} name="Log in" link="/auth/login" classNameButton="w-[124px] h-[48px] bg-[#004399] rounded-md text-white font-bold text-[18px]"  />
-               <PrimaryButton click={handleClick('/user/seller')} name="Sign up" link="/user/seller" classNameButton="w-[124px] h-[48px] border border-[#004399] rounded-md font-bold text-[18px]"  />
+               <PrimaryButton click={() => handleClick('/auth/login')} name="Log in" link="/auth/login" classNameButton="w-[124px] h-[48px] bg-[#004399] rounded-md text-white font-bold text-[18px]" type={true} />
+               <PrimaryButton click={() => handleClick('/user/seller')} name="Sign up" link="/user/seller" classNameButton="w-[124px] h-[48px] border border-[#004399] rounded-md font-bold text-[18px]" type={true} />
                </div>
 
                <div className="py-2">
