@@ -106,9 +106,9 @@ const UploadFileModal = ({
       setTab(!onlyUpload)
    }
 
-   const removeDuplicates = (data) => {
-      return [...new Set(data)]
-   }
+const removeDuplicates = (data) => {
+   return [...new Set(data)]
+}
    const [tab , setTab] = useState(!onlyUpload)
    return (
       <div className='fixed z-[112] sm:mt-0 mt-8 top-0 blur-bg w-full h-screen  flex justify-center sm:items-center items-start'>

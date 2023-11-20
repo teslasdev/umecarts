@@ -18,6 +18,7 @@ export function useUrls() {
   const GetProductBySlug = `${BASE_URL}/product/slug/`;
   const uploadImage = `${BASE_URL}/upload`;
   const uploadGalleryImage = `${BASE_URL}/gallery`;
+  const GetProduct = `${BASE_URL}/product/`;
   return {
     loginUrl, 
     registerUrl,
@@ -29,6 +30,7 @@ export function useUrls() {
     UploadProductUrl,
     GetProductBySlug,
     uploadImage,
-    uploadGalleryImage
+    uploadGalleryImage,
+    GetProduct
   };
 }

@@ -6,8 +6,6 @@ import grove from "../../assets/image/grovlogo.png";
 import { getGlobalState } from "../common/store";
 import isEmpty from "../../utils/isEmpty";
 const DashNavbar = ({ handleToggleIcon }) => {
-  const user  = getGlobalState('user');
-  console.log(user)
   return (
     
     <div className="dash-navbar-container">

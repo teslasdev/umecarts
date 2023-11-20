@@ -8,6 +8,9 @@ import isEmpty from "../../../utils/isEmpty";
 import DashLayout from "../../layout/DashLayout";
 import PaginationComponent from "../../model/Pagination";
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { useUrls } from "../../../helper/useUrls";
+import { getAuthToken, getAuthorizationHeader } from "../../../helper/axiosConfig";
 const DashProduct = () => {
   const navigate =useNavigate()
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,22 +18,42 @@ const DashProduct = () => {
   const [searchToggleIcon, setSearchToggleIcon] = useState(false);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const displayedProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleSearchToggleIcon = () => {
     setSearchToggleIcon(!searchToggleIcon);
   };
-  const totalProduct = products.length;
-  const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  const handleNavigate = () => {
+    navigate('/seller/product/add')
+  }
+
+  // Fetching Products
+  const { GetProduct } = useUrls()
+  const [info , setInfo] = useState([])
+  useEffect(async () => {
+      await axios.get(GetProduct ,{
+        headers: {
+          Accept: "application/json",
+          "content-type": "application/json",
+          common: {
+            Authorization: getAuthorizationHeader(),
+          },
+          "x-access-token" : getAuthToken()
+        },
+      }).then((res => {
+         setInfo(res.data)
+      }))
+  },[])
+
+  const totalProduct = !isEmpty(info) && info?.product.length;
+  const totalPages = Math.ceil(totalProduct / itemsPerPage);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when page changes
   }, [currentPage]);
-
-  const handleNavigate = () => {
-    navigate('/seller/product/add')
-  }
+  console.log(info?.product)
   return (
     <DashLayout>
       <div className="product-dash-container">
@@ -65,7 +88,7 @@ const DashProduct = () => {
             </div>
           ) : (
             <div className="nonempty-pro-container">
-              {displayedProducts.map((item, index) => (
+              {isEmpty(info) ? <p>loadn</p> : info?.product.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
                 <ProductCard key={index} props={item} />
               ))}
             </div>

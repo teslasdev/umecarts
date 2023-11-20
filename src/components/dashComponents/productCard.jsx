@@ -10,10 +10,29 @@ const ProductCard = ({ props }) => {
   const handleProductToggleIcon = () => {
     setProductToggleIcon(!productToggleIcon);
   };
+  var isDiscount = false;
+    switch(props.price?.discount) {
+        case 'Flat' :
+            const discount = props.price?.discount_flat
+            if(discount === 0) {
+                isDiscount = false;
+                
+            } else {
+                isDiscount = true;
+                var calculatePercentage = (props.price?.discount_flat / props.price?.unit_price) * 100
+            }
+        break;
+    }
+
+    let productName = props.information?.product_name
+    if(productName.length > 40) {
+      productName = props.information?.product_name.replace(props.information?.product_name.substring(10,30), "....");
+    }
+    const [setIsToggled] = useState(false)
   return (
-    <div className="pro-card-container">
-      <div className="pro-img-con">
-        <img src={props.imageUrl} alt="" className="pro-img" />
+    <div className="pro-card-container bg-red">
+      <div className="pro-img-con h-[50%] w-full">
+        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+props.image?.thumbnails[0]} alt="" className="h-full w-full object-cover pro-img" />
         <BsThreeDotsVertical
           className="men-icon"
           onClick={handleProductToggleIcon}
@@ -21,24 +40,28 @@ const ProductCard = ({ props }) => {
         {productToggleIcon && <ProductModal />}
       </div>
       <div className="pro-card-body-box">
-        <div className="pro-type">{props.type}</div>
+        <div className="pro-type">{"type"}</div>
         <div className="price-disc-box">
-          <div className="main-price">₦2,500</div>
-          <div className="crs-price">
-            <s>₦2,500</s>
-          </div>
-          <div className="discount-per">-50%</div>
+          <div className="main-price">₦{ isDiscount ?  props.price?.discount_flat.toLocaleString() : props.price?.unit_price.toLocaleString()}</div>
+          {isDiscount && 
+          <>
+            <div className="crs-price">
+              <s>₦{props.price?.unit_price.toLocaleString()}</s>
+            </div>
+            <div className="discount-per">-{100 - Math.floor(calculatePercentage)}%</div>
+          </>
+          }
         </div>
         <div className="product-name">
-          iPhone 11 pro max factory unlocked 64gb | UK used
+          {productName}
         </div>
         <div className="pub-fea-con">
           <div className="pub-fea-txt">Published</div>
-          <ToggleSwitch />
+          <ToggleSwitch isToggled = {props?.isPublished} setIsToggled={setIsToggled}/>
         </div>
         <div className="pub-fea-con">
           <div className="pub-fea-txt">Featured</div>
-          <ToggleSwitch />
+          <ToggleSwitch isToggled = {props?.isFeatured} setIsToggled={setIsToggled}/>
         </div>
       </div>
     </div>

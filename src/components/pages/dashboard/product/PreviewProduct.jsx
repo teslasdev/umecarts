@@ -114,7 +114,7 @@ const PreviewProduct = () => {
                             </div>
 
                             <div className='md:w-[60%] w-full flex flex-col gap-6'>
-                                <h1 className='font-extrabold text-3xl md:h-[30px]'>{info?.information?.product_name}</h1>
+                                <h1 className='font-extrabold text-3xl'>{info?.information?.product_name}</h1>
                                 <div className='flex md:none items-center gap-2'>
                                     <div className='flex gap-4 items-center'>
                                         <span className='text-[#FFCD29]'> <FaStar size={20}/></span>
@@ -153,7 +153,7 @@ const PreviewProduct = () => {
 
                                 <div className='flex flex-col'>
                                     <span className='text-sm text-[#2E486B] pb-1'>Estimated Shipping Time</span>
-                                    <span className='font-bold'>5 Days</span>
+                                    <span className='font-bold'>{info?.information?.shipping_days} Day(s)</span>
                                 </div>
 
                                 <div>

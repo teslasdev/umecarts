@@ -56,9 +56,12 @@ const UploadFile = () => {
             {isLoading ? 
               'Loading...'  
               : 
-              data.gallery.map((item) => {
+               
+              data?.gallery.map((item) => {
                 return <UploadCardFile item={item} />
-              })
+              }).filter(function(val,index,array) {
+                return array.indexOf(val) == index
+              }) 
             }
           </div>
           }
