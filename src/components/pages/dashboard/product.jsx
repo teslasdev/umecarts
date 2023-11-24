@@ -30,8 +30,8 @@ const DashProduct = () => {
   // Fetching Products
   const { GetProduct } = useUrls()
   const [info , setInfo] = useState([])
-  useEffect(async () => {
-      await axios.get(GetProduct ,{
+  useEffect(() => {
+      axios.get(GetProduct ,{
         headers: {
           Accept: "application/json",
           "content-type": "application/json",
@@ -43,7 +43,7 @@ const DashProduct = () => {
       }).then((res => {
          setInfo(res.data)
       }))
-  },[])
+  },[GetProduct])
 
   const totalProduct = !isEmpty(info) && info?.product.length;
   const totalPages = Math.ceil(totalProduct / itemsPerPage);
@@ -53,7 +53,6 @@ const DashProduct = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when page changes
   }, [currentPage]);
-  console.log(info?.product)
   return (
     <DashLayout>
       <div className="product-dash-container">

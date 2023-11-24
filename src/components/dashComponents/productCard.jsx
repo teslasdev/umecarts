@@ -32,7 +32,7 @@ const ProductCard = ({ props }) => {
   return (
     <div className="pro-card-container bg-red">
       <div className="pro-img-con h-[50%] w-full">
-        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+props.image?.thumbnails[0]} alt="" className="h-full w-full object-cover pro-img" />
+        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+props.image?.thumbnails[0] || {uri : 'https://umecarts.com/public/assets/img/placeholder.jpg'}} alt="" className="h-full w-full object-cover pro-img" />
         <BsThreeDotsVertical
           className="men-icon"
           onClick={handleProductToggleIcon}

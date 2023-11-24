@@ -84,10 +84,11 @@ export const DatePickerCustom = ({
    enterOption,
    Tags,
    setTags,
+   dateRange, 
+   setDateRange,
    ...rest
 }) => {
    const [value , setValue] = useState('');
-   const [dateRange, setDateRange] = useState([null, null]);
    const [startDate, endDate] = dateRange;
    return (
       <div className={`${className}`}>

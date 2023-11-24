@@ -20,6 +20,40 @@ export const Badge = (props) => {
 }
 
 
+export const CustomBadge = ({
+  link1,
+  link2,
+  link3,
+  name1,
+  name2,
+  name3
+}) => {
+  return (
+    <div className='um-sign-badge flex items-center text-sm gap-2'>
+        <BiHome />
+        {name1 &&
+        <>
+          <Link to={link1}>{name1}</Link>
+          <RxCaretRight />
+        </>
+        }
+        {name2 &&
+        <>
+          <Link to={link2}>{name2}</Link>
+          <RxCaretRight />
+        </>
+        }
+        {name3 &&
+        <>
+          <Link to={link3}>{name3}</Link>
+          <RxCaretRight />
+        </>
+        }
+    </div>
+  )
+}
+
+
 export const CartBadge = ({
   data,
   sizeIcon,

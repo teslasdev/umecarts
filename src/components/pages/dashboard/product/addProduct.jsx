@@ -18,6 +18,7 @@ import Loader from '../../../common/Loader'
 import { useProduct } from '../../../../helper/api-hooks/useProduct'
 import LogoutModal from '../../../common/logout-modal'
 import Loading from '../../../common/Loading'
+import { CustomBadge } from '../../../common/Badge'
 
 const AddProduct = () => {
    const { data , isLoading , refetch} = useCategory();
@@ -27,6 +28,7 @@ const AddProduct = () => {
    const [ categoryId ] = useGlobalState('categoryId')
    const [provider , setProvider] = useGlobalState('provider')
    const [delivery , setDelivery] = useGlobalState('delivery')
+   const [dateRange, setDateRange] = useState([null, null]);
    const [isload] = useGlobalState('isload')
    useEffect(() => {
       if (!data?.category) {
@@ -96,6 +98,7 @@ const AddProduct = () => {
       formik.setFieldValue('cash_on_delivery' , cashOnDlv)
       formik.setFieldValue('shipping_days' , delivery)
       formik.setFieldValue('description' , description)
+      formik.setFieldValue('discount_date_range' , dateRange)
       formik.handleSubmit()
    }
    return (
@@ -209,7 +212,10 @@ const AddProduct = () => {
          />
 
        
-
+         <div className=''>
+         <div className='md:px-32 sm:px-6 px-4 py-1'>
+            <CustomBadge name1={"Home"} name2={"Product"}  name3={"Upload Product"} />
+         </div>
          <div className='md:px-32 sm:px-6 px-4 py-8 flex sm:flex-row flex-col justify-between gap-4 w-full'>
             <div className='sm:w-[70%] w-full flex flex-col gap-6'>
                <div className='shadow-md bg-white rounded-md p-2 px-4'>
@@ -498,6 +504,8 @@ const AddProduct = () => {
                         placeholder={'Click to select date range'} 
                         label={'Discount Date Range'} 
                         className={'w-full flex flex-col gap-1 py-4'} 
+                        dateRange={dateRange}
+                        setDateRange={setDateRange}
                      />
                      <div className='flex gap-3 w-full flex-wrap md:flex-nowrap'>
                         <PrimaryInput 
@@ -649,7 +657,7 @@ const AddProduct = () => {
                         }
                      </div>
                      <PrimaryInput 
-                        placeholder={'Set Slug...'} 
+                        placeholder={formik.values.product_name.replaceAll(' ' ,'-')} 
                         type={'text'}
                         label={'Slug'} 
                         error={formik.errors.meta_slug}
@@ -748,6 +756,7 @@ const AddProduct = () => {
 
                </div>
             </div>
+         </div>
          </div>
          {isload &&
             <Loading action={false} title={"Uploading..."}/>

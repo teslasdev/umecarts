@@ -38,7 +38,7 @@ const App = () => {
       localStorage.setItem('shopName', data?.shop.shopName)
     }
     refetch()
-  } ,[])
+  })
 
 
   const isGuest = createBrowserRouter([

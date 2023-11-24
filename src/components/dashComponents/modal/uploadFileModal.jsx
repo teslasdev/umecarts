@@ -64,6 +64,7 @@ const UploadFileModal = ({
       progressInfosRef.current = {
         val: _progressInfos,
       };
+
       const uploadPromises = files.map((file, i) => upload(i, file));  
       setMessage([]);
    };
@@ -112,7 +113,7 @@ const removeDuplicates = (data) => {
    const [tab , setTab] = useState(!onlyUpload)
    return (
       <div className='fixed z-[112] sm:mt-0 mt-8 top-0 blur-bg w-full h-screen  flex justify-center sm:items-center items-start'>
-         <div className='bg-[#F5F5F5] sm:h-[767px] h-[85%] md:w-[70%] w-[90%]'>
+         <div className='bg-[#F5F5F5] sm:h-[767px] md:h-[580px] h-[85%] md:w-[70%] w-[90%]'>
             <div className='relative sm:h-[10%] h-[8%] flex  align-bottom px-6 sm:pt-8 pt-4 gap-3 text-[12px]'>
                {!onlyUpload &&
                <div className='px-4 rounded-t-xl flex justify-center items-center text-[#001229] cursor-pointer' style={{backgroundColor : tab && 'white' , fontWeight : tab && 700 }} onClick={() => setTab(true)}>Select File</div>
@@ -177,9 +178,9 @@ const removeDuplicates = (data) => {
                               <div className='absolute sm:-top-2 right-[78%] top-1 sm:-right-2 bg-[#02BD73] z-[60] sm:w-[20px] sm:h-[20px] h-[12px] w-[12px] rounded-full flex justify-center items-center'><BiCheck color='white'/></div>
                            :
                               <>
-                                 <div className='sm:w-[117px] sm:h-[117px] h-[60px] w-[60px] bg-black opacity-50 absolute sm:top-0 sm:left-0 left-[2%] top-[15%] sm:block hidden z-[40]'></div>
+                                 <div className='sm:w-full sm:h-full h-[60px] w-[60px] bg-black opacity-50 absolute sm:top-0 sm:left-0 left-[2%] top-[15%] sm:block hidden z-[40]'></div>
                                  <div>
-                                    <div className='absolute sm:top-[20%] sm:left-[20%] top-[20%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[30px] w-[30px] border-[#27272797] animate-spin sm:border-[2px] border-[16px] border-t-[16px] sm:border-t-[2px] border-r-[16px] sm:border-r-[2px] border-b-[16px] sm:border-b-[2px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
+                                    <div className='absolute sm:top-[20%] sm:left-[20%] top-[20%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[30px] w-[30px] border-[#27272797] animate-spin sm:border-[16px] border-[2px] border-t-[2px] sm:border-t-[16px] border-r-[2px] sm:border-r-[16px] border-b-[2px] sm:border-b-[16px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
 
                                     </div>
                                     <RxCross1 size={40} color='#ffffff66' className='absolute sm:top-[42%] sm:left-[42%] sm:block hidden'/>
@@ -273,7 +274,7 @@ const removeDuplicates = (data) => {
                   </div>
                </div>
 
-               <div className='border border-[#94a3b879] sm:h-[500px] h-[85%] sm:my-4 my-2 rounded-md sm:px-5 px-0 overflow-scroll'>
+               <div className='border border-[#94a3b879]  h-[85%] sm:my-4 my-2 rounded-md sm:px-5 px-0 overflow-scroll'>
               
                   {!isLoading && isEmpty(data.gallery) ?
                      <div className="emppty-pro-boc h-full">

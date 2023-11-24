@@ -7,7 +7,6 @@ import { getGlobalState } from "../common/store";
 import isEmpty from "../../utils/isEmpty";
 const DashNavbar = ({ handleToggleIcon }) => {
   return (
-    
     <div className="dash-navbar-container">
       <div className="logo-image">
         <img src={logo} className="um-dash-logo" />
