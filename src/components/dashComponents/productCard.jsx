@@ -10,29 +10,46 @@ const ProductCard = ({ props }) => {
   const handleProductToggleIcon = () => {
     setProductToggleIcon(!productToggleIcon);
   };
-  var isDiscount = false;
-    switch(props.price?.discount) {
+    var isDiscount = false;
+    var isPrice = 0
+    switch(props?.price?.discount) {
         case 'Flat' :
-            const discount = props.price?.discount_flat
+            const discount = props?.price?.discount_flat
+            const unit_price = props?.price?.unit_price
             if(discount === 0) {
                 isDiscount = false;
-                
+                isPrice = unit_price
             } else {
                 isDiscount = true;
-                var calculatePercentage = (props.price?.discount_flat / props.price?.unit_price) * 100
+                var calculatePercentage = (props?.price?.discount_flat / props?.price?.unit_price) * 100
+                isPrice = (unit_price) - (discount)
+                
+            }
+        
+        break;
+        case 'Percentage' :
+            const percentage = props?.price?.discount_percentage
+            const unitprice = props?.price?.unit_price
+            if(percentage === 0) {
+                isDiscount = false;
+                isPrice = unitprice.toLocaleString()
+            } else {
+                isDiscount = true;
+                var calculatePercentage = props?.price?.discount_percentage
+                isPrice = ((props?.price?.discount_percentage * props?.price?.unit_price) / 100).toLocaleString()
             }
         break;
-    }
+      }
 
     let productName = props.information?.product_name
     if(productName.length > 40) {
-      productName = props.information?.product_name.replace(props.information?.product_name.substring(10,30), "....");
-    }
+      productName = props.information?.product_name.replace(props.information?.product_name.substring(25,255), "....");
+    } 
     const [setIsToggled] = useState(false)
   return (
-    <div className="pro-card-container bg-red">
+    <div className="pro-card-container">
       <div className="pro-img-con h-[50%] w-full">
-        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+props.image?.thumbnails[0] || {uri : 'https://umecarts.com/public/assets/img/placeholder.jpg'}} alt="" className="h-full w-full object-cover pro-img" />
+        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+props.image?.thumbnails[0]} onError={'https://umecarts.com/public/assets/img/placeholder.jpg'} alt="" className="h-full w-full object-cover pro-img" />
         <BsThreeDotsVertical
           className="men-icon"
           onClick={handleProductToggleIcon}
@@ -42,17 +59,17 @@ const ProductCard = ({ props }) => {
       <div className="pro-card-body-box">
         <div className="pro-type">{"type"}</div>
         <div className="price-disc-box">
-          <div className="main-price">₦{ isDiscount ?  props.price?.discount_flat.toLocaleString() : props.price?.unit_price.toLocaleString()}</div>
+          <div className="main-price">₦{ isDiscount ?  isPrice.toLocaleString() : props.price?.unit_price.toLocaleString()}</div>
           {isDiscount && 
           <>
             <div className="crs-price">
               <s>₦{props.price?.unit_price.toLocaleString()}</s>
             </div>
-            <div className="discount-per">-{100 - Math.floor(calculatePercentage)}%</div>
+            <div className="discount-per">-{Math.floor(calculatePercentage)}%</div>
           </>
           }
         </div>
-        <div className="product-name">
+        <div className="product-name h-[50px]">
           {productName}
         </div>
         <div className="pub-fea-con">

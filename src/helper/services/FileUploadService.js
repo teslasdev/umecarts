@@ -10,6 +10,7 @@ const upload = (file, onUploadProgress) => {
   return http.post(process.env.REACT_APP_API_URL+"/upload", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
+      "x-access-token" : getAuthToken()
     },
     onUploadProgress,
   });

@@ -595,7 +595,7 @@ const AddProduct = () => {
                      <Editor setDescription={setDescription} description={description} />
                   </div>
                </div>
-               <div className='shadow-md bg-white rounded-md p-2 px-4'>
+               {/* <div className='shadow-md bg-white rounded-md p-2 px-4'>
                   <div className='flex gap-1'>
                      <p className='font-bold text-[16px]'>PDF SPECIFICATION</p>
                   </div>
@@ -609,7 +609,7 @@ const AddProduct = () => {
                         actionText={'Browse'}
                      />
                   </div>
-               </div>
+               </div> */}
 
 
                <div className='shadow-md bg-white rounded-md p-2 px-4'>
@@ -649,13 +649,15 @@ const AddProduct = () => {
                         actionText={'Browse'}
                         onClick={() => setUpload(true) || setUploadType('Meta')}
                      />
+                     {Meta &&
                      <div className='flex gap-4 flex-wrap'>
-                        {Meta &&
+                        {
                            Meta.map((item, index) => {
-                              return <ThumbNail item={item} index={index} setMeta={setMeta} Meta={Meta}/>
+                              return <ThumbNail item={item} index={index} setMeta={setMeta} Thumb={Meta}/>
                            })
                         }
                      </div>
+                     }
                      <PrimaryInput 
                         placeholder={formik.values.product_name.replaceAll(' ' ,'-')} 
                         type={'text'}

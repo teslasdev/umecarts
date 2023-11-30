@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DashNavbar from "../dashComponents/navbar";
-import DashSidebar from "../dashComponents/dashSidebar";
 import DashFooter from "../dashComponents/dashFooter";
 import "../../styles/dash-css/style.css";
-import MobileMenu from "../dashComponents/mobileMenu";
 import DashNavigator from "../dashComponents/dashNavigation";
 import { useGetUser } from "../../helper/api-hooks/useAuth";
 import { setGlobalState } from "../common/store";
+import MobileMenu from "../dashComponents/mobileMenu";
 const NoSideLayout = ({ children }) => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const handleToggleIcon = () => {
@@ -19,7 +18,7 @@ const NoSideLayout = ({ children }) => {
   const { data , refetch, status  } = useGetUser();
   useEffect(() => {
     // Getting token 
-    if(status == 'success') {
+    if(status === 'success') {
       setGlobalState('user' , data)
       localStorage.setItem('shopName', data?.shop.shopName)
     }

@@ -96,14 +96,7 @@ const UploadFileModal = ({
       inputFile.current.click();
    }
    const addFiles = async (e) => {
-      setLoading(true)
-      const galleryInfo = removeDuplicates(imageInfos)
-      for (let i = 0; i < galleryInfo.length; i++) {
-         await UploadService.uploadGallery(galleryInfo[i]).then((res) => {
-            refetch()
-            setLoading(false)
-         })
-      }
+      refetch()
       setTab(!onlyUpload)
    }
 
@@ -113,8 +106,8 @@ const removeDuplicates = (data) => {
    const [tab , setTab] = useState(!onlyUpload)
    return (
       <div className='fixed z-[112] sm:mt-0 mt-8 top-0 blur-bg w-full h-screen  flex justify-center sm:items-center items-start'>
-         <div className='bg-[#F5F5F5] sm:h-[767px] md:h-[580px] h-[85%] md:w-[70%] w-[90%]'>
-            <div className='relative sm:h-[10%] h-[8%] flex  align-bottom px-6 sm:pt-8 pt-4 gap-3 text-[12px]'>
+         <div className='bg-[#F5F5F5]  h-[85%] md:w-[75%] sm:w-[90%] w-[95%]'>
+            <div className='relative h-[10%] flex  align-bottom px-6 sm:pt-8 pt-4 gap-3 text-[12px]'>
                {!onlyUpload &&
                <div className='px-4 rounded-t-xl flex justify-center items-center text-[#001229] cursor-pointer' style={{backgroundColor : tab && 'white' , fontWeight : tab && 700 }} onClick={() => setTab(true)}>Select File</div>
                }
@@ -122,8 +115,8 @@ const removeDuplicates = (data) => {
                <div className='absolute right-10 sm:top-1/2 top-[40%] cursor-pointer'><RxCross1 onClick={onClick}/></div>
             </div>
             {!tab ?
-            <div className='h-[80%] bg-white sm:p-4 p-2'>
-               <div className='flex justify-between items-center'>
+            <div className='h-[80%]  bg-white sm:p-4 p-2'>
+               <div className='flex h-[10%] justify-between items-center'>
                   <div className='sm:w-[25%] w-[60%]'>
                      <DropdownDefault 
                         placeholder={'Sorted by Newest'} 
@@ -145,7 +138,7 @@ const removeDuplicates = (data) => {
                   </div>
                </div>
 
-               <div className='border border-[#94a3b879] sm:h-[500px] h-[85%] sm:my-4 my-2 rounded-md'>
+               <div className='border border-[#94a3b879] p-3 sm:h-[500px] md:h-[80%] h-[90%] sm:my-4 my-2 rounded-md'>
                   <input
                   type="file"
                   multiple
@@ -155,7 +148,7 @@ const removeDuplicates = (data) => {
                   className='hidden'
                   />
                   {isEmpty(imagePreviews) ?
-                  <div className='border border-dotted border-[#94A3B8] h-full bg-[#F5F5F5] rounded-md flex justify-center items-center' onClick={uploadInputFile}>
+                  <div className='border-2 border-dotted border-[#94A3B8] h-full bg-[#F5F5F5] rounded-md flex justify-center items-center' onClick={uploadInputFile}>
                      <div className='sm:w-[20%] w-[80%]'>
                         <p>Drag any files here,paste or <span className='text-[#004399] cursor-pointer'>Browse</span> your local directory</p>
                      </div>
@@ -168,7 +161,7 @@ const removeDuplicates = (data) => {
                      <div className='h-[75%] sm:p-4 w-full flex sm:flex-row flex-col items-start sm:justify-start  sm:gap-8 gap-0 sm:flex-wrap overflow-auto'>
                      {imagePreviews.toReversed().map((img, i) => {
                         return (
-                        <div className='relative sm:w-[175px] sm:h-[175px] h-[84px] w-full sm:bottom-0 border-b sm:p-0 p-2 border-[#94A3B8] rounded-sm'>
+                        <div className='relative sm:w-[145px] sm:h-[145px] h-[84px] w-full sm:bottom-0 border-b sm:p-0 p-2 border-[#94A3B8] rounded-sm'>
                            <img 
                               src={img} 
                               className='sm:w-full sm:h-full h-[60px] w-[60px] object-cover'
@@ -180,10 +173,10 @@ const removeDuplicates = (data) => {
                               <>
                                  <div className='sm:w-full sm:h-full h-[60px] w-[60px] bg-black opacity-50 absolute sm:top-0 sm:left-0 left-[2%] top-[15%] sm:block hidden z-[40]'></div>
                                  <div>
-                                    <div className='absolute sm:top-[20%] sm:left-[20%] top-[20%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[30px] w-[30px] border-[#27272797] animate-spin sm:border-[16px] border-[2px] border-t-[2px] sm:border-t-[16px] border-r-[2px] sm:border-r-[16px] border-b-[2px] sm:border-b-[16px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
+                                    <div className='absolute sm:top-[10%] sm:left-[10%] top-[30%] right-[10%] z-50 sm:w-[117px] sm:h-[117px] h-[20px] w-[20px] border-[#27272797] animate-spin sm:border-[16px] border-[2px] border-t-[2px] sm:border-t-[16px] border-r-[2px] sm:border-r-[16px] border-b-[2px] sm:border-b-[16px] border-t-[#ffffff66] border-r-[#ffffff56] border-b-[#ffffff56] flex justify-center items-center rounded-full'>
 
                                     </div>
-                                    <RxCross1 size={40} color='#ffffff66' className='absolute sm:top-[42%] sm:left-[42%] sm:block hidden'/>
+                                    <RxCross1 size={40} color='#ffffff66' className='absolute sm:top-[10%] sm:left-[10%] sm:block hidden'/>
                                  </div>
                               </> 
                            }
@@ -226,7 +219,7 @@ const removeDuplicates = (data) => {
                           
                         </div>
                         <div>
-                           <p>{Math.floor(progressInfosRef.current.val.filter(item => {
+                           <p>{progressInfosRef.current.val.filter(item => {
                                  if(item.percentage == 100) {
                                     return true;
                                  }
@@ -236,7 +229,7 @@ const removeDuplicates = (data) => {
                                     return true;
                                  }
                                  return false;
-                              }).length / selectedFiles.length ) * 100)}% . {progressInfosRef.current.val.filter(item => {
+                              }).length / selectedFiles.length ) * 100}% . {progressInfosRef.current.val.filter(item => {
                                  if(item.percentage == 100) {
                                     return false;
                                  }
@@ -284,7 +277,7 @@ const removeDuplicates = (data) => {
                        </div>
                      </div>
                      :
-                     <div className="flex sm:flex-row flex-col w-full sm:flex-wrap sm:gap-[35px] gap-0 sm:mt-[20px]">
+                     <div className="flex sm:flex-row flex-col w-full sm:flex-wrap sm:gap-[5px] gap-0 sm:mt-[20px]">
                        {isLoading ? 
                          'Loading...'  
                          : 
@@ -297,7 +290,7 @@ const removeDuplicates = (data) => {
                </div>
             </div>
             }
-            <div className={`h-[15%] flex py-3  w-full sm:gap-0 gap-1 px-4  ${tab ? 'justify-between' : 'justify-end'}`}>
+            <div className={`h-[10%] flex items-center py-1  w-full sm:gap-0 gap-1 px-4  ${tab ? 'justify-between' : 'justify-end'}`}>
                {tab ?
                <>
                <div className='flex sm:w-[40%] w-full gap-5'>
@@ -307,7 +300,7 @@ const removeDuplicates = (data) => {
                   </div>
 
                </div>
-               <div className='sm:h-[48px] h-[38px] w-[40%]'>
+               <div className='sm:h-[42px] h-[38px] sm:w-[25%] w-[40%]'>
                   <PrimaryButton 
                      isLoading = {iLoading}
                      name="Add File(s)"
@@ -318,7 +311,7 @@ const removeDuplicates = (data) => {
                </div>
                </>
                :
-               <div className='sm:h-[48px] h-[38px] w-[40%]'>
+               <div className='sm:h-[42px] h-[38px] sm:w-[25%] w-[40%]'>
                   <PrimaryButton 
                      isLoading = {iLoading}
                      name="Add File(s)"

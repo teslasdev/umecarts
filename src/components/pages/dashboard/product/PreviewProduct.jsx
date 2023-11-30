@@ -2,66 +2,78 @@ import React, { useEffect, useState } from 'react'
 import NoSideLayout from '../../../layout/NoSideLayout'
 import { Link, useParams } from 'react-router-dom'
 import policy from '../../../../assets/image/policy.png'
-import {FaCopy, FaStar,FaStarHalfAlt} from 'react-icons/fa'
-import {FiShoppingCart} from 'react-icons/fi'
+import {FaStar,FaStarHalfAlt} from 'react-icons/fa'
 import {BsInstagram} from 'react-icons/bs'
-import {AiOutlineTwitter,AiFillYoutube} from 'react-icons/ai'
-import {FaLinkedinIn,FaFacebookF} from 'react-icons/fa'
-import {SlHandbag} from 'react-icons/sl'
-import product from '../../../../assets/products/product4.png'
-import Feature1 from '../../../home/product/Feature'
-import { setGlobalState } from '../../../common/store'
-import { useGetProductBySlug } from '../../../../helper/api-hooks/useProduct'
+import {AiOutlineTwitter} from 'react-icons/ai'
+import {FaFacebookF} from 'react-icons/fa'
 import { useUrls } from '../../../../helper/useUrls'
 import axios from 'axios'
-import { BiCopy, BiSolidCopy } from 'react-icons/bi'
-import { CgCopy } from 'react-icons/cg'
-import useLocation from "react-router-dom";
+import { BiCopy } from 'react-icons/bi'
+import { CustomBadge } from '../../../common/Badge'
+import { PrimaryButton } from '../../../common/Button'
 
 
 const PreviewProduct = () => {
     const { GetProductBySlug } = useUrls()
     const { slug } = useParams();
     const [info , setInfo] = useState([])
-    const [indexOn , setIndexOn] = useState(1)
+    const [indexOn , setIndex] = useState(0)
+    
     useEffect(async () => {
         await axios.get(GetProductBySlug + slug).then((res => {
            setInfo(res.data)
         }))
     },[])
     var isDiscount = false;
+    var isPrice = 0
     switch(info?.price?.discount) {
         case 'Flat' :
             const discount = info?.price?.discount_flat
+            const unit_price = info?.price?.unit_price
             if(discount === 0) {
                 isDiscount = false;
-                
+                isPrice = unit_price.toLocaleString()
             } else {
                 isDiscount = true;
                 var calculatePercentage = (info?.price?.discount_flat / info?.price?.unit_price) * 100
+                isPrice = (unit_price) - (discount)
                 
+            }
+        
+        break;
+        case 'Percentage' :
+            const percentage = info?.price?.discount_percentage
+            const unitprice = info?.price?.unit_price
+            if(percentage === 0) {
+                isDiscount = false;
+                isPrice = unitprice.toLocaleString()
+            } else {
+                isDiscount = true;
+                var calculatePercentage = info?.price?.discount_percentage
+                isPrice = ((info?.price?.discount_percentage * info?.price?.unit_price) / 100).toLocaleString()
             }
         break;
     }
     return (
       <NoSideLayout>
-         <div className='md:px-32 sm:px-6 p-1 flex sm:flex-row flex-col justify-between gap-4 w-full'>
+        <div>
+            <div className='md:px-32 sm:px-6 px-4 py-1'>
+            <CustomBadge name1={"Home"} name2={"Product"}  name3={info?.information?.product_name} />
+            </div>
+            <div className='md:px-32 sm:px-6 p-1 flex sm:flex-row flex-col justify-between gap-4 w-full'>
             <div className='p-1'>
                 <div className='flex flex-col md:flex-row gap-6'>
                     <div className='md:w-[77%] w-full flex flex-col gap-4'>
-                        <div className='flex flex-col md:flex-row gap-8 bg-white shadow-md rounded-md p-2'>
+                        <div className='flex flex-col md:flex-row gap-8 bg-white shadow-md rounded-md p-2 pb-8'>
                             <div className='w-full md:w-[35%] py-2'>
-                                <div className='md:w-[295px] w-full h-[374px] md:h-[295px] rounded-lg'>
-                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+info?.image?.thumbnails[0]} alt="" className='rounded-lg w-full h-full object-cover'/>
+                                <div className='md:w-[295px] w-full h-[374px] md:h-[295px] rounded-lg transition ease-in-out duration-[5000ms]'>
+                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+info?.image?.galleries.toReversed()[indexOn]} alt="" className='rounded-lg transition ease-in-out delay-[5000ms] w-full h-full object-cover'/>
                                 </div>
-                                <div className='scroll flex justify-center overflow-scroll w-full md:justify-start my-4 gap-4'>
+                                <div className='scroll  flex justify-center overflow-scroll w-full md:justify-start my-4 gap-4 cursor-pointer'>
                                     <div className='flex gap-4'>
-                                        <div className='h-[60px] w-[60px]  rounded-lg'>
-                                            <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+info?.image?.thumbnails[0]} alt="" className='rounded-lg w-full h-full object-cover'/>
-                                        </div>
-                                        {info?.image?.galleries?.map((item , index) => {
+                                        {info?.image?.galleries?.toReversed().map((item , index) => {
                                             return (
-                                                <div className='h-[60px] w-[60px]  rounded-lg' key={index}>
+                                                <div className={`h-[60px] w-[60px] ${indexOn == index && "border-2 border-red-700"}  rounded-lg`} key={index} onClick={() => setIndex(index)}>
                                                     <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item} alt="" className='rounded-lg w-full h-full object-cover'/>
                                                 </div>
                                             )
@@ -71,10 +83,9 @@ const PreviewProduct = () => {
                                 </div>
 
                                 <div className='flex gap-2 items-center justify-center'>
-                                    <div className={`w-[10px] h-[10px] rounded-full ${indexOn == 0 ? 'bg-red-600' : 'bg-gray-200' }`}/>
                                     {info?.image?.galleries?.map((item,index) => {
                                         return (
-                                            <div className={`w-[10px] h-[10px] rounded-full ${indexOn == index+1 ? 'bg-red-600' : 'bg-gray-200' }`} key={index}/>
+                                            <div className={`w-[10px] h-[10px] rounded-full ${indexOn == index ? 'bg-red-600' : 'bg-gray-200' }`} key={index}/>
                                         )
                                     })}
                                 </div>
@@ -130,12 +141,12 @@ const PreviewProduct = () => {
                                 <div>
                                     <span className='text-sm text-[#2E486B] pb-1'>Price</span>
                                     <div className='flex items-end gap-4'>
-                                        <h2 className='text-red-700 text-3xl font-extrabold'>₦{ isDiscount ?  info?.price?.discount_flat.toLocaleString() : info?.price?.unit_price.toLocaleString()}<span className='text-sm text-gray-200 font-light'>/pc</span></h2>
+                                        <h2 className='text-red-700 text-3xl font-extrabold'>₦{ isDiscount ?  isPrice.toLocaleString() : info?.price?.unit_price.toLocaleString()}<span className='text-sm text-gray-200 font-light'>/{info?.information?.unit}</span></h2>
                                         {isDiscount && 
                                         <>
                                             <p className='text-sm text-gray-300'><del>₦{info?.price?.unit_price.toLocaleString()}</del></p>
                                             <span className='um-top-product-promo'>
-                                                -{100 - Math.floor(calculatePercentage)}%
+                                                -{Math.floor(calculatePercentage)}%
                                             </span>
                                         </>
                                         }
@@ -145,7 +156,7 @@ const PreviewProduct = () => {
                                 <div>
                                     <span className='text-sm text-[#2E486B] pb-1'>Seller</span>
                                     <div className='flex items-end gap-4'>
-                                        <div className='font-extrabold'>SAMUELKROWN</div>
+                                        <div className='font-extrabold text-[14px]'>SAMUELKROWN</div>
 
                                     </div>
                                     <div className='underline decoration-1 text-blue-600'>Message Seller</div>
@@ -173,6 +184,17 @@ const PreviewProduct = () => {
                                         <span className='border-gray-1 w-[40px] h-[40px] rounded-md text-sm flex justify-center items-center bg-[#ffffff] p-4'/>
                                         <span className='border-gray-1 w-[40px] h-[40px] rounded-md text-sm flex justify-center items-center bg-[#EF9F43] p-4' />
                                     </div>
+                                </div>
+                                <div className='flex gap-2 items-center'>
+                                    <span className='um-product-reading text-[20px]'>-</span>
+                                    <h4>01</h4>
+                                    <span className='um-product-reading text-[20px]'>+</span>
+                                    <p className='text-red-500 text-sm'>({info?.information?.quantity}) Available</p>
+                                </div>
+                                          
+                                <div>
+                                    <span className='text-sm text-[#2E486B] pb-1'>Total Price</span>
+                                    <h2 className='text-red-700 text-xl font-extrabold'>₦{ isPrice.toLocaleString()}<span className='text-sm text-gray-200 font-light'>/{info?.information?.unit}</span></h2>
                                 </div>
 
                                 {/* <div className='flex gap-3'>
@@ -519,7 +541,26 @@ const PreviewProduct = () => {
                     
                 </div>
             </div> 
-         </div>
+            </div>
+
+            <div className='h-[100px] w-full gap-4 md:px-32 sm:px-6 px-4 py-1 flex justify-end items-center'>
+                <div className='w-[20%] h-[52px]'>
+                    <PrimaryButton 
+                        type={true}
+                        classNameButton={"w-full h-full rounded-[8px] bg-[#CA0505] text-white"}
+                        name={"Publish Product"}
+                    />
+                </div>
+
+                <div className='w-[20%] h-[52px]'>
+                    <PrimaryButton 
+                        type={true}
+                        classNameButton={"w-full h-full rounded-[8px] bg-[#004399] text-white"}
+                        name={"Save as Draft"}
+                    />
+                </div>
+            </div>
+        </div>
       </NoSideLayout>
     )
 }

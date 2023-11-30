@@ -35,7 +35,8 @@ const UploadCard = ({
     }
   }
   const handleThumb = () => {
-    setThumb([item.link ])
+    setThumb([item.link])
+    setGallery((prev) => [...prev , item.link ])
   }
   const handleMeta = () => {
     setMeta([item.link ])

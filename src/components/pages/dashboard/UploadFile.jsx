@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import DashLayout from "../../layout/DashLayout";
-import UploadCard from "../../dashComponents/uploadCard";
 import UploadFileModal from "../../dashComponents/modal/uploadFileModal";
 import { useGallery } from "../../../helper/api-hooks/useGeneral";
 import isEmpty from "../../../utils/isEmpty";
@@ -57,7 +56,7 @@ const UploadFile = () => {
               'Loading...'  
               : 
                
-              data?.gallery.map((item) => {
+              data?.gallery.toReversed().map((item) => {
                 return <UploadCardFile item={item} />
               }).filter(function(val,index,array) {
                 return array.indexOf(val) == index

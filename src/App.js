@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, User, Auth, Account, Product } from "./components";
 
@@ -20,11 +20,14 @@ import Support from "./components/pages/dashboard/Support";
 import Coupon from "./components/pages/dashboard/Coupon";
 import ShopSetting from "./components/pages/dashboard/ShopSetting";
 import AddProduct from "./components/pages/dashboard/product/addProduct";
-import { setGlobalState, useGlobalState } from "./components/common/store";
+import { setGlobalState } from "./components/common/store";
 import { useGetUser } from "./helper/api-hooks/useAuth";
 import NoFound from "./components/pages/404";
 import isEmpty from "./utils/isEmpty";
 import PreviewProduct from "./components/pages/dashboard/product/PreviewProduct";
+import BuyerDashboard from "./components/pages/dashboard/buyer";
+
+
 
 
 const App = () => {
@@ -33,7 +36,7 @@ const App = () => {
   const { data , refetch, status  } = useGetUser();
   useEffect(() => {
     // Getting token 
-    if(status == 'success') {
+    if(status === 'success') {
       setGlobalState('user' , data)
       localStorage.setItem('shopName', data?.shop.shopName)
     }
@@ -90,13 +93,21 @@ const App = () => {
     {
       path: "/checkout/completion",
       element: <CompletionController />,
-    }
+    },
+    {
+      path: "/buyer/dashboard",
+      element: <BuyerDashboard data={data && data}/>,
+    },
   ]);
 
   const isSeller = createBrowserRouter([
     {
       path: "*",
       element: <NoFound />,
+    },
+    {
+      path: "/buyer/dashboard",
+      element: <BuyerDashboard data={data && data}/>,
     },
     {
       path: "/",
@@ -145,7 +156,7 @@ const App = () => {
     },
     {
       path: "/seller/dashboard",
-      element: <Dashboard />,
+      element: <Dashboard data={data && data}/>,
     },
     {
       path: "/seller/products",

@@ -46,7 +46,6 @@ export const CustomBadge = ({
         {name3 &&
         <>
           <Link to={link3}>{name3}</Link>
-          <RxCaretRight />
         </>
         }
     </div>

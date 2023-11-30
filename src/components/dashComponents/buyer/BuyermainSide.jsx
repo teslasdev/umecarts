@@ -1,8 +1,6 @@
-import { RiErrorWarningLine } from "react-icons/ri";
-import "../../styles/dash-css/mainSide.css";
-import WarningModal from "./modal/warningModal";
+import "../../../styles/dash-css/mainSide.css";
 import { useState } from "react";
-const MainSide = ({data}) => {
+const BuyermainSide = ({data}) => {
   const [warningIcon, setWarningIcon] = useState(false);
   const handleWarningIcon = () => {
     setWarningIcon(!warningIcon);
@@ -14,38 +12,19 @@ const MainSide = ({data}) => {
     <div className="main-side-container">
       <div className="main-box-content">
         <div className="dashbor-text">Dashboard</div>
-        <div className="simple-icon">
-          <div className="dashbor-simple">
-            Your sales increased by <span>3%</span> this week. Keep it up with
-            these new tips!
-          </div>
-          <RiErrorWarningLine
-            className="cancel hnd"
-            size={25}
-            onClick={handleWarningIcon}
-          />
-          {warningIcon && <WarningModal />}
-        </div>
         <div className="dashboard-main-box" onClick={handleCloseWarningIcon}>
           <div className="dash-category-row">
             <div className="dash-each-category del">
-              <div className="category-title">Current Balance</div>
-              <div className="category-number">₦{data?.shop?.wallet?.current_balance.toLocaleString()}</div>
-              <div className="dashbor-simple">Money ready for withdrawal </div>
+              <div className="category-title">Cart</div>
+              <div className="category-number">{data?.shop?.wallet?.current_balance.toLocaleString()} <span className="text-sm">Products</span></div>
             </div>
             <div className="dash-each-category">
-              <div className="category-title">Total Sales</div>
+              <div className="category-title">Products Ordered</div>
               <div className="category-number">{data?.shop?.wallet?.total_sale}</div>
-              <div className="dashbor-simple">
-                <span className="tot-count">2</span> sales this week
-              </div>
             </div>
             <div className="dash-each-category">
-              <div className="category-title">Total Earnings</div>
+              <div className="category-title">Total Spent</div>
               <div className="category-number">₦{data?.shop?.wallet?.total_earnings.toLocaleString()}</div>
-              <div className="dashbor-simple">
-                <span className="tot-count">2</span> sales this week
-              </div>
             </div>
             <div className="dash-each-category del">
               <div className="category-title">New Orders</div>
@@ -54,16 +33,10 @@ const MainSide = ({data}) => {
             <div className="dash-each-category">
               <div className="category-title complete">Completed Orders</div>
               <div className="category-number">{data?.shop?.wallet?.completed_order}</div>
-              <div className="dashbor-simple">
-                <span className="tot-count">5</span> completed this week
-              </div>
             </div>
             <div className="dash-each-category">
               <div className="category-title cancel">Cancelled Orders</div>
               <div className="category-number">{data?.shop?.wallet?.canceled_order}</div>
-              <div className="dashbor-simple">
-                <span className="tot-count">1</span> cancelled this week
-              </div>
             </div>
           </div>
         </div>
@@ -72,4 +45,4 @@ const MainSide = ({data}) => {
   );
 };
 
-export default MainSide;
+export default BuyermainSide;

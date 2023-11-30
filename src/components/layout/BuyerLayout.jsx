@@ -6,7 +6,7 @@ import {useMediaQuery} from 'react-responsive';
 import { useLocation } from 'react-router';
 import AuthBar  from '../model/Sidebar';
 import { setGlobalState, useGlobalState } from '../common/store';
-const Layout = ({ children }) => {
+const BuyerLayout = ({ children }) => {
     const [navBar ,setNavigation ] = useState(true)
     const Location = useLocation()
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
@@ -26,16 +26,16 @@ const Layout = ({ children }) => {
         }
     },[Location.pathname])
     return (
-        <>
+         <>
             {sideBar && <AuthBar onClick={() => setGlobalState('sideBar' , false)} />}
             <Header />
                 {children}
-            <Footer />
+            <Footer isFullfooter={false}/>
            {isPortrait && (
            navBar  && <Navigation />
-        )}
+         )}
         </>
     )
 }
 
-export default Layout;
+export default BuyerLayout;

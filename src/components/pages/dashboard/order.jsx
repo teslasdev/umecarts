@@ -6,8 +6,9 @@ import DashLayout from "../../layout/DashLayout";
 import CompletedOrder from "../../dashComponents/orderPage/CompletedOrder";
 import CancelledOrder from "../../dashComponents/orderPage/CancelledOrder";
 import PendingOrder from "../../dashComponents/orderPage/PendingOrder";
-import Neworder from "../../dashComponents/orderPage/NewOrder";
+
 import OrderModal from "../../dashComponents/modal/orderModal";
+import Neworder from "../../dashComponents/orderPage/NewOrder";
 
 const DashOrder = () => {
   const [searchToggleIcon, setSearchToggleIcon] = useState(false);

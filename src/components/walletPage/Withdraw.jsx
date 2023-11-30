@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import BankCard from "./BankCard";
 import BankDetail from "../dashComponents/modal/bankDetail";
+
 const WithdrawSection = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [warningIcon, setWarningIcon] = useState(false);

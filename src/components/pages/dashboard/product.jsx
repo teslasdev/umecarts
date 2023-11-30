@@ -78,7 +78,7 @@ const DashProduct = () => {
               onClick={handleSearchToggleIcon}
             />
           </div>
-          {isEmpty(products) ? (
+          {isEmpty(info?.product) ? (
             <div className="emppty-pro-boc">
               <div className="dashbor-text">No Products Added!</div>
               <div className="pro-simple">
@@ -86,17 +86,19 @@ const DashProduct = () => {
               </div>
             </div>
           ) : (
-            <div className="nonempty-pro-container">
-              {isEmpty(info) ? <p>loadn</p> : info?.product.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
+            <div className="nonempty-pro-container min-h-[400px]">
+              {info?.product.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
                 <ProductCard key={index} props={item} />
               ))}
             </div>
           )}
+          {!isEmpty(info?.product) && 
           <PaginationComponent
             currentPage={currentPage}
             totalPages={totalPages}
             handlePageChange={handlePageChange}
           />
+          }
         </div>
       </div>
     </DashLayout>
