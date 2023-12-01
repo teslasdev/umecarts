@@ -69,7 +69,7 @@ const PreviewProduct = () => {
     }
     return (
       <NoSideLayout>
-        <div>
+        <div className='w-full'>
             <div className='md:px-32 sm:px-6 px-4 py-1'>
             <CustomBadge name1={"Home"} name2={"Product"}  name3={info?.information?.product_name} />
             </div>
@@ -556,7 +556,7 @@ const PreviewProduct = () => {
             </div> 
             </div>
 
-            <div className='w-full  gap-4 md:px-32 sm:px-6 px-4 py-1 flex sm:flex-row flex-col justify-end items-center sm:mx-[10px] mb-[70px]'>
+            <div className='w-full gap-4 md:px-32 sm:px-6 px-4 py-1 flex sm:flex-row flex-col justify-end items-center sm:my-[10px] mb-[70px]'>
                 <div className='sm:w-[20%] w-full h-[52px]'>
                     <PrimaryButton 
                         type={true}

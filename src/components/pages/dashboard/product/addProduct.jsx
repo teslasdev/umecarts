@@ -213,7 +213,7 @@ const AddProduct = () => {
          />
 
        
-         <div className=''>
+         <div className='w-full'>
          <div className='md:px-32 sm:px-6 px-4 py-1'>
             <CustomBadge name1={"Home"} name2={"Product"}  name3={"Upload Product"} />
          </div>
