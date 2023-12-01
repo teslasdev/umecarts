@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import {BiHome} from 'react-icons/bi'
 import {FiShoppingCart} from 'react-icons/fi'
 import {IoChatboxEllipsesOutline} from 'react-icons/io5'
 import {FaRegUserCircle} from 'react-icons/fa'
+import { GlobalContext } from '../../context'
+import isEmpty from '../../utils/isEmpty'
 
 const Navigation = () => {
+    const {userData} = useContext(GlobalContext)
   return (
     <>
         <div className='um-footer-navigation flex justify-between fixed bottom-0 w-full z-10 bg-white'>
-            <Link className='flex flex-col items-center justify-center'>
+            <Link className='flex flex-col items-center justify-center' to={'/'}>
                 <BiHome size={22} color='#1F3047'/>
                 <p className='pt-1 font-semibold'>Home</p>
             </Link>
@@ -28,7 +31,7 @@ const Navigation = () => {
             </Link>
 
 
-            <Link className='flex flex-col items-center justify-center' to={'/buyer/dashboard'}>
+            <Link className='flex flex-col items-center justify-center' to={isEmpty(userData) ? '/auth/login' :'/buyer/dashboard'}>
                 <FaRegUserCircle size={22} color='#1F3047'/>
                 <p className='pt-1 font-semibold'>My Account</p>
             </Link>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from "../../assets/logo/Vector.png";
 import { CgClose } from "react-icons/cg";
 import { PrimaryButton } from "../common/Button";
@@ -9,11 +9,14 @@ import { BsChat, BsWallet } from "react-icons/bs";
 import { FaInbox } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import { setGlobalState } from "../common/store";
+import { GlobalContext } from '../../context';
+import isEmpty from '../../utils/isEmpty';
 const AuthBar = ({
    className,
    onClick
 }) => {
    const navigate = useNavigate()
+   const {userData} = useContext(GlobalContext)
    const  handleClick = (item) => {
       navigate(item)
       setGlobalState('sideBar' , false)
@@ -27,12 +30,14 @@ const AuthBar = ({
                  <img src={logo} alt="" />
                </div>
             </div>
-
+         
             <div className="p-6 w-full">
+             {isEmpty(userData) &&
                <div className="flex justify-between w-full">
                   <PrimaryButton click={() => handleClick('/auth/login')} name="Log in" link="/auth/login" classNameButton="w-[80%] h-[48px] bg-[#004399] rounded-md text-white font-bold text-[18px]" type={true} />
                   <PrimaryButton click={() => handleClick('/user/buyer')} name="Sign up" link="/user/seller" classNameButton="w-[80%] h-[48px] border border-[#004399] rounded-md font-bold text-[18px]" type={true} />
                </div>
+            }
 
                <div className="py-2">
                   <div>
