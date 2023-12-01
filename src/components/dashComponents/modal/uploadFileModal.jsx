@@ -105,7 +105,7 @@ const removeDuplicates = (data) => {
 }
    const [tab , setTab] = useState(!onlyUpload)
    return (
-      <div className='fixed z-[112] sm:mt-0 mt-8 top-0 blur-bg w-full h-screen  flex justify-center sm:items-center items-start'>
+      <div className='fixed z-[112] sm:mt-0 mt-2 top-0 blur-bg w-full h-screen  flex justify-center sm:items-center items-start'>
          <div className='bg-[#F5F5F5]  h-[85%] md:w-[75%] sm:w-[90%] w-[95%]'>
             <div className='relative h-[10%] flex  align-bottom px-6 sm:pt-8 pt-4 gap-3 text-[12px]'>
                {!onlyUpload &&

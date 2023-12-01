@@ -220,8 +220,8 @@ const PreviewProduct = () => {
                         <div>
                             <div className='flex flex-col gap-2 bg-white shadow-md rounded-md p-2'>
                                 <div className='flex gap-4'>
-                                    <button className={`p-2 uppercase  ${window.location.hash !== '#review' && 'border-b-2 border-[#CA0505]' }`}><a href='#description' className='text-[#1F3047] font-bold'>Product Description</a></button>
-                                    <button className={`p-2 uppercase  ${window.location.hash == '#review' && 'border-b-2 border-[#CA0505]' }`}><a href='#review' className='text-[#1F3047] font-bold'>Ratings and Reviews</a></button>
+                                    <button className={`p-2 uppercase  ${window.location.hash !== '#review' && 'border-b-2 border-[#CA0505]' }`}><a href='#description' className='text-[#1F3047] sm:text-[15px] text-[12px] font-bold'>Product Description</a></button>
+                                    <button className={`p-2 uppercase  ${window.location.hash == '#review' && 'border-b-2 border-[#CA0505]' }`}><a href='#review' className='text-[#1F3047] sm:text-[15px] text-[12px] font-bold'>Ratings and Reviews</a></button>
                                 </div>
 
                                 <div className='p-2' id="description">
@@ -556,7 +556,7 @@ const PreviewProduct = () => {
             </div> 
             </div>
 
-            <div className='h-[100px] w-full  gap-4 md:px-32 sm:px-6 px-4 py-1 flex sm:flex-row flex-col justify-end items-center mb-[70px]'>
+            <div className='w-full  gap-4 md:px-32 sm:px-6 px-4 py-1 flex sm:flex-row flex-col justify-end items-center sm:mx-[10px] mb-[70px]'>
                 <div className='sm:w-[20%] w-full h-[52px]'>
                     <PrimaryButton 
                         type={true}
