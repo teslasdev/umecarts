@@ -85,6 +85,7 @@ const AddProduct = () => {
    const HandleUpload = () => {
       formik.setFieldValue('provider' , provider)
       formik.setFieldValue('meta_image' , Meta)
+      formik.setFieldValue('meta_slug' , formik.values.product_name.replaceAll(' ','-'))
       formik.setFieldValue('gallery' , Gallery)
       formik.setFieldValue('thumb' , Thumb)
       formik.setFieldValue('brands' , brands)
