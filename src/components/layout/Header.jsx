@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import logo from "../../assets/logo/Vector.png";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -9,10 +9,10 @@ import { HiBars3BottomLeft } from "react-icons/hi2";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { setGlobalState } from "../common/store";
-import { getAuthToken } from "../../helper/axiosConfig";
-import isEmpty from "../../utils/isEmpty";
+import { setGlobalState, useGlobalState } from "../common/store";
+import { GlobalContext } from "../../context";
 import { useGetUser } from "../../helper/api-hooks/useAuth";
+import isEmpty from "../../utils/isEmpty";
 
 
 const Header = () => {
@@ -20,8 +20,6 @@ const Header = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(min-width: 500px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [toggleOption, setToggleOption] = useState(false);
-  const [AuthToken , setToken] = useState(false)
-
   const [scrollDirection, setScrollDirection] = useState(null);
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
@@ -39,14 +37,21 @@ const Header = () => {
     };
 
   }, [scrollDirection]);
-  const { refetch, status  } = useGetUser();
+  const handleClick = (path) => {
+    navigate(path)
+  }
+  const {userData,isToken , setToken} = useContext(GlobalContext)
+  const { data ,refetch} = useGetUser();
   useEffect(() => {
-    // Getting token 
-    if(status == 'success') {
+    if(!data?.user) {
+      setToken(false)
+      console.log('no')
+      refetch()
+    } else {
+      console.log('yes')
       setToken(true)
     }
-      refetch()
-  })
+  },[data, refetch , isToken])
   return (
     <>
       <header
@@ -72,7 +77,7 @@ const Header = () => {
 
             {/* Options */}
             <div className="um-header-options">
-            {AuthToken &&
+            {data?.user &&
               <div className="flex gap-1 items-center px-2">
                 <IoChatboxEllipsesOutline size={15} color="#1F3047" />
                 <p className="font-semibold">Chat</p>
@@ -85,12 +90,14 @@ const Header = () => {
               <div className="flex gap-1 items-center px-2">
                 <FiShoppingCart size={20} color="#1F3047" />
                 <p className="font-semibold">Cart</p>
+                {userData?.user?.wallet?.cart > 0 &&
                 <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
-                  1
+                  {userData?.user?.wallet?.cart}
                 </div>
+                }
               </div>
-              {AuthToken &&
-              <div className="flex gap-1 items-center px-2">
+              {data?.user &&
+              <div className="flex gap-1 items-center px-2" onClick={() => handleClick('/buyer/dashboard')}>
                 <FaRegUserCircle size={15} color="#1F3047" />
                 <p>Account</p>
                 <div>
@@ -110,7 +117,7 @@ const Header = () => {
                   1
                 </div>
               </div>
-              {!AuthToken &&
+              {isEmpty(data?.user) &&
               <div className='relative um-header-button cursor-pointer flex items-center gap-2 justify-center h-[50px] rounded-md' onClick={() => setToggleOption(!toggleOption)}>
                 <h4 className="text-[18px] font-bold">
                   Sign in

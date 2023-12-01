@@ -59,6 +59,7 @@ const Footer = ({
         </div>
       </div>
     }
+    {!isPortrait &&
       <div className='um-footer flex md:flex-row flex-col gap-4 md:gap-0 h-full items-center sm:justify-between sm:px-24 px-4 sm:py-2 py-12 mb-8 sm:mb-0 justify-center text-white'>
         <div>
           <p>© umecarts (maxeps group)</p>
@@ -103,6 +104,7 @@ const Footer = ({
           <img src={paymentCard} alt="" srcset="" />
         </div>
       </div>
+    }
     </>
   )
 }

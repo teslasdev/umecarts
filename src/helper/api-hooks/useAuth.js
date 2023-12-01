@@ -43,10 +43,12 @@ export const useLogin = () => {
                      localStorage.setItem('guest' , JSON.stringify(false))
                      setGlobalState('user' , res.data)
                      localStorage.setItem('shopName', res.data?.shop.shopName)
-                     navigate('/seller/dashboard')
+                     setGlobalState('AuthToken' , true)
+                     window.location.href='/seller/dashboard';
                   }
                   else {
-                     navigate('/')
+                     setGlobalState('AuthToken' , true)
+                     window.location.href='/';
                   }
                },
                onError:  async (res) => {
@@ -55,7 +57,7 @@ export const useLogin = () => {
                      res?.response?.data?.message ?? "Invalid Credentials"
                    }`,
                    position: "bottom-left",
-                 });
+                  });
                },
              });     
          } catch (error) {
@@ -103,7 +105,7 @@ export const useRegisterSeller = () => {
                      message: "Registration successfully",
                      position: "bottom-left",
                   });
-                  navigate('/auth/login')
+                  window.location.href='/auth/login/';
                   
                },
                onError:  async (res) => {
@@ -159,7 +161,7 @@ export const useRegister = () => {
                      position: "bottom-left",
                   });
                   localStorage.setItem('user', 'buyer')
-                  navigate('/')
+                  window.location.href='/auth/login/';
                },
                onError:  async (res) => {
                   errorToast({

@@ -13,7 +13,7 @@ const LogoutModal = ({
       id="popup-modal"
       tabIndex={-1}
       className="overflow-y-auto overflow-x-hidden fixed 
-      top-0 right-0 left-0 z-[100] min-w-full md:inset-0 h-modal h-full 
+      top-0 right-0 left-0 z-[150] min-w-full md:inset-0 h-modal h-full 
       backdrop-blur-sm backdrop-brightness-50 flex justify-center items-center"
     >
       <div className="flex relative p-4 w-full justify-center items-center">
@@ -66,21 +66,21 @@ const LogoutModal = ({
             >
                <div className='w-[30%]'>
                   <Button
-                     className="um-btn um-btn-filled  text-white cursor-pointer hover:opacity-70 leading-4 text-sm" 
-                     name="Yes" 
-                     auth="button"
-                     onClick={onClick}
+                    className="um-btn um-btn-filled  text-white cursor-pointer hover:opacity-70 leading-4 text-sm" 
+                    name="Yes" 
+                    auth="button"
+                    onClick={onClick}
                   />
                </div>
 
                <div className='w-[30%]'>
                   <Button
-                     className="um-btn bg-blue-600 text-white cursor-pointer hover:opacity-70 leading-4 text-sm" 
-                     name="Cancel" 
-                     auth="button"
-                     type="submit"
-                     isLoading={isLoading} 
-                     onClick={onClose}
+                    className="um-btn bg-blue-600 text-white cursor-pointer hover:opacity-70 leading-4 text-sm" 
+                    name="Cancel" 
+                    auth="button"
+                    type="submit"
+                    isLoading={isLoading} 
+                    onClick={onClose}
                   />
                </div>
             </div>

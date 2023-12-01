@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NoSideLayout from '../../../layout/NoSideLayout'
 import { Link, useParams } from 'react-router-dom'
+import {useNavigate } from 'react-router'
 import policy from '../../../../assets/image/policy.png'
 import {FaStar,FaStarHalfAlt} from 'react-icons/fa'
 import {BsInstagram} from 'react-icons/bs'
@@ -11,19 +12,31 @@ import axios from 'axios'
 import { BiCopy } from 'react-icons/bi'
 import { CustomBadge } from '../../../common/Badge'
 import { PrimaryButton } from '../../../common/Button'
+import { GlobalContext } from '../../../../context'
+import { successToast } from '../../../common/CustomToast'
 
 
 const PreviewProduct = () => {
-    const { GetProductBySlug } = useUrls()
+    const { GetProductBySlug, updateStatus } = useUrls()
     const { slug } = useParams();
     const [info , setInfo] = useState([])
     const [indexOn , setIndex] = useState(0)
-    
+    const navigate = useNavigate()
+    const {userData} = useContext(GlobalContext)
     useEffect(async () => {
         await axios.get(GetProductBySlug + slug).then((res => {
            setInfo(res.data)
         }))
     },[])
+    const handleClick = async (data) => {
+        await axios.put(updateStatus + info?.product?.id, data).then((res => {
+            successToast({
+                message: "Product Published Successfully.",
+                position: "top-left",
+             });
+            window.location.replace('/seller/products')
+         }))
+    }
     var isDiscount = false;
     var isPrice = 0
     switch(info?.price?.discount) {
@@ -50,7 +63,7 @@ const PreviewProduct = () => {
             } else {
                 isDiscount = true;
                 var calculatePercentage = info?.price?.discount_percentage
-                isPrice = ((info?.price?.discount_percentage * info?.price?.unit_price) / 100).toLocaleString()
+                isPrice = (unitprice - ((info?.price?.discount_percentage * info?.price?.unit_price) / 100)).toLocaleString()
             }
         break;
     }
@@ -156,7 +169,7 @@ const PreviewProduct = () => {
                                 <div>
                                     <span className='text-sm text-[#2E486B] pb-1'>Seller</span>
                                     <div className='flex items-end gap-4'>
-                                        <div className='font-extrabold text-[14px]'>SAMUELKROWN</div>
+                                        <div className='font-extrabold text-[14px]'>{userData?.user?.firstname} {userData?.user?.lastname}</div>
 
                                     </div>
                                     <div className='underline decoration-1 text-blue-600'>Message Seller</div>
@@ -523,12 +536,12 @@ const PreviewProduct = () => {
 
                             <span className='text-[10px]'>Store Name</span>
                             <div className='h-[40px]'>
-                                <div className='font-extrabold'>SAMUELKROWN</div>
+                                <div className='font-extrabold'>{userData?.user?.firstname} {userData?.user?.lastname}</div>
                             </div>
 
                             <span className='text-[10px]'>Store Address</span>
                             <h4 className='font-bold'>
-                                15, Idi-Omo, Lagere, Ile-Ife, Osun State.
+                                {userData?.shop?.shopLocation}
                             </h4>
 
                             <button className='btn-outline mt-6'>
@@ -543,20 +556,29 @@ const PreviewProduct = () => {
             </div> 
             </div>
 
-            <div className='h-[100px] w-full gap-4 md:px-32 sm:px-6 px-4 py-1 flex justify-end items-center'>
-                <div className='w-[20%] h-[52px]'>
+            <div className='h-[100px] w-full  gap-4 md:px-32 sm:px-6 px-4 py-1 flex sm:flex-row flex-col justify-end items-center mb-[70px]'>
+                <div className='sm:w-[20%] w-full h-[52px]'>
                     <PrimaryButton 
                         type={true}
                         classNameButton={"w-full h-full rounded-[8px] bg-[#CA0505] text-white"}
                         name={"Publish Product"}
+                        click={() => handleClick({
+                            status : true,
+                            featured : false
+                        })}
+
                     />
                 </div>
 
-                <div className='w-[20%] h-[52px]'>
+                <div className='sm:w-[20%] w-full h-[52px]'>
                     <PrimaryButton 
                         type={true}
                         classNameButton={"w-full h-full rounded-[8px] bg-[#004399] text-white"}
                         name={"Save as Draft"}
+                        click={() => handleClick({
+                            status : false,
+                            featured : false
+                        })}
                     />
                 </div>
             </div>

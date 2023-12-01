@@ -6,6 +6,7 @@ import {useMediaQuery} from 'react-responsive';
 import { useLocation } from 'react-router';
 import AuthBar  from '../model/Sidebar';
 import { setGlobalState, useGlobalState } from '../common/store';
+import BuyerSidebar from '../dashComponents/buyer/BuyerSidebar';
 const BuyerLayout = ({ children }) => {
     const [navBar ,setNavigation ] = useState(true)
     const Location = useLocation()
@@ -29,7 +30,10 @@ const BuyerLayout = ({ children }) => {
          <>
             {sideBar && <AuthBar onClick={() => setGlobalState('sideBar' , false)} />}
             <Header />
-                {children}
+               <div className="sidebar-main-container">
+                  <BuyerSidebar/>
+               {children}
+               </div>
             <Footer isFullfooter={false}/>
            {isPortrait && (
            navBar  && <Navigation />

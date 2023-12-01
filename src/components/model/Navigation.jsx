@@ -28,7 +28,7 @@ const Navigation = () => {
             </Link>
 
 
-            <Link className='flex flex-col items-center justify-center'>
+            <Link className='flex flex-col items-center justify-center' to={'/buyer/dashboard'}>
                 <FaRegUserCircle size={22} color='#1F3047'/>
                 <p className='pt-1 font-semibold'>My Account</p>
             </Link>

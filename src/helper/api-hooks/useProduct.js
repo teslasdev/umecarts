@@ -32,7 +32,7 @@ export const useProduct = () => {
          unit_price : "",
          description : "",
          discount_date_range : "",
-         discount_Percentage: 100,
+         discount_Percentage: 0,
          discount_Flat : 0,
          flat : "",
          meta_title : "",

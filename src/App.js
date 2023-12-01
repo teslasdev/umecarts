@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, User, Auth, Account, Product } from "./components";
 
@@ -26,23 +26,32 @@ import NoFound from "./components/pages/404";
 import isEmpty from "./utils/isEmpty";
 import PreviewProduct from "./components/pages/dashboard/product/PreviewProduct";
 import BuyerDashboard from "./components/pages/dashboard/buyer";
-
-
-
+import { errorToast } from "./components/common/CustomToast";
+import { GlobalContext } from "./context";
+import Buyerorder from "./components/pages/dashboard/buyer/Buyerorder";
+import Buyermessage from "./components/pages/dashboard/buyer/Buyermessage";
+import BuyerWallet from "./components/pages/dashboard/buyer/BuyerWallet";
+import BuyerSupport from "./components/pages/dashboard/buyer/BuyerSupport";
+import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
 
 const App = () => {
   const guest = JSON.parse(localStorage.getItem('guest'))
   AOS.init();
-  const { data , refetch, status  } = useGetUser();
+  const { data  ,refetch, status , error  } = useGetUser();
+  const {userData , setToken, setData , isAuth , setAuth , isBuyer , setBuyer} = useContext(GlobalContext)
   useEffect(() => {
     // Getting token 
-    if(status === 'success') {
-      setGlobalState('user' , data)
-      localStorage.setItem('shopName', data?.shop.shopName)
+    if(data?.user) {
+      setData(data)
+      setToken(true)
+      setAuth(true)
+      if(isEmpty(data?.shop)) {
+        setBuyer(true)
+      }
     }
+    setToken(false)
     refetch()
-  })
-
+  },[data , error , status , refetch])
 
   const isGuest = createBrowserRouter([
     {
@@ -94,10 +103,93 @@ const App = () => {
       path: "/checkout/completion",
       element: <CompletionController />,
     },
+  ]);
+  const isBuy = createBrowserRouter([
+    {
+      path: "*",
+      element: <NoFound />,
+    },
+    {
+      path: "/",
+      element: <Home />,
+    },
     {
       path: "/buyer/dashboard",
-      element: <BuyerDashboard data={data && data}/>,
+      element: <BuyerDashboard data={data}/>,
     },
+    {
+      path: "/user/buyer",
+      element: <User auth="buyer" />,
+    },
+    {
+      path: "/orders",
+      element: <Buyerorder/>,
+    },
+    {
+      path: "/messages",
+      element: <Buyermessage />
+    },
+    {
+      path: "/wallets",
+      element: <BuyerWallet />
+    },
+    {
+      path: "/support",
+      element: <BuyerSupport />
+    },
+    {
+      path: "/refund",
+      element: <BuyerRefund />
+    },
+    {
+      path: "/user/seller",
+      element: <User auth="seller" />,
+    },
+
+    {
+      path: "/auth/login",
+      element: <Auth auth="true" />,
+    },
+    {
+      path: "/forgotPassword",
+      element: <Account auth="forget" />,
+    },
+    {
+      path: "/product/:id",
+      element: <Product />,
+    },
+    {
+      path: "/cart",
+      element: <CartController />,
+    },
+    {
+      path: "/checkout",
+      element: <CheckoutController />,
+    },
+    {
+      path: "/checkout/delivery_info",
+      element: <DeliveryController />,
+    },
+    {
+      path: "/checkout/payment_info",
+      element: <PaymentController />,
+    },
+    {
+      path: "/checkout/completion",
+      element: <CompletionController />,
+    },
+    {
+      path: "/wallet",
+      element: <Wallet />,
+    },
+    {
+      path: "/refund",
+      element: <Refund />,
+    },
+    {
+      path: "/support",
+      element: <Support />,
+    }
   ]);
 
   const isSeller = createBrowserRouter([
@@ -106,12 +198,8 @@ const App = () => {
       element: <NoFound />,
     },
     {
-      path: "/buyer/dashboard",
-      element: <BuyerDashboard data={data && data}/>,
-    },
-    {
       path: "/",
-      element: <Home />,
+      element: <Dashboard data={data && data}/>,
     },
     {
       path: "/user/buyer",
@@ -205,14 +293,21 @@ const App = () => {
   ]);
   return (
     <>
-      {isEmpty(guest) ?
+      {!isAuth ?
         <main>
           <RouterProvider router={isGuest}></RouterProvider>
         </main>
-      :
+      : (
+        isBuyer ?
+        <main>
+          <RouterProvider router={isBuy}></RouterProvider>
+        </main>
+        :
         <main>
           <RouterProvider router={isSeller}></RouterProvider>
         </main>
+      )
+        
       }
     </>
   );

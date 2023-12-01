@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import "../../styles/dash-css/sidebar.css";
 import { BsGrid, BsHandbag, BsCart, BsCloudUpload } from "react-icons/bs";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
@@ -5,9 +6,15 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { TiDocumentText } from "react-icons/ti";
+import LogoutModal from "../common/logout-modal";
 import { NavLink } from "react-router-dom";
 import { MdPayment, MdOutlineSettings } from "react-icons/md";
+import { successToast } from '../common/CustomToast';
+import { setGlobalState } from '../common/store';
+
 const DashSidebar = ({ toggleIcon }) => {
+
+  const [isOpen , setIsOpen] = useState(false)
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -18,6 +25,17 @@ const DashSidebar = ({ toggleIcon }) => {
     console.log("NavLink clicked");
     scrollToTop();
   };
+  const handleLogout = () => {
+    localStorage.removeItem('umecartsToken');
+    localStorage.setItem('guest' , JSON.stringify(false))
+    setGlobalState('AuthToken', false)
+    successToast({
+      message: "Logged out successfully",
+      position: "bottom-left",
+    });
+    
+    window.location.href='/'
+  }
   return (
     <div className="dash-sidebar-container">
       <div className="sidebar-box">
@@ -131,11 +149,14 @@ const DashSidebar = ({ toggleIcon }) => {
           <MdOutlineSettings />
           <div className="sidebar-text">Shop settings</div>
         </NavLink>
-        <div className="logout-box">
+        <div className="logout-box" onClick={() => setIsOpen(true)}>
           <AiOutlineLogout />
           <div className="logout-text">Log out</div>
         </div>
       </div>
+      {isOpen &&
+        <LogoutModal title={"Are you sure you want to logout"} onClose={() => setIsOpen(false)} onClick={() => handleLogout()}/>
+      }
     </div>
   );
 };

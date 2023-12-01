@@ -525,6 +525,7 @@ const AddProduct = () => {
                            className={'w-[full] flex flex-col gap-1 py-4'} 
                            disabled='true'
                            TypeOf={'Discount'}
+                           formik={formik.values}
                            setDiscount={setDiscount}
                            discount={discount}
                            options={[

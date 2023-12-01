@@ -22,7 +22,8 @@ const { getGlobalState, useGlobalState, setGlobalState } = createGlobalState({
   isload : false,
   slug : null,
   delivery : 1,
-  description : []
+  description : [],
+  AuthToken : false
 })
 
 export { getGlobalState, useGlobalState, setGlobalState }

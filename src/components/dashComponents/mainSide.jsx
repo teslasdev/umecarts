@@ -1,8 +1,9 @@
 import { RiErrorWarningLine } from "react-icons/ri";
 import "../../styles/dash-css/mainSide.css";
 import WarningModal from "./modal/warningModal";
-import { useState } from "react";
-const MainSide = ({data}) => {
+import { useEffect, useState } from "react";
+import { useGetUser } from "../../helper/api-hooks/useAuth";
+const MainSide = () => {
   const [warningIcon, setWarningIcon] = useState(false);
   const handleWarningIcon = () => {
     setWarningIcon(!warningIcon);
@@ -10,6 +11,12 @@ const MainSide = ({data}) => {
   const handleCloseWarningIcon = () => {
     setWarningIcon(false);
   };
+  const { data ,refetch  } = useGetUser();
+  useEffect(() => {
+    if(!data?.user) {
+      refetch()
+    }
+  },[data , refetch])
   return (
     <div className="main-side-container">
       <div className="main-box-content">
@@ -30,37 +37,37 @@ const MainSide = ({data}) => {
           <div className="dash-category-row">
             <div className="dash-each-category del">
               <div className="category-title">Current Balance</div>
-              <div className="category-number">₦{data?.shop?.wallet?.current_balance.toLocaleString()}</div>
+              <div className="category-number">₦{data?.user?.wallet?.current_balance.toLocaleString()}</div>
               <div className="dashbor-simple">Money ready for withdrawal </div>
             </div>
             <div className="dash-each-category">
               <div className="category-title">Total Sales</div>
-              <div className="category-number">{data?.shop?.wallet?.total_sale}</div>
+              <div className="category-number">{data?.user?.wallet?.total_sale}</div>
               <div className="dashbor-simple">
                 <span className="tot-count">2</span> sales this week
               </div>
             </div>
             <div className="dash-each-category">
               <div className="category-title">Total Earnings</div>
-              <div className="category-number">₦{data?.shop?.wallet?.total_earnings.toLocaleString()}</div>
+              <div className="category-number">₦{data?.user?.wallet?.total_earnings.toLocaleString()}</div>
               <div className="dashbor-simple">
                 <span className="tot-count">2</span> sales this week
               </div>
             </div>
             <div className="dash-each-category del">
               <div className="category-title">New Orders</div>
-              <div className="category-number">{data?.shop?.wallet?.new_order}</div>
+              <div className="category-number">{data?.user?.wallet?.new_order}</div>
             </div>
             <div className="dash-each-category">
               <div className="category-title complete">Completed Orders</div>
-              <div className="category-number">{data?.shop?.wallet?.completed_order}</div>
+              <div className="category-number">{data?.user?.wallet?.completed_order}</div>
               <div className="dashbor-simple">
                 <span className="tot-count">5</span> completed this week
               </div>
             </div>
             <div className="dash-each-category">
               <div className="category-title cancel">Cancelled Orders</div>
-              <div className="category-number">{data?.shop?.wallet?.canceled_order}</div>
+              <div className="category-number">{data?.user?.wallet?.canceled_order}</div>
               <div className="dashbor-simple">
                 <span className="tot-count">1</span> cancelled this week
               </div>

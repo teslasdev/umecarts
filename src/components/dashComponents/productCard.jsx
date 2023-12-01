@@ -36,7 +36,7 @@ const ProductCard = ({ props }) => {
             } else {
                 isDiscount = true;
                 var calculatePercentage = props?.price?.discount_percentage
-                isPrice = ((props?.price?.discount_percentage * props?.price?.unit_price) / 100).toLocaleString()
+                isPrice = ( unitprice - ((props?.price?.discount_percentage * props?.price?.unit_price) / 100)).toLocaleString()
             }
         break;
       }
