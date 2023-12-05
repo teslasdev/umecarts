@@ -17,7 +17,7 @@ const ShopSetting = () => {
   return (
     <BuyerLayout>
       <div className="product-dash-container">
-        <div className="sm:h-[75vh] h-[90vh] overflow-scroll">
+        <div className="sm:h-[75vh] h-full overflow-scroll">
         <div className="product-head-box cent">
           <div className="tit-body">
             <div className="dashbor-text">Settings</div>
@@ -36,7 +36,7 @@ const ShopSetting = () => {
                   : "navigator-item"
               }`}
             >
-              <div className="shop-naviga">Basic Information</div>
+              <div className="shop-naviga sm:text-[16px] text-[12px]">Basic Information</div>
             </div>
             <div
               onClick={() => setSelectedSettingProgress("privacy")}
@@ -46,7 +46,7 @@ const ShopSetting = () => {
                   : "navigator-item"
               }`}
             >
-              <div className="shop-naviga">Privacy & Security</div>
+              <div className="shop-naviga sm:text-[16px] text-[12px]">Privacy & Security</div>
             </div>
           </div>
         </div>
