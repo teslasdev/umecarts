@@ -150,6 +150,7 @@ export const ActionInput = ({
    option,
    setDelivery,
    delivery,
+   bgColor,
    ...rest
 }) => {
    return (
@@ -163,7 +164,7 @@ export const ActionInput = ({
             }
             <input type={type} min={1} placeholder={placeholder} onChange={(e) => setDelivery(e.target.value)} className='um-sign-field bg-white w-[85%] border-[1.5px] border-[#94A3B8]' disabled={!disabled && true}/>
             {actionRight &&
-            <div className='w-[20%] h-[48px] rounded-r-md text-[14px] md:text-[16px] flex justify-center items-center -ml-5 border border-[#0012291A] bg-[#D1D8E0]'>
+            <div className={`w-[20%] h-[48px] rounded-r-md text-[14px] md:text-[16px] flex justify-center items-center -ml-5 border border-[#0012291A] ${bgColor ? 'bg-[#004399] text-white' : 'bg-[#D1D8E0]' } `}>
                {actionText}
             </div>
             }

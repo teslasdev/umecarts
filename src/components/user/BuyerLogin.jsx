@@ -48,8 +48,6 @@ const Buyer = () => {
               />
             </div>
             <span class={`${!formik.errors.password && 'hidden'} text-sm text-red-500 font-bold flex items-center gap-1 pt-2`}><BiErrorCircle /> {formik.errors.password}</span>
-
-
             <div className='flex justify-between gap-2 py-6'>
               <div className='flex gap-1'>
                 <input id="agree" type="checkoutput" hidden/>

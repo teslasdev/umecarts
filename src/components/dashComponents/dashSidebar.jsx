@@ -37,7 +37,7 @@ const DashSidebar = ({ toggleIcon }) => {
     window.location.href='/'
   }
   return (
-    <div className="dash-sidebar-container">
+    <div className="dash-sidebar-container fixed">
       <div className="sidebar-box">
         <NavLink
           to="/seller/dashboard"
@@ -139,7 +139,7 @@ const DashSidebar = ({ toggleIcon }) => {
           <div className="sidebar-text">Coupons</div>
         </NavLink>
         <NavLink
-          to="shop"
+          to="/setting"
           exact
           onClick={handleNavLinkClick}
           className={({ isActive }) =>

@@ -1,0 +1,87 @@
+.bannerForm {
+   margin-top: 20px;
+ }
+ .banlab span {
+   color: #94a3b8;
+ }
+ .dccb {
+   margin-top: 20px;
+ }
+ .al-head {
+   align-items: center !important;
+ }
+ .imp {
+   margin-left: 50px;
+ }
+ .bx {
+   margin-left: -25px;
+ }
+ .verify {
+   /* width: 70%; */
+   background: #004399;
+   height: 35px;
+   margin-top: -15px;
+   border-bottom-left-radius: 0;
+   border-top-left-radius: 0;
+ }
+ .veri {
+   display: flex;
+   align-items: center;
+   gap: 0;
+ }
+ .edi {
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+ }
+ .dddw {
+   margin: 10px 0;
+ }
+ .eye-sd {
+   position: relative;
+ }
+ .eye {
+   position: absolute;
+   right: 3%;
+   font-size: 25px;
+   margin-top: -5px;
+ }
+ @media only screen and (max-width: 600px) {
+   .mmm {
+     width: 90px;
+   }
+   .bx {
+     margin-left: 20px;
+   }
+   .bm {
+     margin-right: -20px;
+   }
+   .nm {
+     margin-bottom: -15px;
+   }
+   .verify {
+     width: 100px;
+   }
+ }
+ 
+ @media only screen and (max-width: 470px) {
+   .mmm {
+     width: 60px;
+   }
+   .bx {
+     margin-left: 20px;
+   }
+   .bm {
+     margin-right: -20px;
+   }
+ }
+ @media only screen and (max-width: 368px) {
+   .bc {
+     margin-left: 6px;
+   }
+   .mmm {
+     width: 35px;
+   }
+   .verify {
+     width: 90px;
+   }
+ }

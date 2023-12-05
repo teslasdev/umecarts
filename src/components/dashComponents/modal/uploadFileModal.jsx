@@ -20,6 +20,8 @@ const UploadFileModal = ({
    onChange,
    onlyUpload,
    setOpen,
+   Logo,
+   setLogo
 }) => {
    const {data ,isLoading, refetch} = useGallery()
    useEffect(() => {
@@ -277,12 +279,12 @@ const removeDuplicates = (data) => {
                        </div>
                      </div>
                      :
-                     <div className="flex sm:flex-row flex-col w-full sm:flex-wrap sm:gap-[5px] gap-0 sm:mt-[20px]">
+                     <div className="flex sm:flex-row flex-col w-full sm:flex-wrap sm:gap-[12px] gap-0 sm:mt-[20px]">
                        {isLoading ? 
                          'Loading...'  
                          : 
                          removeDuplicates(data.gallery).toReversed().map((item) => {
-                           return <UploadCard item={item} onChange={onChange} setGallery={setGallery} Gallery={Gallery} setMeta={setMeta} Meta={Meta} setThumb={setThumb} Thumb={Thumb}/>
+                           return <UploadCard item={item} onChange={onChange} setGallery={setGallery} Gallery={Gallery} setMeta={setMeta} Meta={Meta} setThumb={setThumb} Thumb={Thumb} setLogo={setLogo} Logo={Logo}/>
                          })
                        }
                      </div>
@@ -295,7 +297,7 @@ const removeDuplicates = (data) => {
                <>
                <div className='flex sm:w-[40%] w-full gap-5'>
                   <div className=''>
-                     <h4 className='font-bold text-[#001229] text-[12px] sm:text-[16px]'>{Gallery.length} file(s) Selected</h4>
+                     <h4 className='font-bold text-[#001229] text-[12px] sm:text-[16px]'>{Gallery && Gallery.length} file(s) Selected</h4>
                      <h5 className='font-bold text-[#CA0505] text-[12px] sm:text-[16px]'>Clear</h5>
                   </div>
 

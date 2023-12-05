@@ -19,6 +19,7 @@ import Refund from "./components/pages/dashboard/Refund";
 import Support from "./components/pages/dashboard/Support";
 import Coupon from "./components/pages/dashboard/Coupon";
 import ShopSetting from "./components/pages/dashboard/ShopSetting";
+import Setting from "./components/pages/dashboard/Setting";
 import AddProduct from "./components/pages/dashboard/product/addProduct";
 import { setGlobalState } from "./components/common/store";
 import { useGetUser } from "./helper/api-hooks/useAuth";
@@ -189,7 +190,11 @@ const App = () => {
     {
       path: "/support",
       element: <Support />,
-    }
+    },
+    {
+      path: "/setting",
+      element: <Setting />,
+    },
   ]);
 
   const isSeller = createBrowserRouter([
@@ -287,7 +292,7 @@ const App = () => {
       element: <Coupon />,
     },
     {
-      path: "/shopsetting",
+      path: "/setting",
       element: <ShopSetting />,
     },
   ]);

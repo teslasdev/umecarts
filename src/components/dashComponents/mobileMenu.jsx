@@ -164,7 +164,7 @@ const MobileMenu = ({ toggleIcon, handleCloseToggleIcon }) => {
               <div className="sidebar-text">Coupons</div>
             </NavLink>
             <NavLink
-              to="shop"
+              to="/setting"
               exact
               onClick={handleNavLinkClick}
               className={({ isActive }) =>

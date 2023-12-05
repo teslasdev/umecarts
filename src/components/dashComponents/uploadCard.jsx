@@ -9,7 +9,9 @@ const UploadCard = ({
   Thumb,
   setMeta,
   Meta,
-  onChange
+  onChange,
+  Logo,
+  setLogo
 }) => {
   const [uploadToggleIcon, setUploadToggleIcon] = useState(false);
   const handleUploadToggleIcon = () => {
@@ -41,6 +43,9 @@ const UploadCard = ({
   const handleMeta = () => {
     setMeta([item.link ])
   }
+  const handleLogo = () => {
+    setLogo([item.link ])
+  }
   switch(onChange) {
     case 'Thumb':
       var Include = Thumb
@@ -53,6 +58,10 @@ const UploadCard = ({
     case 'Meta':
       var Include = Meta
       var Click = handleMeta
+    break;
+    case 'Logo':
+      var Include = Logo
+      var Click = handleLogo
     break;
     default:
       var Include = Gallery

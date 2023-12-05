@@ -109,7 +109,7 @@ const BuyerSidebar = ({ toggleIcon }) => {
           <div className="sidebar-text">Support ticket</div>
         </NavLink>
         <NavLink
-          to="shop"
+          to="/setting"
           exact
           onClick={handleNavLinkClick}
           className={({ isActive }) =>
