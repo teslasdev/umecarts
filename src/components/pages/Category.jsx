@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { MdOutlineHome } from "react-icons/md";
 import { FaChevronRight, FaChevronUp } from "react-icons/fa";
 import "../../styles/category.css";
+import { Badge } from "../common/Badge";
 
 const Category = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(min-width: 544px)" });
@@ -64,7 +65,7 @@ const Category = () => {
     <div>
       <Layout nil={"nil"} isFullfooter={isFullfooter}>
         <div className="red-pd lg:px-32 sm:px-12 px-2 py-3">
-          <div className="navig-indict flex items-center gap-2">
+          {/* <div className="navig-indict flex items-center gap-2">
             <div className="each-navig flex items-center gap-1">
               <MdOutlineHome className="text-[25px]" />
               <span>Home</span>
@@ -73,7 +74,8 @@ const Category = () => {
             <div className="each-navig">
               <span>Categories</span>
             </div>
-          </div>
+          </div> */}
+          <Badge text={"Category"} />
 
           <div className="main-box-cnt my-5">
             <div className="head-bxx bg-[#FEF0F0] p-5 font-[900] border border-[#F0F7FF]">
