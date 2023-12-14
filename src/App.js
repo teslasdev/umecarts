@@ -34,25 +34,27 @@ import Buyermessage from "./components/pages/dashboard/buyer/Buyermessage";
 import BuyerWallet from "./components/pages/dashboard/buyer/BuyerWallet";
 import BuyerSupport from "./components/pages/dashboard/buyer/BuyerSupport";
 import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
+import Category from "./components/pages/Category";
 
 const App = () => {
-  const guest = JSON.parse(localStorage.getItem('guest'))
+  const guest = JSON.parse(localStorage.getItem("guest"));
   AOS.init();
-  const { data  ,refetch, status , error  } = useGetUser();
-  const {userData , setToken, setData , isAuth , setAuth , isBuyer , setBuyer} = useContext(GlobalContext)
+  const { data, refetch, status, error } = useGetUser();
+  const { userData, setToken, setData, isAuth, setAuth, isBuyer, setBuyer } =
+    useContext(GlobalContext);
   useEffect(() => {
-    // Getting token 
-    if(data?.user) {
-      setData(data)
-      setToken(true)
-      setAuth(true)
-      if(isEmpty(data?.shop)) {
-        setBuyer(true)
+    // Getting token
+    if (data?.user) {
+      setData(data);
+      setToken(true);
+      setAuth(true);
+      if (isEmpty(data?.shop)) {
+        setBuyer(true);
       }
     }
-    setToken(false)
-    refetch()
-  },[data , error , status , refetch])
+    setToken(false);
+    refetch();
+  }, [data, error, status, refetch]);
 
   const isGuest = createBrowserRouter([
     {
@@ -104,6 +106,10 @@ const App = () => {
       path: "/checkout/completion",
       element: <CompletionController />,
     },
+    {
+      path: "/category_main",
+      element: <Category />,
+    },
   ]);
   const isBuy = createBrowserRouter([
     {
@@ -116,7 +122,7 @@ const App = () => {
     },
     {
       path: "/buyer/dashboard",
-      element: <BuyerDashboard data={data}/>,
+      element: <BuyerDashboard data={data} />,
     },
     {
       path: "/user/buyer",
@@ -124,23 +130,23 @@ const App = () => {
     },
     {
       path: "/orders",
-      element: <Buyerorder/>,
+      element: <Buyerorder />,
     },
     {
       path: "/messages",
-      element: <Buyermessage />
+      element: <Buyermessage />,
     },
     {
       path: "/wallets",
-      element: <BuyerWallet />
+      element: <BuyerWallet />,
     },
     {
       path: "/support",
-      element: <BuyerSupport />
+      element: <BuyerSupport />,
     },
     {
       path: "/refund",
-      element: <BuyerRefund />
+      element: <BuyerRefund />,
     },
     {
       path: "/user/seller",
@@ -204,7 +210,7 @@ const App = () => {
     },
     {
       path: "/",
-      element: <Dashboard data={data && data}/>,
+      element: <Dashboard data={data && data} />,
     },
     {
       path: "/user/buyer",
@@ -249,7 +255,7 @@ const App = () => {
     },
     {
       path: "/seller/dashboard",
-      element: <Dashboard data={data && data}/>,
+      element: <Dashboard data={data && data} />,
     },
     {
       path: "/seller/products",
@@ -298,22 +304,19 @@ const App = () => {
   ]);
   return (
     <>
-      {!isAuth ?
+      {!isAuth ? (
         <main>
           <RouterProvider router={isGuest}></RouterProvider>
         </main>
-      : (
-        isBuyer ?
+      ) : isBuyer ? (
         <main>
           <RouterProvider router={isBuy}></RouterProvider>
         </main>
-        :
+      ) : (
         <main>
           <RouterProvider router={isSeller}></RouterProvider>
         </main>
-      )
-        
-      }
+      )}
     </>
   );
 };

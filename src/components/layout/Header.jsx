@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import logo from "../../assets/logo/Vector.png";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RxCaretDown } from "react-icons/rx";
-import {FaUserPlus,FaUserCheck, FaRegUserCircle} from 'react-icons/fa'
+import { FaUserPlus, FaUserCheck, FaRegUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
@@ -14,9 +14,8 @@ import { GlobalContext } from "../../context";
 import { useGetUser } from "../../helper/api-hooks/useAuth";
 import isEmpty from "../../utils/isEmpty";
 
-
-const Header = () => {
-  const navigate = useNavigate(); 
+const Header = ({ nil }) => {
+  const navigate = useNavigate();
   const isTabletOrMobile = useMediaQuery({ query: "(min-width: 500px)" });
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [toggleOption, setToggleOption] = useState(false);
@@ -35,23 +34,22 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", updateScrollDirection); // clean up
     };
-
   }, [scrollDirection]);
   const handleClick = (path) => {
-    navigate(path)
-  }
-  const {userData,isToken , setToken} = useContext(GlobalContext)
-  const { data ,refetch} = useGetUser();
+    navigate(path);
+  };
+  const { userData, isToken, setToken } = useContext(GlobalContext);
+  const { data, refetch } = useGetUser();
   useEffect(() => {
-    if(!data?.user) {
-      setToken(false)
-      console.log('no')
-      refetch()
+    if (!data?.user) {
+      setToken(false);
+      console.log("no");
+      refetch();
     } else {
-      console.log('yes')
-      setToken(true)
+      console.log("yes");
+      setToken(true);
     }
-  },[data, refetch , isToken])
+  }, [data, refetch, isToken]);
   return (
     <>
       <header
@@ -77,34 +75,37 @@ const Header = () => {
 
             {/* Options */}
             <div className="um-header-options">
-            {data?.user &&
-              <div className="flex gap-1 items-center px-2">
-                <IoChatboxEllipsesOutline size={15} color="#1F3047" />
-                <p className="font-semibold">Chat</p>
-                <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
-                  2
+              {data?.user && (
+                <div className="flex gap-1 items-center px-2">
+                  <IoChatboxEllipsesOutline size={15} color="#1F3047" />
+                  <p className="font-semibold">Chat</p>
+                  <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
+                    2
+                  </div>
                 </div>
-              </div> 
-            }
+              )}
 
               <div className="flex gap-1 items-center px-2">
                 <FiShoppingCart size={20} color="#1F3047" />
                 <p className="font-semibold">Cart</p>
-                {userData?.user?.wallet?.cart > 0 &&
-                <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
-                  {userData?.user?.wallet?.cart}
-                </div>
-                }
+                {userData?.user?.wallet?.cart > 0 && (
+                  <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
+                    {userData?.user?.wallet?.cart}
+                  </div>
+                )}
               </div>
-              {data?.user &&
-              <div className="flex gap-1 items-center px-2" onClick={() => handleClick('/buyer/dashboard')}>
-                <FaRegUserCircle size={15} color="#1F3047" />
-                <p>Account</p>
-                <div>
-                  <RxCaretDown size={18} />
+              {data?.user && (
+                <div
+                  className="flex gap-1 items-center px-2"
+                  onClick={() => handleClick("/buyer/dashboard")}
+                >
+                  <FaRegUserCircle size={15} color="#1F3047" />
+                  <p>Account</p>
+                  <div>
+                    <RxCaretDown size={18} />
+                  </div>
                 </div>
-              </div> 
-              }
+              )}
 
               <div className="flex gap-1 items-center px-2">
                 <IoMdNotificationsOutline
@@ -117,26 +118,27 @@ const Header = () => {
                   1
                 </div>
               </div>
-              {isEmpty(data?.user) &&
-              <div className='relative um-header-button cursor-pointer flex items-center gap-2 justify-center h-[50px] rounded-md' onClick={() => setToggleOption(!toggleOption)}>
-                <h4 className="text-[18px] font-bold">
-                  Sign in
-                </h4>
-                <span className='font-bold'>
+              {isEmpty(data?.user) && (
+                <div
+                  className="relative um-header-button cursor-pointer flex items-center gap-2 justify-center h-[50px] rounded-md"
+                  onClick={() => setToggleOption(!toggleOption)}
+                >
+                  <h4 className="text-[18px] font-bold">Sign in</h4>
+                  <span className="font-bold">
                     <RxCaretDown />
-                </span>
-                {toggleOption && (
-                  <div className='absolute flex flex-col text-[#1F3047] gap-1 top-14  um-header-dropdown bg-white shadow-md'>
-                    <span className='flex gap-2 p-2 px-4 items-center font-bold hover:bg-red-600 hover:text-white'>
+                  </span>
+                  {toggleOption && (
+                    <div className="absolute flex flex-col text-[#1F3047] gap-1 top-14  um-header-dropdown bg-white shadow-md">
+                      <span className="flex gap-2 p-2 px-4 items-center font-bold hover:bg-red-600 hover:text-white">
                         <Link to="/auth/login">Login</Link>
-                    </span>
-                    <span className='flex gap-2 p-2 px-4 text-[#1F3047] items-center font-bold hover:bg-red-600 hover:text-white'>
+                      </span>
+                      <span className="flex gap-2 p-2 px-4 text-[#1F3047] items-center font-bold hover:bg-red-600 hover:text-white">
                         <Link to="/user/buyer">Register</Link>
-                    </span>
-                  </div>
-                )}
-              </div>
-              }
+                      </span>
+                    </div>
+                  )}
+                </div>
+              )}
               <div className="um-header-seller rounded-md flex justify-center items-center text-[20px] cursor-pointer">
                 <Link to="/user/seller">Be a seller</Link>
               </div>
@@ -146,7 +148,11 @@ const Header = () => {
         {isPortrait && (
           <div className="um-header-box flex justify-between md:px-12 sm:px-24 px-4 items-center">
             <div className="flex items-center gap-4">
-              <HiBars3BottomLeft size={24} className="cursor-pointer" onClick={() => setGlobalState('sideBar' , 'true')} />
+              <HiBars3BottomLeft
+                size={24}
+                className="cursor-pointer"
+                onClick={() => setGlobalState("sideBar", "true")}
+              />
               <img src={logo} alt="" />
             </div>
 
@@ -157,7 +163,9 @@ const Header = () => {
         )}
 
         {isTabletOrMobile && (
-          <div className="um-header-box1 lg:flex hidden justify-between items-center px-24">
+          <div
+            className={`um-header-box1 lg:flex hidden justify-between items-center px-24 ${nil}`}
+          >
             <Link to="/">Wrist watches</Link>
             <Link to="/">Female Fashion & Clothing</Link>
             <Link to="/">Electronic & Accessories</Link>
