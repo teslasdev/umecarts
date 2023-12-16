@@ -148,15 +148,16 @@
 /* basic info card */
 .payment-row {
   display: flex;
-  justify-content: space-between;
+  gap: 30px;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 10px;
+  justify-content: space-between;
 }
 .basic-bank-detail {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 45%;
   border: 1px solid #d1d8e0;
   border-radius: 8px;
   padding: 10px;

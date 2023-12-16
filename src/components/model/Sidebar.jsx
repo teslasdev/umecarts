@@ -11,6 +11,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { setGlobalState } from "../common/store";
 import { GlobalContext } from '../../context';
 import isEmpty from '../../utils/isEmpty';
+import { MdOutlineSettings } from 'react-icons/md';
 const AuthBar = ({
    className,
    onClick
@@ -81,11 +82,17 @@ const AuthBar = ({
                         <p className='pt-1 font-semibold'>Track Orders</p>
                      </Link>
                   </div>
+                  <div>
+                     <Link to="/setting" className='flex items-center py-4 gap-5'>
+                        <MdOutlineSettings size={24} color='#1F3047'/>
+                        <p className='pt-1 font-semibold'>Settings</p>
+                     </Link>
+                  </div>
                </div>
 
               
             </div>
-            <div className="w-full bg-[#f5f5f5] font-bold h-[50px] absolute bottom-20 flex justify-center items-center" onClick={() => handleClick('/user/seller')}>
+            <div className="w-full bg-[#f5f5f5] font-bold h-[50px] absolute bottom-50 flex justify-center items-center" onClick={() => handleClick('/user/seller')}>
                Be A Seller
             </div>
          </div>

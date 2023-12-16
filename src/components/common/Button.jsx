@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Loader from './Loader'
+import { Loader } from './buttonLoader'
+
 
 export const Button = ({
   auth,
@@ -13,7 +14,7 @@ export const Button = ({
   type
 }) => {
   return (
-    <div>
+    <div className='w-full'>
       {auth === 'button' ?
         <button type={type} onClick={onClick} className={`${disabled && 'opacity-90'}   ${className}`} disabled={disabled}>{isLoading ? <Loader /> : name}</button>
         :

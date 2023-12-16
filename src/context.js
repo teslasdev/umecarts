@@ -8,17 +8,20 @@ export const GlobalProvider = ({ children }) => {
   const [userData , setData] = useState([])
   const [isAuth , setAuth] = useState(false)
   const [isBuyer , setBuyer] = useState(false)
+  const [bandDetails , setBankDetails] = useState([])
   return (
     <GlobalContext.Provider
       value={{
-         isToken,
-         userData,
-         setToken,
-         setData,
-         isAuth, 
-         setAuth,
-         isBuyer , 
-         setBuyer
+        isToken,
+        userData,
+        setToken,
+        setData,
+        isAuth, 
+        setAuth,
+        isBuyer , 
+        setBuyer,
+        bandDetails, 
+        setBankDetails
       }}
     >
       {children}

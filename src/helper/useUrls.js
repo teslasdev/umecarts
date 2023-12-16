@@ -20,6 +20,7 @@ export function useUrls() {
   const uploadGalleryImage = `${BASE_URL}/gallery`;
   const GetProduct = `${BASE_URL}/product/`;
   const updateStatus = `${BASE_URL}/product/status/`;
+  const updateUser = `${BASE_URL}/update/me`;
   return {
     loginUrl, 
     registerUrl,
@@ -33,6 +34,7 @@ export function useUrls() {
     uploadImage,
     uploadGalleryImage,
     GetProduct,
-    updateStatus
+    updateStatus,
+    updateUser
   };
 }

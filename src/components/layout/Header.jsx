@@ -74,7 +74,7 @@ const Header = ({ nil }) => {
             </div>
 
             {/* Options */}
-            <div className="um-header-options">
+            <div className="um-header-options cursor-pointer">
               {data?.user && (
                 <div className="flex gap-1 items-center px-2">
                   <IoChatboxEllipsesOutline size={15} color="#1F3047" />
@@ -85,7 +85,7 @@ const Header = ({ nil }) => {
                 </div>
               )}
 
-              <div className="flex gap-1 items-center px-2">
+              <div className="flex gap-1 items-center px-2 cursor-pointer">
                 <FiShoppingCart size={20} color="#1F3047" />
                 <p className="font-semibold">Cart</p>
                 {userData?.user?.wallet?.cart > 0 && (
@@ -96,10 +96,16 @@ const Header = ({ nil }) => {
               </div>
               {data?.user && (
                 <div
-                  className="flex gap-1 items-center px-2"
+                  className="flex gap-1 items-center px-2 cursor-pointer"
                   onClick={() => handleClick("/buyer/dashboard")}
                 >
+                  {isEmpty(userData?.user?.profile_picture) ?
                   <FaRegUserCircle size={15} color="#1F3047" />
+                  :
+                  <div className="h-[20px] w-[20px] bg-gray-500 rounded-full">
+                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+userData?.user?.profile_picture} className="w-full h-full object-cover rounded-full"/>
+                  </div>
+                  }
                   <p>Account</p>
                   <div>
                     <RxCaretDown size={18} />
@@ -107,7 +113,7 @@ const Header = ({ nil }) => {
                 </div>
               )}
 
-              <div className="flex gap-1 items-center px-2">
+              <div className="flex gap-1 items-center px-2 cursor-pointer">
                 <IoMdNotificationsOutline
                   size={22}
                   color="#1F3047"

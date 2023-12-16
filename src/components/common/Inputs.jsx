@@ -37,9 +37,10 @@ export const PrimaryInput = ({
    onBlur,
    valueText,
    error,
+   text,
    ...rest
 }) => {
-   const [value , setValue] = useState('');
+   const [value , setValue] = useState(text);
    const handleEnter = (e) => {
       if(enterOption) {
          if(e.key === 'Enter') {

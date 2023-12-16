@@ -33,7 +33,7 @@ const MainSide = () => {
           />
           {warningIcon && <WarningModal />}
         </div>
-        <div className="dashboard-main-box" onClick={handleCloseWarningIcon}>
+        <div className="dashboard-main-box bg-red-500" onClick={handleCloseWarningIcon}>
           <div className="dash-category-row">
             <div className="dash-each-category del">
               <div className="category-title">Current Balance</div>

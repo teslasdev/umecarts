@@ -192,3 +192,52 @@ export const useGetUser = () => {
    );
    return { data, isLoading, refetch , status };
  };
+
+ // Get user details
+export const useUpdateUser = () => {
+   const { updateUser } = useUrls();
+   const { mutate, isLoading } = useMutation((payload) => {
+      return axiosInstance.put(updateUser, payload);
+    });
+  
+    const formik = useFormik({
+       initialValues: {
+         firstname : "",
+         lastname : "",
+         email: "",
+         bank_details: "",
+         phone_number: "",
+         profile_picture : ""
+       },
+       validateOnBlur: false,
+       validateOnChange: true,
+       validationSchema: false,
+       onSubmit: async (values) => {
+         console.log(values)
+         try {
+            // const castedValues = RegisterSchema.cast(values);
+            mutate(values, {
+               onSuccess: async (res) => {
+                  successToast({
+                     message: "Updated successfully",
+                     position: "bottom-left",
+                  });
+               },
+               onError:  async (res) => {
+                  errorToast({
+                     message: `${
+                        res?.response?.data?.message ??
+                       "Something went wrong, please try again later"
+                     }`,
+                     position: "bottom-left",
+                  });
+               },
+             });     
+         } catch (error) {
+            throw new Error(error);
+         }
+      },
+   });
+  
+    return { formik, isLoading };
+ };
