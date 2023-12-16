@@ -26,7 +26,8 @@ const BasicBuyerInfo = ({
   const [deleteModal , setDelete] = useState(false)
   const [onEdit , setEdit] = useState(false)
    const handleDetail = () => {
-      setEdit("")
+      setEdit("") 
+      
       setDetail(!detail);
    };
    const handleEdit = (index) => {
