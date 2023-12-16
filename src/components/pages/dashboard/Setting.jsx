@@ -15,7 +15,7 @@ const ShopSetting = () => {
   return (
     <BuyerLayout>
       <div className="product-dash-container">
-        <div className="sm:h-[75vh] h-full overflow-scroll">
+        <div className="sm:h-[75vh] sm:overflow-scroll">
         <div className="product-head-box cent">
           <div className="tit-body">
             <div className="dashbor-text">Settings</div>
