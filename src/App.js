@@ -206,6 +206,14 @@ const App = () => {
       path: "/setting",
       element: <Setting />,
     },
+    {
+      path: "/category_main",
+      element: <Category />,
+    },
+    {
+      path: "/category_prod",
+      element: <CartgoryProduct />,
+    },
   ]);
 
   const isSeller = createBrowserRouter([
