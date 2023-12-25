@@ -35,6 +35,7 @@ import BuyerWallet from "./components/pages/dashboard/buyer/BuyerWallet";
 import BuyerSupport from "./components/pages/dashboard/buyer/BuyerSupport";
 import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
 import Category from "./components/pages/Category";
+import CartgoryProduct from "./components/pages/CartgoryProduct";
 
 const App = () => {
   const guest = JSON.parse(localStorage.getItem("guest"));
@@ -109,6 +110,10 @@ const App = () => {
     {
       path: "/category_main",
       element: <Category />,
+    },
+    {
+      path: "/category_prod",
+      element: <CartgoryProduct />,
     },
   ]);
   const isBuy = createBrowserRouter([
@@ -200,6 +205,14 @@ const App = () => {
     {
       path: "/setting",
       element: <Setting />,
+    },
+    {
+      path: "/category_main",
+      element: <Category />,
+    },
+    {
+      path: "/category_prod",
+      element: <CartgoryProduct />,
     },
   ]);
 

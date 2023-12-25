@@ -185,3 +185,35 @@ body {
 .nil {
   display: none !important;
 }
+.cont-check input[type="checkbox"] {
+  border: 1px solid #1f3047;
+  --web-appearance: none;
+  appearance: none;
+  height: 18px;
+  width: 18px;
+  outline: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont-check input[type="checkbox"]::after {
+  font-family: "Font Awesome 6 free";
+  font-weight: 900;
+  content: "\f00c";
+  font-size: 12px;
+  color: #fff;
+  display: none;
+}
+.cont-check input[type="checkbox"]:hover {
+  background: #fff;
+}
+.cont-check input[type="checkbox"]:checked {
+  background: #1f3047;
+}
+.cont-check input[type="checkbox"]:checked::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
