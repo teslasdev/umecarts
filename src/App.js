@@ -37,6 +37,7 @@ import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
 import Category from "./components/pages/Category";
 import CartgoryProduct from "./components/pages/CartgoryProduct";
 import SellerPreview from "./components/pages/SellerPreview";
+import SellerPageForRegBuyer from "./components/pages/SellerPageForRegBuyer";
 
 const App = () => {
   const guest = JSON.parse(localStorage.getItem("guest"));
@@ -119,6 +120,10 @@ const App = () => {
     {
       path: "/seller-preview",
       element: <SellerPreview />,
+    },
+    {
+      path: "/seller-preview-reg-buyer",
+      element: <SellerPageForRegBuyer />,
     },
   ]);
   const isBuy = createBrowserRouter([

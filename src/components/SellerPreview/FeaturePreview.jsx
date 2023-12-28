@@ -17,12 +17,12 @@ const FeaturePreview = () => {
         className="um-product rounded-sm shadow-md pb-6"
         data-aos="fade-right"
       >
-        <div className="um-product-header h-[30%] sm:text-xl text-[16px] flex justify-between px-2 py-4 w-full items-center rounded-t-md bg-[#FEF0F0]">
+        <div className="um-product-header h-[30%] sm:text-xl text-[16px] flex justify-between px-2 py-4 w-full items-end rounded-t-md bg-[#FEF0F0]">
           <div>
             <p className="font-bold sm:text-xl text-md">Products</p>
           </div>
 
-          <select name="" id="" className="sel-cate">
+          <select name="" id="" className="sel-cat">
             <option value="">Newest Arrival</option>
             <option value="">Oldest Arrival</option>
             <option value="">Newest Arrival</option>
