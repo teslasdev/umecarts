@@ -68,6 +68,9 @@
   font-size: 30px !important;
   margin-bottom: 8px !important;
 }
+.each-icon-bx {
+  display: none !important;
+}
 @media only screen and (max-width: 1100px) {
   .red-pd {
     padding: 20px 20px 120px !important;
@@ -133,6 +136,13 @@
   .mage-hero {
     height: 45vh !important;
   }
+  .contrller-cnt {
+    padding: 20px !important;
+    top: 30% !important;
+  }
+  .each-icon-bx {
+    display: flex !important;
+  }
 }
 @media only screen and (max-width: 500px) {
   .mobil-filt {
@@ -142,4 +152,11 @@
   .mage-hero {
     height: 30vh !important;
   }
+  .contrller-cnt {
+    padding: 20px !important;
+    top: 25% !important;
+  }
+  /* .each-icon-bx {
+    background: #ffffff5e !important;
+  } */
 }
