@@ -1,6 +1,7 @@
 .pro-card-container {
   width: 187px;
   border-radius: 8px;
+  height: 300px;
 }
 .pro-img {
   background-position: center;
@@ -31,13 +32,13 @@
   margin: 5px 0;
 }
 .main-price {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   color: #ca0505;
 }
 .crs-price {
   color: #94a3b8;
-  font-size: 14px;
+  font-size: 12px;
 }
 .discount-per {
   width: 33px;
@@ -67,8 +68,8 @@
 .toggle-switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 25px;
+  width: 40px;
+  height: 20px;
 }
 /* Hide the checkbox input */
 .toggle-switch input {
@@ -85,17 +86,17 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  border-radius: 34px;
+  border-radius: 24px;
   transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
-  left: 2px;
-  bottom: 2px;
+  height: 15px;
+  width: 15px;
+  left: 2.5px;
+  bottom: 2.5px;
   background-color: #02bd73;
   border-radius: 50%;
   transition: 0.4s;
@@ -109,20 +110,20 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(20px);
 }
 .pub-fea-con {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .product-name {
-  font-size: 15px;
+  font-size: 14px;
   color: #1f3047;
   font-weight: 700;
 }
 .pub-fea-txt {
-  font-size: 14px;
+  font-size: 12px;
 }
 /* productModal */
 .pro-modal-container {

@@ -1,86 +1,149 @@
-import { useEffect, useState } from 'react'
-import React from 'react-dom'
-import Cart from '../pages/Cart'
-import { useNavigate } from "react-router-dom";
-
+import React, { useContext, useState } from "react";
+import { CartBadge } from "../common/Badge";
+import Layout from "../layout/Layout";
+import { Link } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
+import isEmpty from "../../utils/isEmpty";
+import { GlobalContext } from "../../context";
+import Cart from "../pages/Cart";
+import { useGetIpAddress } from "../../helper/api-hooks/useAuth";
 
 const CartController = () => {
-   const history = useNavigate();
-   const [cartUpdate , setCart] = useState([
-      {
-         "kind": "content#product",
-         "id": "onlinsadf:en:US:1111111111",
-         "offerId": "1111111111",
-         "source": "api",
-         "title": "Google Tee Black",
-         "description": "The Black Google Tee is available in unisex sizing.",
-         "link": "http://my.site.com/blacktee/",
-         "imageLink": "https://umecarts.com/public/uploads/all/HgDH1XhOqlFxstz8JyGhDyPfNZrO6aBQvSFVJv6O.jpg",
-         "contentLanguage": "en",
-         "targetCountry": "US",
-         "feedLabel": "US",
-         "channel": "online",
-         "ageGroup": "adult",
-         "availability": "in stock",
-         "availabilityDate": "2019-01-25T13:00:00-08:00",
-         "brand": "Google",
-         "color": "black",
-         "condition": "new",
-         "gender": "male",
-         "googleProductCategory": "1604",
-         "gtin": "608802531656",
-         "itemGroupId": "google_tee",
-         "mpn": "608802531656",
-         "done" : false,
-         "price": {
-          "value": "21.99",
-          "currency": "USD"
-         },
-         "sizes": [
-          "Large"
-         ]
+  const [productSelected, setSelection] = useState(false);
+  const {data , isLoading } = useGetIpAddress()
+  
+  const onSubmit = () => {
+   //  const pagination = {
+   //    address: false,
+   //    delivery: false,
+   //    payment: false,
+   //  };
+   //  localStorage.setItem("pagination", JSON.stringify(pagination));
+   //  return history("/checkout");
+  };
+  return (
+    <>
+      <Layout>
+        <CartBadge data="cart" />
+        <div className="py-6 h-screen">
+         {!isLoading &&
+          isEmpty(data?.cart) ? (
+            <div className="flex justify-center">
+              <div className="bg-white rounded-md w-[90%] md:w-[50%] text-center p-6 shadow-md">
+                <h3 className="font-extrabold text-xl">Your Cart is Empty!</h3>
+                <h5 className="border-gray-bottom text-[#2E486B] py-4 text-lg">
+                  You do not have any product on your cart yet.
+                </h5>
 
-      },
-      {
+                <div className="w-full flex justify-center items-center py-4">
+                  <Link className="btn-default-full bg-red-primary text-lg flex items-center justify-center gap-2">
+                    Check Around
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="flex justify-center mt-3 p-4 md:p-0">
+              <div className="bg-white rounded-md w-full md:w-[60%] text-center p-6 shadow-md">
+                <div className="border-gray-bottom pb-2 md:flex hidden justify-between items-center pr-12">
+                  <h3 className="flex justify-start font-bold text-[18px] w-[60%]">
+                    Product
+                  </h3>
 
-         "kind": "content#product",
-         "id": "online:en:US:1111111111",
-         "offerId": "1111111111",
-         "source": "api",
-         "title": "Google Tee Black",
-         "description": "The Black Google Tee is available in unisex sizing.",
-         "link": "http://my.site.com/blacktee/",
-         "imageLink": "https://umecarts.com/public/uploads/all/ewNMTOlpdUeZQnkOPWGNbigS5AxT6MMCMn0EeDUh.jpg",
-         "contentLanguage": "en",
-         "targetCountry": "US",
-         "feedLabel": "US",
-         "channel": "online",
-         "ageGroup": "adult",
-         "availability": "in stock",
-         "availabilityDate": "2019-01-25T13:00:00-08:00",
-         "brand": "Google",
-         "color": "black",
-         "condition": "new",
-         "gender": "male",
-         "googleProductCategory": "1604",
-         "gtin": "608802531656",
-         "itemGroupId": "google_tee",
-         "mpn": "608802531656",
-         "price": {
-          "value": "21.99",
-          "currency": "USD"
-         },
-         "sizes": [
-          "Large"
-         ]
-      }
-   ])
-   return (
-      <>
-         <Cart data={cartUpdate} history={history}/>
-      </>
-   )
-}
+                  <div className="flex w-[40%] justify-around">
+                    <h3 className="font-bold text-[18px]">Quantity</h3>
+                    <h3 className="font-bold text-[18px]">Price</h3>
+                  </div>
+                </div>
+                {!isEmpty(data?.cart) &&
+                  data?.cart.map((item, index) => {
+                    return (
+                      <Cart data={item} index={index}/>
+                    );
+                  })}
 
+                <div className="border-gray-bottom flex  justify-between py-2 md:py-3">
+                  <div className="flex gap-2 md:gap-4 md:w-[60%] w-full items-center">
+                    <p className="text-sm font-semibold text-gray-500">
+                      Sold By
+                    </p>
+                    <h3 className="text-sm md:text-md font-bold text-[#2E486B]">
+                      SAMUEL CROWN
+                    </h3>
+                  </div>
 
-export default CartController
+                  <div className="underline decoration-1 w-[60%] md:w-[40%] flex justify-start text-blue-600">
+                    Message Seller
+                  </div>
+                </div>
+
+                <div className="py-3 md:flex hidden justify-between items-center">
+                  <div>
+                    <div className="flex gap-2 items-center">
+                      <h3 className="text-[#2E486B]">Sub-total :</h3>
+                      <h3 className="text-red-800 font-extrabold text-xl">
+                        #12,500
+                      </h3>
+                    </div>
+
+                    <div className="flex gap-2 items-center text-xs text-gray-400">
+                      <AiOutlineExclamationCircle />
+                      <p>Excluding shipping fee</p>
+                    </div>
+                  </div>
+
+                  <div className="w-[70%] flex justify-center items-center">
+                    {productSelected ? (
+                      <button
+                        className="h-[62px] text-white rounded-md w-full bg-red-primary text-lg flex items-center justify-center gap-2"
+                        onClick={onSubmit}
+                      >
+                        Proceed to Checkout
+                      </button>
+                    ) : (
+                      <button className="h-[62px] text-white rounded-md w-full bg-red-primary-default text-lg flex items-center justify-center gap-2">
+                        Proceed to Checkout
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className="fixed block md:hidden bottom-0 bg-white p-3 min-h-[100px] z-50 w-screen">
+          <div className="py-3 flex flex-col md:flex-row gap-4 md:gap-0 items-start justify-between md:items-center">
+            <div>
+              <div className="flex gap-2 items-center">
+                <h3 className="text-[#2E486B]">Sub-total :</h3>
+                <h3 className="text-red-800 font-extrabold text-xl">#12,500</h3>
+              </div>
+              <div className="flex gap-2 items-center text-xs text-gray-400">
+                <AiOutlineExclamationCircle />
+                <p>Excluding shipping fee</p>
+              </div>
+            </div>
+
+            <div className="w-full md:w-[70%] flex justify-center items-center">
+              {productSelected ? (
+                <button
+                  className="h-[62px] text-white rounded-md w-full bg-red-primary text-lg flex items-center justify-center gap-2"
+                  onClick={onSubmit}
+                >
+                  Proceed to Checkout
+                </button>
+              ) : (
+                <button className="h-[62px] text-white rounded-md w-full bg-red-primary-default text-lg flex items-center justify-center gap-2">
+                  Proceed to Checkout
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </Layout>
+    </>
+  );
+};
+
+export default CartController;

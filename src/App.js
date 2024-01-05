@@ -35,9 +35,12 @@ import BuyerWallet from "./components/pages/dashboard/buyer/BuyerWallet";
 import BuyerSupport from "./components/pages/dashboard/buyer/BuyerSupport";
 import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
 import Category from "./components/pages/Category";
+import CartgoryProduct from "./components/pages/CartgoryProduct";
+import SellerPreview from "./components/pages/SellerPreview";
+import SellerPageForRegBuyer from "./components/pages/SellerPageForRegBuyer";
 
 const App = () => {
-  const guest = JSON.parse(localStorage.getItem("guest"));
+
   AOS.init();
   const { data, refetch, status, error } = useGetUser();
   const { userData, setToken, setData, isAuth, setAuth, isBuyer, setBuyer } =
@@ -53,7 +56,7 @@ const App = () => {
       }
     }
     setToken(false);
-    refetch();
+
   }, [data, error, status, refetch]);
 
   const isGuest = createBrowserRouter([
@@ -83,7 +86,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {
@@ -109,6 +112,18 @@ const App = () => {
     {
       path: "/category_main",
       element: <Category />,
+    },
+    {
+      path: "/category_prod",
+      element: <CartgoryProduct />,
+    },
+    {
+      path: "/seller-preview",
+      element: <SellerPreview />,
+    },
+    {
+      path: "/seller-preview-reg-buyer",
+      element: <SellerPageForRegBuyer />,
     },
   ]);
   const isBuy = createBrowserRouter([
@@ -162,7 +177,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {
@@ -201,6 +216,14 @@ const App = () => {
       path: "/setting",
       element: <Setting />,
     },
+    {
+      path: "/category_main",
+      element: <Category />,
+    },
+    {
+      path: "/category_prod",
+      element: <CartgoryProduct />,
+    },
   ]);
 
   const isSeller = createBrowserRouter([
@@ -230,7 +253,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {

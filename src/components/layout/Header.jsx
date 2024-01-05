@@ -11,7 +11,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { setGlobalState, useGlobalState } from "../common/store";
 import { GlobalContext } from "../../context";
-import { useGetUser } from "../../helper/api-hooks/useAuth";
+import { useGetIpAddress, useGetUser } from "../../helper/api-hooks/useAuth";
 import isEmpty from "../../utils/isEmpty";
 
 const Header = ({ nil }) => {
@@ -20,6 +20,7 @@ const Header = ({ nil }) => {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [toggleOption, setToggleOption] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
+  const {data ,isLoading, refetch} = useGetIpAddress();
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
     var direction;
@@ -38,18 +39,14 @@ const Header = ({ nil }) => {
   const handleClick = (path) => {
     navigate(path);
   };
-  const { userData, isToken, setToken } = useContext(GlobalContext);
-  const { data, refetch } = useGetUser();
+  const { userData , setCart } = useContext(GlobalContext);
+
   useEffect(() => {
-    if (!data?.user) {
-      setToken(false);
-      console.log("no");
-      refetch();
-    } else {
-      console.log("yes");
-      setToken(true);
+    if(!isLoading) {
+      console.log('mdass,a',data)
+      setCart(data.cart)
     }
-  }, [data, refetch, isToken]);
+  },[])
   return (
     <>
       <header
@@ -75,7 +72,7 @@ const Header = ({ nil }) => {
 
             {/* Options */}
             <div className="um-header-options cursor-pointer">
-              {data?.user && (
+              {userData?.user && (
                 <div className="flex gap-1 items-center px-2">
                   <IoChatboxEllipsesOutline size={15} color="#1F3047" />
                   <p className="font-semibold">Chat</p>
@@ -88,13 +85,13 @@ const Header = ({ nil }) => {
               <div className="flex gap-1 items-center px-2 cursor-pointer">
                 <FiShoppingCart size={20} color="#1F3047" />
                 <p className="font-semibold">Cart</p>
-                {userData?.user?.wallet?.cart > 0 && (
+                {data?.cart.length > 0 && (
                   <div className="w-[15px] h-[15px] bg-[#002C66] flex justify-center items-center text-white text-[8px] rounded-full">
-                    {userData?.user?.wallet?.cart}
+                    {data?.cart.length}
                   </div>
                 )}
               </div>
-              {data?.user && (
+              {userData?.user && (
                 <div
                   className="flex gap-1 items-center px-2 cursor-pointer"
                   onClick={() => handleClick("/buyer/dashboard")}
@@ -124,7 +121,7 @@ const Header = ({ nil }) => {
                   1
                 </div>
               </div>
-              {isEmpty(data?.user) && (
+              {isEmpty(userData?.user) && (
                 <div
                   className="relative um-header-button cursor-pointer flex items-center gap-2 justify-center h-[50px] rounded-md"
                   onClick={() => setToggleOption(!toggleOption)}

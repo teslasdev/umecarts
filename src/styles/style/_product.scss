@@ -10,6 +10,7 @@
         cursor: pointer;
         display: block;
         min-width: 185px;
+        width: 185px;
     }
 
     &-badge {
@@ -64,24 +65,11 @@
 
 .um-cart {
     &-border-outline {
-        border: 2.3px solid var(--primary-blue);
+        border: 2px solid var(--primary-blue);
         width: 15px;
         height: 15px;
         border-radius: 4px;
-        position: relative;
         display: flex;
-
-        &-clicked::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: var(--primary-blue);
-            width: 95%;
-            height: 95%;
-            border-radius: 2px;  
-        }
 
     }
 

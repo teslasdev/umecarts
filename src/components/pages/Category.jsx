@@ -5,9 +5,15 @@ import { MdOutlineHome } from "react-icons/md";
 import { FaChevronRight, FaChevronUp } from "react-icons/fa";
 import "../../styles/category.css";
 import { Badge } from "../common/Badge";
+import { useNavigate } from "react-router";
 
 const Category = () => {
   const isTabletOrMobile = useMediaQuery({ query: "(min-width: 544px)" });
+  const navigate = useNavigate();
+
+  const handleclick = () => {
+    navigate("/category_prod");
+  };
 
   // Main Categories Data
   const mainCategories = [
@@ -144,7 +150,11 @@ const Category = () => {
                 <div className="list-cate-cnt">
                   {subCategoriesMapping[activeMainCategory].map(
                     (subcategory, index) => (
-                      <div key={index} className={`cursor-pointer p-3 act-sub`}>
+                      <div
+                        key={index}
+                        className={`cursor-pointer p-3 act-sub`}
+                        onClick={handleclick}
+                      >
                         {subcategory}
                       </div>
                     )
