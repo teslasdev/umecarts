@@ -15,12 +15,15 @@ export function useUrls() {
   const getBrandUrl = `${BASE_URL}/brand/${categoryId}`;
   const getTagUrl = `${BASE_URL}/product/tags`;
   const UploadProductUrl = `${BASE_URL}/product/`;
+  const GetProductPublished = `${BASE_URL}/product/all`;
   const GetProductBySlug = `${BASE_URL}/product/slug/`;
   const uploadImage = `${BASE_URL}/upload`;
   const uploadGalleryImage = `${BASE_URL}/gallery`;
   const GetProduct = `${BASE_URL}/product/`;
   const updateStatus = `${BASE_URL}/product/status/`;
   const updateUser = `${BASE_URL}/update/me`;
+  const getIpAddress = `${BASE_URL}/getIpAddress`;
+  const addToCart = `${BASE_URL}/addToCart`;
   return {
     loginUrl, 
     registerUrl,
@@ -35,6 +38,9 @@ export function useUrls() {
     uploadGalleryImage,
     GetProduct,
     updateStatus,
-    updateUser
+    updateUser,
+    GetProductPublished,
+    getIpAddress,
+    addToCart
   };
 }

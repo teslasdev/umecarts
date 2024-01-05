@@ -8,6 +8,7 @@ import { UploadProductSchema } from "../schema/product";
 import { getGlobalState, setGlobalState, useGlobalState } from "../../components/common/store";
 import LogoutModal from "../../components/common/logout-modal";
 import Loading from "../../components/common/Loading";
+import axios from "axios";
 
 
 export const useProduct = () => {
@@ -93,4 +94,30 @@ export const useGetProductBySlug = () => {
    );
    
    return { data, isLoading, refetch };
+};
+
+export const useGetProductPublished = () => {
+   const { GetProductPublished } = useUrls();
+   const { data, isLoading ,refetch} = useQuery(["product"], ({ signal }) =>
+      axiosInstance
+      .get(GetProductPublished, { signal })
+      .then((res) => res.data.product)
+   );
+   
+   return { data, isLoading, refetch };
+};
+
+export const useCart = async (formData) => {
+   const { addToCart } = useUrls();
+   try {
+      // Assuming your API endpoint for form submission is /api/submitForm
+      const response = await axios.post(addToCart, formData , {
+       headers: {
+         "Content-type": "application/json"
+       }
+      });
+      return response.data // Adjust this based on your API response structure
+    } catch (error) {
+      throw new Error('Error submitting form');
+    }
 };

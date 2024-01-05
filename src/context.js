@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { useGetUser } from "./helper/api-hooks/useAuth";
+import { useGetIpAddress } from "./helper/api-hooks/useAuth";
+import isEmpty from "./utils/isEmpty";
+
 
 export const GlobalContext = createContext();
 
@@ -9,6 +11,7 @@ export const GlobalProvider = ({ children }) => {
   const [isAuth , setAuth] = useState(false)
   const [isBuyer , setBuyer] = useState(false)
   const [bandDetails , setBankDetails] = useState([])
+  const [cartUpdate , setCart] = useState([])
   return (
     <GlobalContext.Provider
       value={{
@@ -21,7 +24,9 @@ export const GlobalProvider = ({ children }) => {
         isBuyer , 
         setBuyer,
         bandDetails, 
-        setBankDetails
+        setBankDetails,
+        cartUpdate , 
+        setCart
       }}
     >
       {children}

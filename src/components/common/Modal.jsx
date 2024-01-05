@@ -1,28 +1,53 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {IoMdClose} from 'react-icons/io'
 import {SlHandbag} from 'react-icons/sl'
 import {FiShoppingCart} from 'react-icons/fi'
 import {RxCaretDown} from 'react-icons/rx'
 import AOS from 'aos'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { DropdownDefault } from './Dropdown'
 import isEmpty from '../../utils/isEmpty'
 import AddressValidate from '../../utils/Validation/AddressValidate'
 import isError from '../../utils/isError'
 import { ThreeDots } from 'react-loader-spinner'
+import { PrimaryButton } from './Button'
+import { GlobalContext } from '../../context'
+import { Mutation, useMutation } from '@tanstack/react-query'
+import { useCart } from '../../helper/api-hooks/useProduct'
 
 
 
 export const FullModal = ({
   Style,
   Label,
-  onclick
+  onclick,
+  info
 }) => {
   AOS.init();
+  const [isLoading , setIsLoading] = useState(false)
+  const {setUpdate} = useContext(GlobalContext)
+  const Navigate = useNavigate()
+  const mutation = useMutation(useCart, {
+    onSuccess : (data) => {
+      setIsLoading(true)
+      window.location.href='/cart'
+    },
+    onError : (err) => {
+      console.log(err)
+    }
+  })
+  const handleAddToCart = () => {
+    setIsLoading(true)
+    const data = {
+      product: info,
+    }
+
+    mutation.mutate(data)
+  }
   return (
     <>
       <div className='blur-bg fixed top-0 left-0 z-50 w-screen h-screen flex justify-center items-center text-[#2E486B]'>
-        <div className={`relative bg-white w-[90%] md:min-w-[30%] min-h-[100px]  blur-0 z-45 rounded-md  ${Style}`} data-aos="zoom-in-down">
+        <div className={`relative bg-white w-[90%] md:w-[50%] min-h-[100px]  blur-0 z-45 rounded-md  ${Style}`} data-aos="zoom-in-down">
           <div className='overflow-y-scroll h-[600px] p-5 pb-32'>
             <div className='flex justify-between items-center pr-4'>
               <h3 className='font-bold text-[18px]'>{Label}</h3>
@@ -128,7 +153,8 @@ export const FullModal = ({
             </div>
 
             <div className='flex gap-3'>
-              <Link to='/cart' className='btn-default-full bg-blue-secondary text-lg flex items-center justify-center gap-2'><FiShoppingCart /> Add to Cart</Link>
+              <PrimaryButton isLoading={isLoading} classNameButton={"btn-default-full w-full bg-blue-secondary text-lg flex items-center justify-center gap-2"} click={handleAddToCart} type={true} name="Add to Cart"/>
+              {/* <Link to='/cart' className='btn-default-full bg-blue-secondary text-lg flex items-center justify-center gap-2'><FiShoppingCart /> Add to Cart</Link> */}
               <Link className='btn-default-full bg-red-secondary text-lg flex items-center justify-center gap-2'><SlHandbag/> Buy Now</Link>
             </div>
             

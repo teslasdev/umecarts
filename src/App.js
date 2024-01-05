@@ -37,7 +37,7 @@ import BuyerRefund from "./components/pages/dashboard/buyer/BuyerRefund";
 import Category from "./components/pages/Category";
 
 const App = () => {
-  const guest = JSON.parse(localStorage.getItem("guest"));
+
   AOS.init();
   const { data, refetch, status, error } = useGetUser();
   const { userData, setToken, setData, isAuth, setAuth, isBuyer, setBuyer } =
@@ -53,7 +53,7 @@ const App = () => {
       }
     }
     setToken(false);
-    refetch();
+
   }, [data, error, status, refetch]);
 
   const isGuest = createBrowserRouter([
@@ -83,7 +83,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {
@@ -162,7 +162,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {
@@ -230,7 +230,7 @@ const App = () => {
       element: <Account auth="forget" />,
     },
     {
-      path: "/product/:id",
+      path: "/product/:slug",
       element: <Product />,
     },
     {

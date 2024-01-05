@@ -11,9 +11,9 @@ const LogoutModal = ({
   return (
     <div
       id="popup-modal"
-      tabIndex={-1}
+      tabIndex={-6}
       className="overflow-y-auto overflow-x-hidden fixed 
-      top-0 right-0 left-0 z-[150] min-w-full md:inset-0 h-modal h-full 
+      top-0 right-0 left-0 z-[300] min-w-full md:inset-0 h-modal h-full 
       backdrop-blur-sm backdrop-brightness-50 flex justify-center items-center"
     >
       <div className="flex relative p-4 w-full justify-center items-center">

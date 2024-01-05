@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {useMediaQuery} from 'react-responsive'
 import banner from '../../../assets/image/banner.png'
@@ -7,12 +7,13 @@ import product2 from '../../../assets/products/product3.png'
 import Category1 from '../product/Category1'
 const Banner = () => {
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+    const [defaultImg , setDefault] = useState("https://umecarts.com/public/assets/img/placeholder.jpg")
   return (
     <>
         <div className='flex flex-col sm:flex-row gap-2 justify-center'>
             <div className='um-main-banner sm:w-[50%] md:w-[60%] lg:w-[77%] w-full'>
                 <div className="um-main-img">
-                    <img src={banner} alt="" srcset="" className='w-full' />
+                    <img src={defaultImg}  alt="" srcset="" className='w-full' onLoad={() => setDefault(banner)}/>
                 </div>
                 <div className="flex text-center items-center justify-center mt-2 gap-2">
                     <div className="um-main-pagination um-main-pagination-active" />
