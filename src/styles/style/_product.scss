@@ -36,8 +36,8 @@
     }
 
     &-reading {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         background: #F0F7FF;
         border-radius: 24px;
         cursor: pointer;
@@ -66,11 +66,8 @@
 .um-cart {
     &-border-outline {
         border: 2px solid var(--primary-blue);
-        width: 15px;
-        height: 15px;
         border-radius: 4px;
         display: flex;
-
     }
 
     &-border-rounded {
@@ -101,8 +98,8 @@
     }
 
     &-delete {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         background: #F0F7FF;
         border-radius: 24px;
         cursor: pointer;

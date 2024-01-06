@@ -12,7 +12,7 @@ import { useGetIpAddress } from "../../helper/api-hooks/useAuth";
 const CartController = () => {
   const [productSelected, setSelection] = useState(false);
   const {data , isLoading } = useGetIpAddress()
-  
+  const {cartIndex} = useContext(GlobalContext)
   const onSubmit = () => {
    //  const pagination = {
    //    address: false,
@@ -62,22 +62,6 @@ const CartController = () => {
                       <Cart data={item} index={index}/>
                     );
                   })}
-
-                <div className="border-gray-bottom flex  justify-between py-2 md:py-3">
-                  <div className="flex gap-2 md:gap-4 md:w-[60%] w-full items-center">
-                    <p className="text-sm font-semibold text-gray-500">
-                      Sold By
-                    </p>
-                    <h3 className="text-sm md:text-md font-bold text-[#2E486B]">
-                      SAMUEL CROWN
-                    </h3>
-                  </div>
-
-                  <div className="underline decoration-1 w-[60%] md:w-[40%] flex justify-start text-blue-600">
-                    Message Seller
-                  </div>
-                </div>
-
                 <div className="py-3 md:flex hidden justify-between items-center">
                   <div>
                     <div className="flex gap-2 items-center">
@@ -94,7 +78,7 @@ const CartController = () => {
                   </div>
 
                   <div className="w-[70%] flex justify-center items-center">
-                    {productSelected ? (
+                    {!isEmpty(cartIndex) ? (
                       <button
                         className="h-[62px] text-white rounded-md w-full bg-red-primary text-lg flex items-center justify-center gap-2"
                         onClick={onSubmit}
@@ -126,7 +110,7 @@ const CartController = () => {
             </div>
 
             <div className="w-full md:w-[70%] flex justify-center items-center">
-              {productSelected ? (
+              {!isEmpty(cartIndex) ? (
                 <button
                   className="h-[62px] text-white rounded-md w-full bg-red-primary text-lg flex items-center justify-center gap-2"
                   onClick={onSubmit}

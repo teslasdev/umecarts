@@ -17,7 +17,7 @@ const CartgoryProduct = () => {
   return (
     <>
       <Layout>
-        <div className="cate-pro-list px-20 my-10 ">
+        <div className="cate-pro-list px-20 py-8">
           <CustomBadge name1={"Home"} name2={"Category"} name3={"Clothes"} />
           <div className="relative">
             <div className="mob-filter-bx flex justify-between items-center my-10">

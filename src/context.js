@@ -12,6 +12,8 @@ export const GlobalProvider = ({ children }) => {
   const [isBuyer , setBuyer] = useState(false)
   const [bandDetails , setBankDetails] = useState([])
   const [cartUpdate , setCart] = useState([])
+  const [cartCheck , setcartCheck] = useState(false)
+  const [cartIndex, setIndex] = useState([])
   return (
     <GlobalContext.Provider
       value={{
@@ -26,7 +28,11 @@ export const GlobalProvider = ({ children }) => {
         bandDetails, 
         setBankDetails,
         cartUpdate , 
-        setCart
+        setCart,
+        cartCheck , 
+        setcartCheck,
+        cartIndex, 
+        setIndex
       }}
     >
       {children}

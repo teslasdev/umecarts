@@ -2,9 +2,12 @@ import { PrimaryButton } from "../common/Button";
 import { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { FaStar, FaAngleDown, FaAngleRight } from "react-icons/fa6";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import { TiMinus } from "react-icons/ti";
 import CheckBox from "../common/CheckBox";
 import { IoClose } from "react-icons/io5";
+
 const FilterP = ({ isFilter, handleIsFilterClose }) => {
   const [ageRange, setAgeRange] = useState([18, 60]); // Initial age range
   const [rangContPosition, setRangContPosition] = useState(0);
@@ -89,7 +92,43 @@ const FilterP = ({ isFilter, handleIsFilterClose }) => {
             )}
           </div>
           <div className={`opcls ${isDown ? "opn" : "clss "}`}>
-            <div className="age-range-bx my-3"></div>
+            <div className="age-range-bx my-3">
+              <div className="main-slider">
+                <Slider
+                  range
+                  value={ageRange}
+                  min={18}
+                  max={60}
+                  defaultValue={ageRange}
+                  onChange={handleSliderChange}
+                  trackStyle={[
+                    {
+                      backgroundColor: "#004399",
+                      height: "5px",
+                    },
+                  ]}
+                  handleStyle={[
+                    {
+                      borderColor: "#004399",
+                      backgroundColor: "#004399",
+                      marginLeft: "6px",
+                      width: "20px",
+                      height: "20px",
+                      marginTop: "-8px",
+                    },
+                    {
+                      borderColor: "#004399",
+                      backgroundColor: "#004399",
+                      marginLeft: "-6px",
+                      width: "20px",
+                      height: "20px",
+                      marginTop: "-8px",
+                    },
+                  ]}
+                  railStyle={{ backgroundColor: "#f5f5f5" }} // Rail color
+                />
+              </div>
+            </div>
             <div className="min-max-bx text-[#94A3B8] flex justify-between">
               <div className="mmx">Min</div>
               <div className="mmx">Max</div>
