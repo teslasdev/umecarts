@@ -70,7 +70,7 @@ const UploadCard = ({
   return (
     <div className="sm:rounded-[8px] flex sm:flex-col flex-row sm:items-start items-center sm:gap-0 gap-12 sm:px-0 px-4 sm:h-[238px] h-[84px] w-full sm:w-[187px]" style={{background : Include.includes(item.link) ? '#F0F7FF' : 'white' , border : Include.includes(item.link) ? '1.5px solid #004399' : '1.5px solid #F0F7FF'}} onClick={Click}>
       <div className="pro-img-con sm:h-[75%] h-[60px] sm:rounded-t-[8px] sm:w-full w-[60px] bg-gray-200">
-        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item.link} alt="" className="pro-img sm:rounded-t-[8px] object-cover h-full w-full" />
+        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item.link} alt="" className="pro-img sm:rounded-t-[8px] object-fit h-full w-full" />
       </div>
 
       <div className="pro-card-body-box">

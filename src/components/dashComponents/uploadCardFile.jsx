@@ -17,7 +17,7 @@ const UploadCardFile = ({
    return (
     <div className="pro-card-container h-[238px] w-[187px]">
       <div className="pro-img-con h-[75%] rounded-t-[8px] w-full bg-gray-200">
-        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item.link} alt="" className="pro-img rounded-t-[8px] object-cover h-full w-full" />
+        <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item.link} alt="" className="pro-img rounded-t-[8px] object-fit h-full w-full" />
         <BsThreeDotsVertical
           className="men-icon"
           onClick={handleUploadToggleIcon}

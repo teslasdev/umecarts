@@ -121,7 +121,7 @@ const BuyerSidebar = ({ toggleIcon }) => {
         </NavLink>
          <div className="logout-box absolute w-full bottom-10 bg-[#001229]">
           <div className="h-[32px] w-[32px] bg-gray-500 rounded-full">
-            <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+userData?.user?.profile_picture} className="w-full h-full object-cover rounded-full"/>
+            <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+userData?.user?.profile_picture} className="w-full h-full object-fit rounded-full"/>
           </div>
           <div className="text-sm text-white">{userData?.user?.firstname} {userData?.user?.lastname.substring(0,10)}</div>
         </div>

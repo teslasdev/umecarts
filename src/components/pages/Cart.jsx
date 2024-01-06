@@ -43,7 +43,7 @@ const Cart = ({ data, index }) => {
                 "/" +
                 data?.product?.image?.galleries.toReversed()[0]
               }
-              className="w-full h-full rounded-sm object-cover"
+              className="w-full h-full rounded-sm object-fit"
               alt=""
               srcset=""
             />

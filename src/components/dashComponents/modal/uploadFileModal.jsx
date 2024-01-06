@@ -166,7 +166,7 @@ const removeDuplicates = (data) => {
                         <div className='relative sm:w-[145px] sm:h-[145px] h-[84px] w-full sm:bottom-0 border-b sm:p-0 p-2 border-[#94A3B8] rounded-sm'>
                            <img 
                               src={img} 
-                              className='sm:w-full sm:h-full h-[60px] w-[60px] object-cover'
+                              className='sm:w-full sm:h-full h-[60px] w-[60px] object-fit'
                               alt={"image-" + i} key={i}
                            />
                            { progressInfosRef.current.val[i].percentage == 100 ?

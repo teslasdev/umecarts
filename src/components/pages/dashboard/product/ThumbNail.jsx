@@ -42,7 +42,7 @@ const ThumbNail = ({
             <RxCross2 />
          </div>
          <div className='w-full h-[70%]'>
-            <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item} alt="" className="pro-img rounded-t-[8px] object-cover h-full w-full" />
+            <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item} alt="" className="pro-img rounded-t-[8px] object-fit h-full w-full" />
          </div>
          <div className='bg-[#D1D8E0] h-[30%] text-xs px-2 py-1 rounded-b-sm'>
             <p>{filename + '.' + extension}</p>

@@ -80,14 +80,14 @@ const PreviewProduct = () => {
                         <div className='flex flex-col md:flex-row gap-8 bg-white shadow-md rounded-md p-2 pb-8'>
                             <div className='w-full md:w-[35%] py-2'>
                                 <div className='md:w-[295px] w-full h-[374px] md:h-[295px] rounded-lg transition ease-in-out duration-[5000ms]'>
-                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+info?.image?.galleries.toReversed()[indexOn]} alt="" className='rounded-lg transition ease-in-out delay-[5000ms] w-full h-full object-cover'/>
+                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+info?.image?.galleries.toReversed()[indexOn]} alt="" className='rounded-lg transition ease-in-out delay-[5000ms] w-full h-full object-fit'/>
                                 </div>
                                 <div className='scroll  flex justify-center overflow-scroll w-full md:justify-start my-4 gap-4 cursor-pointer'>
                                     <div className='flex gap-4'>
                                         {info?.image?.galleries?.toReversed().map((item , index) => {
                                             return (
                                                 <div className={`h-[60px] w-[60px] ${indexOn == index && "border-2 border-red-700"}  rounded-lg`} key={index} onClick={() => setIndex(index)}>
-                                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item} alt="" className='rounded-lg w-full h-full object-cover'/>
+                                                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+item} alt="" className='rounded-lg w-full h-full object-fit'/>
                                                 </div>
                                             )
                                         })}

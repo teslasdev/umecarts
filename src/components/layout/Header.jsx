@@ -100,7 +100,7 @@ const Header = ({ nil }) => {
                   <FaRegUserCircle size={15} color="#1F3047" />
                   :
                   <div className="h-[20px] w-[20px] bg-gray-500 rounded-full">
-                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+userData?.user?.profile_picture} className="w-full h-full object-cover rounded-full"/>
+                    <img src={process.env.REACT_APP_S3_ENDPOINT+'/'+userData?.user?.profile_picture} className="w-full h-full object-fit rounded-full"/>
                   </div>
                   }
                   <p>Account</p>

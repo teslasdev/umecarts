@@ -117,7 +117,7 @@ const ProductDisplay = ({ info }) => {
                       info?.image?.galleries.toReversed()[indexOn]
                     }
                     alt=""
-                    className="rounded-lg transition ease-in-out delay-[5000ms] w-full h-full object-cover"
+                    className="rounded-lg transition ease-in-out delay-[5000ms] w-full h-full object-fit"
                   />
                 </div>
                 <div className="scroll  flex justify-center overflow-scroll w-full md:justify-start my-4 gap-4 cursor-pointer">
@@ -134,7 +134,7 @@ const ProductDisplay = ({ info }) => {
                           <img
                             src={process.env.REACT_APP_S3_ENDPOINT + "/" + item}
                             alt=""
-                            className="rounded-lg w-full h-full object-cover"
+                            className="rounded-lg w-full h-full object-fit"
                           />
                         </div>
                       );

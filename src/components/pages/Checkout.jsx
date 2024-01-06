@@ -190,7 +190,7 @@ export const CheckoutDelivery = ({
                             return (
                                 <div className='flex item-center gap-3 py-3'>
                                 <div className='um-cart-img-small rounded-sm'>
-                                    <img src={item.imageLink} className='w-full h-full rounded-sm object-cover' alt="" srcset="" />
+                                    <img src={item.imageLink} className='w-full h-full rounded-sm object-fit' alt="" srcset="" />
                                 </div>
                                 <div className='flex flex-col gap-4 items-start justify-start'>
                                     <h3 className='font-extrabold text-lg'>{item.title}</h3>

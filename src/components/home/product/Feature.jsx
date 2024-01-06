@@ -41,7 +41,7 @@ const Feature = () => {
             feature.map((item) => (
               <React.Fragment key={item.id}>
                 <div
-                  className="um-product-box shadow-sm hover:shadow-md rounded-sm hover:"
+                  className="um-product-box h-[250px] shadow-sm hover:shadow-md rounded-sm hover:"
                   onClick={() => navigate("/product/"+ item.metum.slug)}
                 >
                   <div className="um-product-img h-[65%] relative">
@@ -58,14 +58,14 @@ const Feature = () => {
                          setDefault(null)
                     }
                       alt=""
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-fit"
                     />
                   </div>
 
-                  <div className="um-product-details h-[35%] px-2 py-2">
-                    <p className="text-red-700 font-extrabold">₦250</p>
-                    <p className="text-sm font-bold mt-2">
-                      {item.information.product_name}
+                  <div className="um-product-details px-1 py-1">
+                    <p className="text-red-700 font-extrabold">₦{item.price.unit_price.toLocaleString()}</p>
+                    <p className="sm:text-sm text-xs font-bold mt-1">
+                      {item.information.product_name.length > 30 ? item.information.product_name.replace(item.information.product_name.substring(30, 255) , '......') : item.information.product_name}
                     </p>
                   </div>
                 </div>

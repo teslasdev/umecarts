@@ -61,7 +61,7 @@ const ProductCard = ({ props }) => {
           }
           onError={"https://umecarts.com/public/assets/img/placeholder.jpg"}
           alt=""
-          className="h-full w-full object-cover pro-img"
+          className="h-full w-full object-fit pro-img"
         />
         <BsThreeDotsVertical
           className="men-icon"
