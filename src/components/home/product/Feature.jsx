@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { RxCaretRight } from "react-icons/rx";
 import product2 from "../../../assets/products/product3.png";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ const Feature = () => {
     console.log(data);
     setFeature(data);
   }, [data]);
-  const [defaultImg , setDefault] = useState(null)
+  const [defaultImg, setDefault] = useState(null);
   return (
     <>
       <div
@@ -37,40 +37,51 @@ const Feature = () => {
         </div>
 
         <div className="um-product-caret flex py-2 sm:px-6 px-1 w-full gap-6  overflow-x-scroll">
-          {!isEmpty(feature) &&
-            feature.map((item) => (
-              <React.Fragment key={item.id}>
-                <div
-                  className="um-product-box h-[250px] shadow-sm hover:shadow-md rounded-sm hover:"
-                  onClick={() => navigate("/product/"+ item.metum.slug)}
-                >
-                  <div className="um-product-img h-[65%] relative">
-                    <img
-                      src={defaultImg || 
-                        process.env.REACT_APP_S3_ENDPOINT +
-                        "/" +
-                        item.image?.thumbnails[0]
-                      }
-                      onError={() => 
-                         setDefault("https://umecarts.com/public/assets/img/placeholder.jpg")
-                      }
-                      onLoad={() => 
-                         setDefault(null)
-                    }
-                      alt=""
-                      className="h-full w-full object-fit"
-                    />
-                  </div>
+          {!isEmpty(feature) && (
+            <Suspense fallback={<div>Loading items...</div>}>
+              {feature.map((item) => (
+                <React.Fragment key={item.id}>
+                  <div
+                    className="um-product-box h-[250px] shadow-sm hover:shadow-md rounded-sm hover:"
+                    onClick={() => navigate("/product/" + item.metum.slug)}
+                  >
+                    <div className="um-product-img h-[65%] relative">
+                      <img
+                        src={
+                          defaultImg ||
+                          process.env.REACT_APP_S3_ENDPOINT +
+                            "/" +
+                            item.image?.thumbnails[0]
+                        }
+                        onError={() =>
+                          setDefault(
+                            "https://umecarts.com/public/assets/img/placeholder.jpg"
+                          )
+                        }
+                        onLoad={() => setDefault(null)}
+                        alt=""
+                        className="h-full w-full object-fit"
+                      />
+                    </div>
 
-                  <div className="um-product-details px-1 py-1">
-                    <p className="text-red-700 font-extrabold">₦{item.price.unit_price.toLocaleString()}</p>
-                    <p className="sm:text-sm text-xs font-bold mt-1">
-                      {item.information.product_name.length > 30 ? item.information.product_name.replace(item.information.product_name.substring(30, 255) , '......') : item.information.product_name}
-                    </p>
+                    <div className="um-product-details px-1 py-1">
+                      <p className="text-red-700 font-extrabold">
+                        ₦{item.price.unit_price.toLocaleString()}
+                      </p>
+                      <p className="sm:text-sm text-xs font-bold mt-1">
+                        {item.information.product_name.length > 30
+                          ? item.information.product_name.replace(
+                              item.information.product_name.substring(30, 255),
+                              "......"
+                            )
+                          : item.information.product_name}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </React.Fragment>
-            ))}
+                </React.Fragment>
+              ))}
+            </Suspense>
+          )}
         </div>
       </div>
     </>

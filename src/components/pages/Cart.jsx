@@ -4,7 +4,7 @@ import { GlobalContext } from "../../context";
 import isEmpty from "../../utils/isEmpty";
 
 const Cart = ({ data, index }) => {
-  const {cartIndex, setIndex} = useContext(GlobalContext)
+  const {cartIndex, setIndex , price , setPrice , cartSelection , setCartSelection} = useContext(GlobalContext)
   const [checked, setCheck] = useState(false);
   useEffect(() => {
     if(checked) {
@@ -12,6 +12,15 @@ const Cart = ({ data, index }) => {
         ...prev,
         index
       ])
+      setPrice(price + data?.product?.price?.unit_price)
+      if(isEmpty(cartSelection)) {
+        setCartSelection([data])
+      } else {
+        setCartSelection((prev) => [
+          ...prev,
+          data
+        ])
+      }
     }else if(!checked) {
       if(cartIndex.includes(index)) {
         const newSelected = []
@@ -21,6 +30,15 @@ const Cart = ({ data, index }) => {
           }
         }
         setIndex(newSelected)
+        setPrice(price - data?.product?.price?.unit_price)
+        const neCartSelection = []
+        for (let i = 0; i < cartSelection.length; i++) {
+          if(cartSelection[i] != index) {
+            neCartSelection.push(cartSelection[i])
+          }
+        }
+
+        setCartSelection(neCartSelection)
       }
     }
   },[checked])
@@ -29,7 +47,7 @@ const Cart = ({ data, index }) => {
       <div key={index} className="border-gray-bottom flex justify-between">
         <div className="py-4 flex w-full md:w-[60%] gap-2">
           <div
-            className={`um-cart-border-outline sm:w-[16px] sm:h-[16px] w-[20px] h-[20px] cursor-pointer justify-center items-center`}
+            className={`um-cart-border-outline  w-[16px] h-[16px] cursor-pointer justify-center items-center`}
             onClick={() => setCheck(!checked)}
           >
             {checked && (
@@ -49,7 +67,7 @@ const Cart = ({ data, index }) => {
             />
           </div>
 
-          <div className="flex flex-col items-start gap-2 justify-start">
+          <div className="flex flex-col items-start gap-2 justify-start w-[60%]">
             <h3 className="font-extrabold text-left sm:text-md text-sm">
               {data?.product?.information?.product_name}
             </h3>
@@ -116,7 +134,7 @@ const Cart = ({ data, index }) => {
         <div className="flex gap-2 md:gap-4 md:w-[60%] w-full items-center">
           <p className="text-sm font-semibold text-gray-500">Sold By</p>
           <h3 className="text-xs md:text-sm font-bold text-[#2E486B]">
-            SAMUEL CROWN
+            {data?.product?.product?.user?.firstname} {data?.product?.product?.user?.lastname}
           </h3>
         </div>
 

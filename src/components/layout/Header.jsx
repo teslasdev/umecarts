@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, Suspense } from "react";
 import { useMediaQuery } from "react-responsive";
 import logo from "../../assets/logo/Vector.png";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -11,8 +11,11 @@ import { FiShoppingCart } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { setGlobalState, useGlobalState } from "../common/store";
 import { GlobalContext } from "../../context";
-import { useGetIpAddress, useGetUser } from "../../helper/api-hooks/useAuth";
+import { useGetIpAddress } from "../../helper/api-hooks/useAuth";
 import isEmpty from "../../utils/isEmpty";
+import { useCategory } from "../../helper/api-hooks/useGeneral";
+import { fetchAllSubCategories } from "../../fetchData";
+import { useUrls } from "../../helper/useUrls";
 
 const Header = ({ nil }) => {
   const navigate = useNavigate();
@@ -21,6 +24,8 @@ const Header = ({ nil }) => {
   const [toggleOption, setToggleOption] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
   const {data ,isLoading, refetch} = useGetIpAddress();
+  const {categories , setCatogories , userData , setCart } = useContext(GlobalContext)
+  const {getCategoryUrl} = useUrls()
   useEffect(() => {
     let lastScrollY = window.pageYOffset;
     var direction;
@@ -39,20 +44,22 @@ const Header = ({ nil }) => {
   const handleClick = (path) => {
     navigate(path);
   };
-  const { userData , setCart } = useContext(GlobalContext);
+ 
 
   useEffect(() => {
     if(!isLoading) {
-      console.log('mdass,a',data)
+      console.log(data)
       setCart(data.cart)
     }
   },[])
+  useEffect(() => {
+    fetchAllSubCategories(setCatogories , getCategoryUrl)
+  },[])
+  console.log(categories)
   return (
     <>
       <header
-        className={`um-header ${
-          scrollDirection === "down" && "fixed z-30"
-        } w-full`}
+        className={`um-header z-[300] fixed w-full`}
         data-aos="fade-down"
       >
         {isTabletOrMobile && (
@@ -169,13 +176,13 @@ const Header = ({ nil }) => {
           <div
             className={`um-header-box1 lg:flex hidden justify-between items-center px-24 ${nil}`}
           >
-            <Link to="/">Wrist watches</Link>
-            <Link to="/">Female Fashion & Clothing</Link>
-            <Link to="/">Electronic & Accessories</Link>
-            <Link to="/">Sport & Outdoor</Link>
-            <Link to="/">Jewelry & Accessories</Link>
-            <Link to="/">Beauty, Health & Hair</Link>
-            <Link to="/">Others</Link>
+            <Suspense fallback={<div>is Loading....</div>}>
+              {categories.map((item , index) => {
+                return (
+                  <Link to="/">{item.name}</Link>
+                )
+              })}
+            </Suspense>
           </div>
         )}
       </header>

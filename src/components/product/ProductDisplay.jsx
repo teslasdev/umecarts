@@ -342,7 +342,7 @@ const ProductDisplay = ({ info }) => {
                             </div>
                         </div>
             <div>
-              <div className="flex flex-col md:flex-row gap-10 bg-white shadow-md rounded-md p-4">
+              <div className="flex flex-col md:flex-row gap-10 bg-white shadow-md rounded-md p-2">
                 <div className="flex flex-col gap-2 w-full md:w-[40%]">
                   <h4 className="text-sm text-secondary font-bold">Overview</h4>
                   <div className="flex gap-2 items-center">
@@ -374,8 +374,8 @@ const ProductDisplay = ({ info }) => {
                         /5.0
                       </span>
                     </h2>
-                    <span>(80)</span>
-                    <span>(20 reviews)</span>
+                    <span className="text-[12px]">(80)</span>
+                    <span className="text-[12px]">(20 reviews)</span>
                   </div>
 
                   <div className="flex gap-4 items-end font-normal text-[12px]">
@@ -686,12 +686,12 @@ const ProductDisplay = ({ info }) => {
               </div>
             </div>
 
-            <div className="bg-white px-2 py-4 rounded-md">
+            <div className="bg-white px-1 py-4 rounded-md">
               <h3 className="uppercase flex justify-start items-center font-bold pl-6 h-[40px]">
                 Ratings and Reviews
               </h3>
               <hr />
-              <div className="flex flex-col justify-start font-bold pl-4 pr-6">
+              <div className="flex flex-col justify-start font-bold pl-2 pr-6">
                 <div className="py-2 flex gap-2 items-center">
                   <span className="text-[#FFCD29]">
                     {" "}

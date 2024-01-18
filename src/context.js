@@ -11,9 +11,13 @@ export const GlobalProvider = ({ children }) => {
   const [isAuth , setAuth] = useState(false)
   const [isBuyer , setBuyer] = useState(false)
   const [bandDetails , setBankDetails] = useState([])
+  const [addressDetails , setaddressDetails] = useState([])
   const [cartUpdate , setCart] = useState([])
   const [cartCheck , setcartCheck] = useState(false)
   const [cartIndex, setIndex] = useState([])
+  const [price , setPrice] = useState(0)
+  const [cartSelection , setCartSelection] = useState([])
+  const [categories , setCatogories] = useState([])
   return (
     <GlobalContext.Provider
       value={{
@@ -32,7 +36,15 @@ export const GlobalProvider = ({ children }) => {
         cartCheck , 
         setcartCheck,
         cartIndex, 
-        setIndex
+        setIndex,
+        price, 
+        setPrice,
+        addressDetails, 
+        setaddressDetails,
+        cartSelection , 
+        setCartSelection,
+        categories , 
+        setCatogories
       }}
     >
       {children}

@@ -38,6 +38,8 @@ export const DropdownDefault = ({
    setProvider,
    discount,
    setDiscount,
+   option,
+   setOption
 }) => {
   const [isOpen , setOpen] = useState(false)
   const [select, setSelect] = useState('')
@@ -64,6 +66,7 @@ export const DropdownDefault = ({
           setDiscount(value)
         break;
       }
+      setOption(value)
     }
     else {
       switch(TypeOf) {

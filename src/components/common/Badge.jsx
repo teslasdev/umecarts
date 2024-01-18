@@ -7,6 +7,7 @@ import { CgCreditCard } from 'react-icons/cg'
 import {RxCaretRight} from 'react-icons/rx';
 import { Link } from 'react-router-dom';
 import { BsCheck2Circle } from 'react-icons/bs';
+import { useMediaQuery } from 'react-responsive';
 export const Badge = (props) => {
   return (
     <div className='um-sign-badge items-center text-sm gap-2 sm:px-12 md:px-24 px-4'>
@@ -54,36 +55,37 @@ export const CustomBadge = ({
 
 
 export const CartBadge = ({
-  data,
-  sizeIcon,
   setCaret,
+  done,
+  current
 }) => {
+  const isTabletOrMobile = useMediaQuery({ query: "(min-width: 500px)" });
   return (
     <>
       <div className='w-full py-6 flex justify-center items-center gap-2 md:gap-5 text-[#ccc]'>
-        <div className='flex justify-center items-center flex-col text-[#CA0505]'>
-          <FiShoppingCart size={sizeIcon}/>
-          <p className='text-[8px] md:text-xs'>1. My cart</p>
+        <div className={`flex justify-center items-center flex-col ${current.cart ? 'text-[#CA0505]' : done.cart ? 'text-[#017E4D]' : 'text-[#CA0505]'}`}>
+          <FiShoppingCart size={isTabletOrMobile ? '35' : '20'}/>
+          <p className={`text-[8px] md:text-[14px]`}>1. My cart</p>
         </div>
         <RxCaretRight size={setCaret} />
-        <div className='flex justify-center items-center flex-col'>
-          <IoLocationOutline size={sizeIcon}/>
-          <p className='text-[8px] md:text-xs'>2. Shipping info</p>
+        <div className={`flex justify-center items-center flex-col ${current.checkout ? 'text-[#CA0505]' : done.cart ? 'text-[#017E4D]' : ''}`}>
+          <IoLocationOutline size={isTabletOrMobile ? '35' : '20'}/>
+          <p className='text-[8px] md:text-[14px]'>2. Shipping info</p>
         </div>
         <RxCaretRight size={setCaret} />
-        <div className='flex justify-center items-center flex-col'>
-          <TbTruckDelivery size={sizeIcon}/>
-          <p className='text-[8px] md:text-xs'>3. Delivery info</p>
+        <div className={`flex justify-center items-center flex-col ${current.delivery ? 'text-[#CA0505]' : done.checkout ? 'text-[#017E4D]' : ''}`}>
+          <TbTruckDelivery size={isTabletOrMobile ? '35' : '20'}/>
+          <p className='text-[8px] md:text-[14px]'>3. Delivery info</p>
         </div>
         <RxCaretRight size={setCaret} />
-        <div className='flex justify-center items-center flex-col'>
-          <CgCreditCard size={sizeIcon}/>
-          <p className='text-[8px] md:text-xs'>4. Payment</p>
+        <div className={`flex justify-center items-center flex-col ${current.payment ? 'text-[#CA0505]' : done.delivery ? 'text-[#017E4D]' : ''}`}>
+          <CgCreditCard size={isTabletOrMobile ? '35' : '20'}/>
+          <p className='text-[8px] md:text-[14px]'>4. Payment</p>
         </div>
         <RxCaretRight size={setCaret} />
-        <div className='flex justify-center items-center flex-col'>
-          <BsCheck2Circle size={sizeIcon}/>
-          <p className='text-[8px] md:text-xs'>5. Confirmation</p>
+        <div className={`flex justify-center items-center flex-col ${current.confirm ? 'text-[#CA0505]' : done.payment ? 'text-[#017E4D]' : ''}`}>
+          <BsCheck2Circle size={isTabletOrMobile ? '35' : '20'}/>
+          <p className='text-[8px] md:text-[14px]'>5. Confirmation</p>
         </div>
       </div>
     </>

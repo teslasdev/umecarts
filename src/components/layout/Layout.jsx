@@ -26,6 +26,7 @@ const Layout = ({ children, nil, isFullfooter }) => {
     <>
       {sideBar && <AuthBar onClick={() => setGlobalState("sideBar", false)} />}
       <Header nil={nil} />
+      <div className="sm:h-[20vh] h-[10vh] w-full"></div>
       {children}
       <Footer isFullfooter={isFullfooter} />
       {isPortrait && navBar && <Navigation />}

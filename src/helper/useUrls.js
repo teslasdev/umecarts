@@ -24,6 +24,7 @@ export function useUrls() {
   const updateUser = `${BASE_URL}/update/me`;
   const getIpAddress = `${BASE_URL}/getIpAddress`;
   const addToCart = `${BASE_URL}/addToCart`;
+  const getAddress =  `${BASE_URL}/address`;
   return {
     loginUrl, 
     registerUrl,
@@ -41,6 +42,7 @@ export function useUrls() {
     updateUser,
     GetProductPublished,
     getIpAddress,
-    addToCart
+    addToCart,
+    getAddress
   };
 }

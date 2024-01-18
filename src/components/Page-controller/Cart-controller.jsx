@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartBadge } from "../common/Badge";
 import Layout from "../layout/Layout";
 import { Link } from "react-router-dom";
+import { redirect, useNavigate, useNavigation } from "react-router";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import isEmpty from "../../utils/isEmpty";
@@ -10,9 +11,10 @@ import Cart from "../pages/Cart";
 import { useGetIpAddress } from "../../helper/api-hooks/useAuth";
 
 const CartController = () => {
-  const [productSelected, setSelection] = useState(false);
   const {data , isLoading } = useGetIpAddress()
-  const {cartIndex} = useContext(GlobalContext)
+  const {cartIndex , price } = useContext(GlobalContext)
+  const navigate = useNavigate()
+  // const Totalprice = data && data?.cart.reduce((acc , product) => acc + product.product?.price?.unit_price , 0);
   const onSubmit = () => {
    //  const pagination = {
    //    address: false,
@@ -20,13 +22,28 @@ const CartController = () => {
    //    payment: false,
    //  };
    //  localStorage.setItem("pagination", JSON.stringify(pagination));
-   //  return history("/checkout");
+   navigate("/checkout");
   };
+
+  const currentBadge = {
+    cart : true,
+    checkout : false,
+    delivery : false,
+    payment : false,
+    confirm : false
+  }
+  const doneBadge = {
+    cart : false,
+    checkout : false,
+    delivery : false,
+    payment : false,
+    confirm : false
+  }
   return (
     <>
       <Layout>
-        <CartBadge data="cart" />
-        <div className="py-6 h-screen">
+        <CartBadge done={doneBadge} current={currentBadge}/>
+        <div className="py-6">
          {!isLoading &&
           isEmpty(data?.cart) ? (
             <div className="flex justify-center">
@@ -44,8 +61,8 @@ const CartController = () => {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center mt-3 p-4 md:p-0">
-              <div className="bg-white rounded-md w-full md:w-[60%] text-center p-6 shadow-md">
+            <div className="flex justify-center mt-3 p-2 md:p-0">
+              <div className="bg-white rounded-md w-full md:w-[60%] text-center sm:p-6 p-3 shadow-md">
                 <div className="border-gray-bottom pb-2 md:flex hidden justify-between items-center pr-12">
                   <h3 className="flex justify-start font-bold text-[18px] w-[60%]">
                     Product
@@ -67,7 +84,7 @@ const CartController = () => {
                     <div className="flex gap-2 items-center">
                       <h3 className="text-[#2E486B]">Sub-total :</h3>
                       <h3 className="text-red-800 font-extrabold text-xl">
-                        #12,500
+                      ₦{price.toLocaleString()}
                       </h3>
                     </div>
 
@@ -101,7 +118,7 @@ const CartController = () => {
             <div>
               <div className="flex gap-2 items-center">
                 <h3 className="text-[#2E486B]">Sub-total :</h3>
-                <h3 className="text-red-800 font-extrabold text-xl">#12,500</h3>
+                <h3 className="text-red-800 font-extrabold text-xl">₦{price.toLocaleString()}</h3>
               </div>
               <div className="flex gap-2 items-center text-xs text-gray-400">
                 <AiOutlineExclamationCircle />

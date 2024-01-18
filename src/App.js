@@ -40,7 +40,6 @@ import SellerPreview from "./components/pages/SellerPreview";
 import SellerPageForRegBuyer from "./components/pages/SellerPageForRegBuyer";
 
 const App = () => {
-
   AOS.init();
   const { data, refetch, status, error } = useGetUser();
   const { userData, setToken, setData, isAuth, setAuth, isBuyer, setBuyer } =
