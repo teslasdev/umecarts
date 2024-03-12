@@ -21,7 +21,8 @@ const Cart = ({ data, index }) => {
           data
         ])
       }
-    }else if(!checked) {
+    }
+    else if(!checked) {
       if(cartIndex.includes(index)) {
         const newSelected = []
         for (let i = 0; i < cartIndex.length; i++) {
@@ -37,7 +38,6 @@ const Cart = ({ data, index }) => {
             neCartSelection.push(cartSelection[i])
           }
         }
-
         setCartSelection(neCartSelection)
       }
     }
@@ -74,7 +74,7 @@ const Cart = ({ data, index }) => {
             <p className="text-xs text-[#2E486B]">size/color/gender</p>
             <div className="flex gap-2 items-center">
               <p className="text-xs text-gray-400">Price</p>
-              <h4 className="sm:text-md text-sm text-[#2E486B] font-extrabold">₦12,500</h4>
+              <h4 className="sm:text-md text-sm text-[#2E486B] font-extrabold">₦{data?.product?.price?.unit_price.toLocaleString()}</h4>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ const Cart = ({ data, index }) => {
           </div>
           <div>
             <span className="text-xs text-gray-500">Price</span>
-            <h3 className="text-red-800 font-extrabold text-xl">#12,500</h3>
+            <h3 className="text-red-800 font-extrabold text-xl">₦{data?.product?.price?.unit_price.toLocaleString()}</h3>
           </div>
           <div>
             <span className="text-xs text-gray-500">Availabiity</span>

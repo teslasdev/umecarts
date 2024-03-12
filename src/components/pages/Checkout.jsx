@@ -16,11 +16,8 @@ import { BsCheck2Circle } from "react-icons/bs";
 export const CheckoutAddress = ({ data, price }) => {
   const Navigate = useNavigate();
   const [handleModal, setModal] = useState(false);
+  const [checked, setCheck] = useState();
   const handleSubmit = () => {
-    const { data } = getLocalStorage("pagination");
-    data.address = true;
-    var storageAddressUpdate = data;
-    localStorage.setItem("pagination", JSON.stringify(storageAddressUpdate));
     Navigate("/checkout/delivery_info");
   };
   const currentBadge = {
@@ -36,8 +33,7 @@ export const CheckoutAddress = ({ data, price }) => {
     delivery: false,
     payment: false,
     confirm: false,
-  };
-  const [checked, setCheck] = useState();
+  }; 
   return (
     <>
       <Layout>
@@ -99,9 +95,9 @@ export const CheckoutAddress = ({ data, price }) => {
                       <div className="w-[5%]">
                         <div
                           className={`um-cart-border-rounded rounded-full  w-[16px] h-[16px] cursor-pointer justify-center items-center`}
-                          onClick={() => setCheck(index)}
+                          onClick={() => setCheck(item.id)}
                         >
-                          {checked == index && (
+                          {checked == item.id && (
                             <div className="w-[8px] h-[8px] rounded-full  bg-[#002c66]"></div>
                           )}
                         </div>
@@ -178,7 +174,7 @@ export const CheckoutAddress = ({ data, price }) => {
                     <div className="flex gap-2 items-center">
                       <h3 className="text-[#2E486B]">Sub-total :</h3>
                       <h3 className="text-red-800 font-extrabold text-xl">
-                        #{price.toLocaleString()}
+                      ₦{price.toLocaleString()}
                       </h3>
                     </div>
 
@@ -216,7 +212,7 @@ export const CheckoutAddress = ({ data, price }) => {
                 <div className="flex gap-2 items-center">
                   <h3 className="text-[#2E486B]">Sub-total :</h3>
                   <h3 className="text-red-800 font-extrabold text-xl">
-                    #12,500
+                    ₦{price.toLocaleString()}
                   </h3>
                 </div>
                 <div className="flex gap-2 items-center text-xs text-gray-400">

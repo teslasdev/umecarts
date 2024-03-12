@@ -12,16 +12,10 @@ import { useGetIpAddress } from "../../helper/api-hooks/useAuth";
 
 const CartController = () => {
   const {data , isLoading } = useGetIpAddress()
-  const {cartIndex , price } = useContext(GlobalContext)
+  const {cartIndex , cartSelection, price } = useContext(GlobalContext)
   const navigate = useNavigate()
   // const Totalprice = data && data?.cart.reduce((acc , product) => acc + product.product?.price?.unit_price , 0);
   const onSubmit = () => {
-   //  const pagination = {
-   //    address: false,
-   //    delivery: false,
-   //    payment: false,
-   //  };
-   //  localStorage.setItem("pagination", JSON.stringify(pagination));
    navigate("/checkout");
   };
 
